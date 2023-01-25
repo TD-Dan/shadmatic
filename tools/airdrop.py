@@ -1,6 +1,12 @@
 
-from iota_wallet import IotaWallet, StrongholdSecretManager
-from iota_client import IotaClient
+
+try: from iota_wallet import IotaWallet, StrongholdSecretManager
+except ModuleNotFoundError:
+    raise ModuleNotFoundError('\n\nIota wallet library needs to be installed:\n https://wiki.iota.org/shimmer/wallet.rs/getting_started/python/')
+try: from iota_client import IotaClient
+except ModuleNotFoundError:
+    raise ModuleNotFoundError('\n\nIota client library needs to be installed:\n https://wiki.iota.org/shimmer/iota.rs/getting_started/python/')
+
 
 default_airdrop = {
     "token_name"
