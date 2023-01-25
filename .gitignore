@@ -1,4 +1,4 @@
 *.json
 .env
-_*
+__pycache__
 *.stronghold
