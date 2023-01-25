@@ -41,8 +41,8 @@ class TerminalWindow(shadowui.WindowBase):
     menu_tools = {}
     at_tools = {}
 
-    def __init__(self, name: str, sub_sections: list = None) -> None:
-        super().__init__(name, sub_sections)
+    def __init__(self, name: str, **kwargs) -> None:
+        super().__init__(name, **kwargs)
     
     def add_menu_tool(self, tool: object):
         self.menu_tools[(tool.short,tool.long)]=tool
@@ -56,7 +56,9 @@ class TerminalWindow(shadowui.WindowBase):
                 raise ValueError("tool long keyword already in use by "+s+" "+l)
         self.at_tools[(tool.short,tool.long)]=tool
      
-    def open(self):
+    def run(self):
+        super().run()
+
         self.init()
         self.clear()
 

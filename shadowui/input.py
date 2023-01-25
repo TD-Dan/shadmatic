@@ -1,5 +1,5 @@
 
-from .section import Section
+from .section import Section,Signal
 
 class Input(Section):
     @property
@@ -8,13 +8,13 @@ class Input(Section):
     @value.setter
     def value(self,value):
         self._value = value
-        if self.on_value_changed:
-            for listener in self.on_value_changed:
-                listener(self.value)
+        self._on_value_changed.emit()
 
-    on_value_changed:list = []
-
-    def __init__(self, name: str, sub_sections: list = [], on_value_changed:callable = None) -> None:
-        super().__init__(name, sub_sections)
+    def __init__(self, name: str, **kwargs) -> None:
+        super().__init__(name, **kwargs)
         self._value = None
-        self.on_value_changed.append(on_value_changed)
+        self._on_value_changed = Signal()
+
+        on_value_changed:callable = kwargs.get('on_value_changed')
+        if on_value_changed:
+            self._on_value_changed.connect(on_value_changed)
