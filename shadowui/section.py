@@ -52,12 +52,22 @@ class Section:
             for obj in other:
                 self.children[obj.name] = obj
                 self._on_children_changed.emit(what=ListOperation.ADD,child=obj)
-        except TypeError:
+        except AttributeError:
             try:
                 self.children[other.name] = other
+                self._on_children_changed.emit(what=ListOperation.ADD,child=other)
             except AttributeError:
-                raise TypeError("Only adding a Section or Iterable of Sections is supported")
+                raise TypeError
+        except TypeError:
+            raise TypeError("Only adding a Section or Iterable of Sections is supported")
         return self
 
-    def __getattr__(self,attr):
-        return self.children[attr]
+    """Adds ability to directly access children with ['childname'] and [child.subchild.leaf] """
+    def __getitem__(self,key):
+        splitted = key.split('.')
+        current = self
+        for key in splitted:
+            current = current.children[key]
+        return current
+
+    
