@@ -26,7 +26,7 @@ program_dom = [
         Section('status'),
         Section('logo',on_load=load_tools)
         ]),
-    Input('prompt', on_value_changed=prompt_input),
+    Input('prompt', on_value_changed=test_input),
     Section('menu'),
     Section('content'),
     Section('footer',children=[
@@ -70,8 +70,8 @@ def main():
             case LaunchMode.HELP:
                 print(__doc__)
             case LaunchMode.TEST:
-                from tests import tests
-                tests()
+                from tests import auto_tester
+                auto_tester.run()
             case LaunchMode.EXEC:
                 print("Not implemented")
             case LaunchMode.CLI:

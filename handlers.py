@@ -12,7 +12,7 @@ def load_tools(**kwargs):
     #mainwin.add_tool(config_tool)
     #mainwin.add_tool(airdrop_tool)
 
-def prompt_input(**kwargs):
+def test_input(**kwargs):
     section = kwargs.get('section')
     value = kwargs.get('value')
     print("I'v got input: "+value+" from:"+section.name)
