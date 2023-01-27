@@ -12,27 +12,10 @@
 """
 __version__ = "v0.0.1"
 
-
 import sys
 from enum import Enum
 
-from shadowui import Section,Input,Label
-
-from handlers import *
-
-program_dom = [
-    Section('bootstrapper'),
-    Section('header',children=[
-        Section('status'),
-        Section('logo',on_load=load_tools)
-        ]),
-    Input('prompt', on_value_changed=test_input),
-    Section('menu'),
-    Section('content'),
-    Section('footer',children=[
-        Label('hintline')
-        ])
-]
+from program import *
 
 class LaunchMode(Enum):
     HELP = "help"
