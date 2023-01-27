@@ -47,6 +47,11 @@ class Section:
         if on_children_changed:
             self.on_children_changed.connect(on_children_changed)
 
+    def emit_signal_recursive_leaf_first(self,signal:str,**kwargs):
+        for child in self.children.values():
+            child.emit_signal_recursive_leaf_first(signal, **kwargs)
+        getattr(self,signal).emit(section=self, **kwargs)
+
     def __iadd__(self, other):
         try:
             for obj in other:

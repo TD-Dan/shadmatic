@@ -1,7 +1,8 @@
 """Main program logic handler functions"""
 
 def load_tools(**kwargs):
-    print("loading tools from bootstrapper!")
+    section = kwargs.get('section')
+    print("loading tools from "+ section.name +" ...")
 
     from tools.config import ConfigTool
     from tools.airdrop import AirdropTool

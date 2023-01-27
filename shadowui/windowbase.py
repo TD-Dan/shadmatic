@@ -5,10 +5,8 @@ from .section import Section
 class WindowBase(Section):    
     """Run the program main loop"""
     def run(self):
-        #send on_load signals
-        for child in self.children.values():
-            child.on_load.emit()
-            
+        # send load signals from leaf up, children should always be loaded first
+        self.emit_signal_recursive_leaf_first("on_load")
 
     def add_tool(self,page): raise NotImplementedError('add_tool method not implemented by subclass.')
 
