@@ -206,14 +206,3 @@ class HelpCommand:
             except AttributeError:
                 print("")
         print("\nUse help <tool> for more help.\n")
-
-
-"""Prompts an yes or no input from user."""
-def prompt_yes_no(prompt: str) -> bool:
-    print(prompt+ "(y/n) > ", end='')
-    user_input = input()
-    print(Cursor.UP(1), end='')
-    match user_input: 
-        case 'Y'|'y'|'Yes'|'yes':
-            return True
-    return False
