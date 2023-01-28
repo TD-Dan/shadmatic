@@ -9,9 +9,7 @@ from threading import Thread, ThreadError
 if platform.system() == "Windows":
 	import msvcrt
 	def getch_nb():
-		if msvcrt.kbhit():
-			return msvcrt.getwch()
-		return None
+		return msvcrt.getwch()
 
 else:
 	import tty, termios, sys, select
@@ -21,8 +19,7 @@ else:
 		old_settings = termios.tcgetattr(fd)
 		try:
 			tty.setraw(sys.stdin.fileno())
-			if select.select([sys.stdin], [], [], 0) == ([sys.stdin], [], []):
-				ch = sys.stdin.read(1)
+			ch = sys.stdin.read(1)
 		finally:
 			termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
 		return ch
@@ -34,8 +31,8 @@ class InputListener:
 	control_queue = Queue()
 	input_queue = Queue()
 
-	def __init__(self, callback:callable) -> None:
-		self.callback = callback
+	def __init__(self) -> None:
+		pass
 	
 	def __del__(self):
 		if self.input_thread.is_alive():
@@ -48,12 +45,12 @@ class InputListener:
 		self.input_thread.start()
 
 	def close(self):
-		print("InputListener closing...")
+		print("<Press any key to exit...>")
 		try:
 			self.control_queue.put('close')
 		finally:
 			self.input_thread.join()
-			print("InputListener closed.")
+			#print("InputListener closed.")
 
 	def getInput(self):
 		try:
@@ -77,9 +74,16 @@ def thread_input(input_queue,control_queue):
 			pass
 		#try:
 
+		
 		char = getch_nb()
 		if char:
 			input_queue.put(char)
+		#full_char = ""
+		#while char:
+		#	full_char+=char
+		#	char = getch_nb()
+		#if full_char:
+		#	input_queue.put(full_char)
 
 		#except EOFError:
 			#print("thread closing (EOFError)...")
