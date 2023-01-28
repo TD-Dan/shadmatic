@@ -1,6 +1,5 @@
 """Terminal gui that supports mouse, color and and other fancy stuff"""
 
-import curses
 
 import time
 from queue import Queue
@@ -40,6 +39,14 @@ class TerminalWindow(shadowui.WindowBase):
     def run(self):
         super().run()
         
+        try:
+            import curses
+        except ModuleNotFoundError:
+            import platform
+            if platform.system() == "Windows":
+                print("\n\nCurses library not found. For windows run 'pip install windows-curses'\n")
+                raise ModuleNotFoundError("\n\nCurses library not found. For windows run 'pip install windows-curses'\n")
+
         try:
             stdscr = curses.initscr()
             stdscr.timeout(0)
