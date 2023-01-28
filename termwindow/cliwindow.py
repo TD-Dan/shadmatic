@@ -15,6 +15,7 @@ class ProgramBack(Exception): pass
 
 CLEAR_LINE = '\033[2K'
 
+xstr = lambda str: str or '' # Returns '' for None else str
 
 class CommandlineWindow(shadowui.WindowBase):
 
@@ -48,6 +49,8 @@ class CommandlineWindow(shadowui.WindowBase):
                     try:
                         ch : str = self.input_listener.getInput()
                         if redraw:
+                            self.draw_recursive(self)
+
                             print(Cursor.BACK(80)+CLEAR_LINE+"COMMAND> " + self.input_line_buffer, end='')
                             redraw = False
                         if ch:
@@ -112,6 +115,21 @@ class CommandlineWindow(shadowui.WindowBase):
                     raise
         finally:
             self.input_listener.close()
+
+    def draw_recursive(self,section, level=0):
+        for n in range(0,level):
+            print("\t", end='')
+        self.draw(section)
+        for child in section.children.values():
+            self.draw_recursive(child,level+1)
+
+    def draw(self,section):
+        if isinstance(section, shadowui.Label):
+            label : shadowui.Label = section
+            print(xstr(label.pre_content)+xstr(label.content)+xstr(label.post_content))
+        else:
+            pass
+            print("< "+section.name+" >")
 
 
     """Prompts an yes or no input from user."""
