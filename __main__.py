@@ -71,6 +71,8 @@ def main():
     except KeyboardInterrupt:
         print("User interrupted.")
         exit()
+    
+    print("Abnormal program exit!")
 
 
 if __name__ == "__main__":

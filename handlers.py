@@ -1,6 +1,6 @@
 """Main program logic handler functions"""
 
-def load_tools(**kwargs):
+def load_header(**kwargs):
     section = kwargs.get('section')
     print("loading tools from "+ section.name +" ...")
 
@@ -17,3 +17,9 @@ def test_input(**kwargs):
     section = kwargs.get('section')
     value = kwargs.get('value')
     print("I'v got input: "+value+" from:"+section.name)
+
+def load_client_label(**kwargs):
+    section = kwargs.get('section')
+
+def load_wallet_label(**kwargs):
+    section = kwargs.get('section')

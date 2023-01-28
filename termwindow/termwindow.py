@@ -1,13 +1,11 @@
 
-import sys
-import threading
 import time
 from queue import Queue
 
 from colorama import Fore, Back, Style, init, Cursor
 init(autoreset=True)
 
-from termwindow.getch import getch
+from termwindow.inputlistener import InputListener
 
 #from shadowui.windowbase import WindowBase
 #from shadowui.section import Section
@@ -37,7 +35,6 @@ Color = UiColor()
 
 class TerminalWindow(shadowui.WindowBase):
     
-    input_queue = Queue()
     menu_tools = {}
     at_tools = {}
 
@@ -95,13 +92,6 @@ class TerminalWindow(shadowui.WindowBase):
                 #     sys.stdout.flush()
                 #     last_update = time.time()
 
-                if not self.input_queue.empty():
-                    k = self.input_queue.get()
-                    print('\n'+k+'\n'+str(bytes(k,'utf-8')))
-                    if k == '\x03':
-                        raise KeyboardInterrupt
-                    user_input+=k
-
                 current_tool_str = ""
                 if current_tool:
                     current_tool_str = current_tool.long+'>'
@@ -151,10 +141,7 @@ class TerminalWindow(shadowui.WindowBase):
             print("")
         #reset cursor position
         print(Cursor.POS(1,1)+"", end='')
-        
-        input_thread = threading.Thread(target=add_input, args=(self.input_queue,))
-        input_thread.daemon = True
-        input_thread.start()
+    
 
     """Empty terminal view"""
     def clear(self,bg_color = Back.RESET, rect = None, ):
@@ -173,13 +160,6 @@ class TerminalWindow(shadowui.WindowBase):
     def cursor_pos(self,x,y):
         print(Cursor.POS(x,y)+"", end='')
 
-
-
-def add_input(input_queue):
-    while True:
-        k = getch()
-        if k:
-            input_queue.put(k)
 
 class Rect:
     x = 1

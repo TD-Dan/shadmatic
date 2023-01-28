@@ -1,26 +1,31 @@
 
 
-try: from iota_wallet import IotaWallet, StrongholdSecretManager
-except ModuleNotFoundError:
-    raise ModuleNotFoundError('\n\nIota wallet library needs to be installed:\n https://wiki.iota.org/shimmer/wallet.rs/getting_started/python/')
-try: from iota_client import IotaClient
-except ModuleNotFoundError:
-    raise ModuleNotFoundError('\n\nIota client library needs to be installed:\n https://wiki.iota.org/shimmer/iota.rs/getting_started/python/')
-
-
 default_airdrop = {
     "token_name"
     "airdrop_delay_seconds":5.0,
     "claim_expiration_seconds":604800
 }
 
+
 class AirdropTool:
+    """Prepare and send out an airdrop to multiple recipients.
+    Airdrops are managed by stages: staging, drop active, follow.
+    If "simulate" is enabled will only do a test airdrop run without sending any actual coins or tokens.
+    """
     short = 'a'
     long = 'airdrop'
     help = 'Deliver an airdrop.'
-    help_long = 'Prepare and send out an airdrop to multiple recipients.\n'+\
-                'Airdrops are managed by stages: staging, drop active, follow.\n'+\
-                'If "simulate" is enabled will only do a test airdrop run without sending any actual coins or tokens.'
+
+    def __init__(self) -> None:
+        try: from iota_wallet import IotaWallet, StrongholdSecretManager
+        except ModuleNotFoundError:
+            print('\n\nIota wallet library needs to be installed:\n https://wiki.iota.org/shimmer/wallet.rs/getting_started/python/')
+            #raise ModuleNotFoundError('\n\nIota wallet library needs to be installed:\n https://wiki.iota.org/shimmer/wallet.rs/getting_started/python/')
+        try: from iota_client import IotaClient
+        except ModuleNotFoundError:
+            print('\n\nIota client library needs to be installed:\n https://wiki.iota.org/shimmer/iota.rs/getting_started/python/')
+            #raise ModuleNotFoundError('\n\nIota client library needs to be installed:\n https://wiki.iota.org/shimmer/iota.rs/getting_started/python/')
+        
     def __call__(self,*args):
         #Report on previously created airdrops
         print("\tAirdrop name\tstatus")
