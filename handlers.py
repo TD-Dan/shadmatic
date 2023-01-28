@@ -1,17 +1,16 @@
 """Main program logic handler functions"""
 
-def load_header(**kwargs):
+from shadowui import Section,Input,Label
+
+def load_tools(**kwargs):
     section = kwargs.get('section')
-    print("loading tools from "+ section.name +" ...")
+    print("loading tools to "+ section.name +" ...")
 
     from tools.config import ConfigTool
-    from tools.airdrop import AirdropTool
-
-    config_tool = ConfigTool()
-    airdrop_tool = AirdropTool()
+    from tools.airdrop import airdrop_program
 
     #mainwin.add_tool(config_tool)
-    #mainwin.add_tool(airdrop_tool)
+    section += airdrop_program
 
 def test_input(**kwargs):
     section = kwargs.get('section')
@@ -19,7 +18,9 @@ def test_input(**kwargs):
     print("I'v got input: "+value+" from:"+section.name)
 
 def load_client_label(**kwargs):
-    section = kwargs.get('section')
+    section : Label = kwargs.get('section')
+    section.content = "unknown"
 
 def load_wallet_label(**kwargs):
     section = kwargs.get('section')
+    section.content = "unknown"

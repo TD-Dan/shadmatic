@@ -52,11 +52,14 @@ def main():
         match launch_mode:
             case LaunchMode.HELP:
                 print(__doc__)
+                exit()
             case LaunchMode.TEST:
                 from tests import auto_tester
                 auto_tester.run()
+                exit()
             case LaunchMode.EXEC:
                 print("Not implemented")
+                exit()
             case LaunchMode.CLI:
                 from termwindow import CommandlineWindow
                 mainwin : CommandlineWindow = CommandlineWindow('Shadow-wallet')
@@ -66,6 +69,7 @@ def main():
     
         if mainwin:
             mainwin += program_dom
+            mainwin.actionmap = ACTION
             mainwin.run()
             exit()
     except KeyboardInterrupt:
