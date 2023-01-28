@@ -5,7 +5,6 @@ from enum import Enum
 from queue import Queue,Empty
 from threading import Thread, ThreadError
 
-
 # Implements non-blocking getch for Win, Mac and linux
 if platform.system() == "Windows":
 	import msvcrt

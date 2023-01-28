@@ -1,7 +1,8 @@
-
-import curses
-
+"""Simple commandline interface that supports color and input"""
 import time
+
+from colorama import Fore, Back, Style, init, Cursor
+init(autoreset=True)
 
 import shadowui
 
@@ -16,30 +17,15 @@ class CommandlineWindow(shadowui.WindowBase):
         super().run()
         
         try:
-            stdscr = curses.initscr()
-            stdscr.timeout(0)
-            if curses.has_colors():
-                print("Has colors!")
-                curses.start_color()
-            if curses.has_extended_color_support():
-                print("Has extended colors!")
-            if curses.can_change_color():
-                print("Can change colors!")
-                curses.init_color(0, 100,255,55)
-                curses.init_color(curses.COLOR_RED, 255,0,0)
-            curses.init_pair(1, curses.COLOR_RED, curses.COLOR_WHITE)
-            stdscr.addstr("Foobar")
-            stdscr.addstr("goobers", curses.color_pair(1))
 
-            #input_listener = InputListener(self.on_input)
-            #input_listener.start()
+            input_listener = InputListener(self.on_input)
+            input_listener.start()
 
             while True: 
                 try:
                     time.sleep(0.025) # restrain loop to 50 fps
-                    ch = stdscr.getch()
-                    #user_input : str = input_listener.getInput()
-                    if ch != -1:
+                    ch : str = input_listener.getInput()
+                    if ch:
                         print("CommandlineWindow main loop got input: "+str(ch))
                         match ch:
                             case 'x'|'exit':
@@ -51,8 +37,7 @@ class CommandlineWindow(shadowui.WindowBase):
                     print("Ctrl-C Catched!")
                     raise
         finally:
-            pass
-            #input_listener.close()
+            input_listener.close()
         
     def on_input(self, input):
         print("CommandlineWindow got input: " + input)
