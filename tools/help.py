@@ -7,6 +7,6 @@ class HelpTool(Section):
     long = 'help'
 
 
-help_dom = [
+help_page = [
     Section('Help',command='help', short='h')
 ]

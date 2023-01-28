@@ -28,7 +28,7 @@ program_dom = [
         Section('welcome_screen')
     ]),
     Section('footer',children=[
-        Label('hintline')
+        Label('hintline',content='no hint')
         ]),
     Section('exit', command='exit', short='x', hidden=True, children=[
         Input('yes_no')

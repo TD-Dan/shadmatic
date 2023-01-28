@@ -4,13 +4,15 @@ from shadowui import Section,Input,Label
 
 def load_tools(**kwargs):
     section = kwargs.get('section')
-    print("loading tools to "+ section.name +" ...")
+    #print("loading tools to "+ section.name +" ...")
 
-    from tools.config import ConfigTool
-    from tools.airdrop import airdrop_program
+    from tools.config import config_page
+    from tools.airdrop import airdrop_page
+    from tools.help import help_page
 
-    #mainwin.add_tool(config_tool)
-    section += airdrop_program
+    section += config_page
+    section += airdrop_page
+    section += help_page
 
 def test_input(**kwargs):
     section = kwargs.get('section')

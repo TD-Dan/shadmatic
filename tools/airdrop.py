@@ -4,7 +4,7 @@ from shadowui import Section
 
 from tools.airdrop_handlers import *
 
-airdrop_program = [
+airdrop_page = [
     Section('Airdrop',command='airdrop', short='a', __doc__=
     """Prepare and send out an airdrop to multiple recipients.
     Airdrops are managed by stages: staging, drop active, follow.
