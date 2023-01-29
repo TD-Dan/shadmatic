@@ -1,4 +1,4 @@
 colorama==0.4.6; sys_platform == 'windows'
-getch==1.0.0; sys_platform == ''
+windows-curses==2.3.1; sys_platform =='windows'
 iota_client==1.0.0rc1
 iota_wallet==0.2.0
