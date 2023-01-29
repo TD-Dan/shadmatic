@@ -12,7 +12,15 @@ class InputConsumed(Exception): pass
 # signal moving back to previous menu level
 class ProgramBack(Exception): pass
 
-CLEAR_LINE = '\033[2K'
+CSI = '\033['
+OSC = '\033]'
+BEL = '\a'
+
+CL = CSI+'2K' # clear line
+COLOR_WARNING = CSI+'33m' #yellow
+COLOR_ERROR = CSI+'31m' #red
+COLOR_OK = CSI+'32m' #green
+CR = '\r' #carriage return, to start of line
 
 xstr = lambda str: str or '' # Returns '' for None else str
 
@@ -22,6 +30,7 @@ class CommandlineWindow(WindowBase):
     input_line_buffer = ""
     input_line = ""
     read_arrow_control=False
+    has_control_characters = True
 
     def add_menu_tool(self, tool: object):
         self.menu_tools.append(tool)
@@ -35,11 +44,12 @@ class CommandlineWindow(WindowBase):
         log = Log("CLI")
         
         try:
-            from colorama import Fore, Back, Style, init, Cursor
+            from colorama import init,Cursor
             init(autoreset=True)
         except ModuleNotFoundError:
-            log.warning("Colorama not found; no color output available.\nUse 'pip install colorama' to enable.")
-            print("INFO: Colorama not found; no color output available.\nUse 'pip install colorama' to enable.\nPress enter to continue...")
+            log.warning("Colorama not found; advanced text output not available for windows.\nUse 'pip install colorama' to enable.")
+            print("INFO: Colorama not found; advanced text output not available for windows.\nUse 'pip install colorama' to enable.\nPress enter to continue...")
+            self.has_control_characters = False
             input()
         
         redraw = True
@@ -55,8 +65,10 @@ class CommandlineWindow(WindowBase):
                             self.draw_recursive(self)
                             redraw = False
                         if redraw_input:
-                            #print(Cursor.BACK(80)+CLEAR_LINE+"COMMAND> " + self.input_line_buffer, end='')
-                            print(CLEAR_LINE+"COMMAND> " + self.input_line_buffer, end='')
+                            if self.has_control_characters:
+                                print(CR+CL+"COMMAND> " + self.input_line_buffer, end='')
+                            else:
+                                print("\rCOMMAND> " + self.input_line_buffer, end='')
                             redraw_input = False
                         if ch:
                             #print("CommandlineWindow main loop got input: "+str(ch)+" "+str(ch.encode('utf-8'))+" printable:"+str(ch.isprintable()))
