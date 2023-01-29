@@ -17,7 +17,6 @@ ACTION.CANCEL
 program_dom = [
     Section('header', children=[
         Section('status', children=[
-            Label('client_status', on_load=load_client_label, pre_content="client: [ ", post_content=" ]"),
             Label('wallet_status', on_load=load_wallet_label, pre_content="wallet: [ ", post_content=" ]")
             ]),
         Section('logo')

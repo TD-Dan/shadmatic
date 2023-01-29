@@ -15,6 +15,7 @@ __version__ = "v0.0.1"
 import sys
 from enum import Enum
 
+from shadowui import Log, ProgramExit
 from program import *
 
 class LaunchMode(Enum):
@@ -31,10 +32,12 @@ def main():
     """
     launch_mode = LaunchMode.TUI
     mainwin = None
+    log = Log("main")
+    clean_exit = False
 
     try:
         args = sys.argv
-        #print(sys.argv)
+        log.info("Program started with arguments: "+str(sys.argv))
         if len(args)>1:
             arg1 = args[1]
             while len(arg1)>0 and arg1[0] =='-':
@@ -46,20 +49,20 @@ def main():
                 case 'cli'|'comline':           launch_mode = LaunchMode.CLI
                 case 'tui'|'terminal':          launch_mode = LaunchMode.TUI
                 case _:
-                    print(arg1+" is not a valid argument.\n try -help")
-                    exit()
+                    log.error(arg1+" is not a valid argument.\n try -help")
+                    raise ProgramExit()
         
         match launch_mode:
             case LaunchMode.HELP:
                 print(__doc__)
-                exit()
+                raise ProgramExit()
             case LaunchMode.TEST:
                 from tests import auto_tester
                 auto_tester.run()
-                exit()
+                raise ProgramExit()
             case LaunchMode.EXEC:
                 print("Not implemented")
-                exit()
+                raise ProgramExit()
             case LaunchMode.CLI:
                 from termwindow import CommandlineWindow
                 mainwin : CommandlineWindow = CommandlineWindow('Shadow-wallet')
@@ -71,13 +74,23 @@ def main():
             mainwin += program_dom
             mainwin.actionmap = ACTION
             mainwin.run()
-            exit()
+            raise ProgramExit()
+    except ProgramExit:
+        log.info("Normal program exit")
+        print("Exit ok.")
+        clean_exit = True
     except KeyboardInterrupt:
+        log.error("Program terminated to KeyboardInterrupt")
         print("User interrupted.")
-        exit()
+        clean_exit = True
     
-    print("Abnormal program exit!")
+    if not clean_exit:
+        log.error("Abnormal program exit")
+        print("Abnormal program exit!")
 
+    #cleanup
+    del log
+    
 
 if __name__ == "__main__":
     main()

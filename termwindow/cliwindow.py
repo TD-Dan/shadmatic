@@ -1,15 +1,14 @@
 """Simple commandline interface that supports color and input"""
 import time
 
-import shadowui
+from shadowui import WindowBase, Label, Log, ProgramExit
+
 from termwindow.inputlistener import InputListener
 
 # User pressed enter
 class InputCommit(Exception): pass
 # Signals input chracters have been control characer (enter, esc, etc...)
 class InputConsumed(Exception): pass
-# signal main loop exit
-class ProgramExit(Exception): pass
 # signal moving back to previous menu level
 class ProgramBack(Exception): pass
 
@@ -17,7 +16,7 @@ CLEAR_LINE = '\033[2K'
 
 xstr = lambda str: str or '' # Returns '' for None else str
 
-class CommandlineWindow(shadowui.WindowBase):
+class CommandlineWindow(WindowBase):
 
     input_listener = InputListener()
     input_line_buffer = ""
@@ -33,14 +32,18 @@ class CommandlineWindow(shadowui.WindowBase):
     def run(self):
         super().run()
         
+        log = Log("CLI")
+        
         try:
             from colorama import Fore, Back, Style, init, Cursor
             init(autoreset=True)
         except ModuleNotFoundError:
+            log.warning("Colorama not found; no color output available.\nUse 'pip install colorama' to enable.")
             print("INFO: Colorama not found; no color output available.\nUse 'pip install colorama' to enable.\nPress enter to continue...")
             input()
         
         redraw = True
+        redraw_input = True
 
         try:
             self.input_listener.start()
@@ -50,9 +53,11 @@ class CommandlineWindow(shadowui.WindowBase):
                         ch : str = self.input_listener.getInput()
                         if redraw:
                             self.draw_recursive(self)
-
-                            print(Cursor.BACK(80)+CLEAR_LINE+"COMMAND> " + self.input_line_buffer, end='')
                             redraw = False
+                        if redraw_input:
+                            #print(Cursor.BACK(80)+CLEAR_LINE+"COMMAND> " + self.input_line_buffer, end='')
+                            print(CLEAR_LINE+"COMMAND> " + self.input_line_buffer, end='')
+                            redraw_input = False
                         if ch:
                             #print("CommandlineWindow main loop got input: "+str(ch)+" "+str(ch.encode('utf-8'))+" printable:"+str(ch.isprintable()))
                             if self.read_arrow_control:
@@ -99,37 +104,41 @@ class CommandlineWindow(shadowui.WindowBase):
                         command = words[0]
                         match command:
                             case 'x'|'exit':
-                                exit()
+                                raise ProgramExit()
                             case _:
                                 print(self.input_line+" is not a command. type 'help' for all commands.")
                         self.input_line = ""
                         self.input_line_buffer = ""
                         redraw = True
+                        redraw_input = True
                     except InputConsumed:
-                        redraw = True
+                        redraw_input = True
                         pass
                 except ProgramBack:
-                    pass
+                    raise ProgramExit()
                 except KeyboardInterrupt:
                     print("Ctrl-C Catched!")
                     raise
         finally:
             self.input_listener.close()
 
-    def draw_recursive(self,section, level=0):
-        for n in range(0,level):
-            print("\t", end='')
-        self.draw(section)
+    def draw_recursive(self,section, level=0, debug=False):
+        self.draw(section,level,debug)
         for child in section.children.values():
-            self.draw_recursive(child,level+1)
+            self.draw_recursive(child,level+1,debug)
 
-    def draw(self,section):
-        if isinstance(section, shadowui.Label):
-            label : shadowui.Label = section
+    def draw(self,section,level=0,debug=False):
+        if debug:
+            for n in range(0,level):
+                print("\t", end='')
+
+        if isinstance(section, Label):
+            label : Label = section
             print(xstr(label.pre_content)+xstr(label.content)+xstr(label.post_content))
         else:
             pass
-            print("< "+section.name+" >")
+            if debug:
+                print("< "+section.name+" >")
 
 
     """Prompts an yes or no input from user."""

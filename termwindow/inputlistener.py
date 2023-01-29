@@ -35,8 +35,9 @@ class InputListener:
 		pass
 	
 	def __del__(self):
-		if self.input_thread.is_alive():
-			raise ThreadError("InputListener close method not called! Make sure to match .start() with an .close() method!")
+		if self.input_thread:
+			if self.input_thread.is_alive():
+				raise ThreadError("InputListener close method not called! Make sure to match .start() with an .close() method!")
 
 	def start(self):
 		
