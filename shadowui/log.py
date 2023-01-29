@@ -8,9 +8,11 @@ from enum import Enum
 from multiprocessing import Lock
 
 class LOG_LEVEL(Enum):
-    INFO = 1
-    WARNING = 2
-    ERROR = 3
+    ALL = 0
+    INFO = 10
+    WARNING = 20
+    ERROR = 30
+    NONE = 100
 
 class LogEntry:
     def __init__(self,level:LOG_LEVEL, str:str, exception:Exception=None) -> None:
@@ -33,7 +35,7 @@ class Log:
         
         #local state
         self._listeners: list[callable] = []
-        self.echo = True
+        self.echo_level:LOG_LEVEL = LOG_LEVEL.ALL
         self.logger_name=logger_name
 
         #global state
@@ -55,8 +57,8 @@ class Log:
             log_mutex.release()
         
         if did_open_file:    
-            self._write("Opened logfile.")
-        self._write("Started logging, total logs:"+str(log_instances))
+            self._write("Opened logfile.",LOG_LEVEL.INFO)
+        self._write("Started logging.",LOG_LEVEL.INFO)
     
     def __del__(self):
         do_close_file = False
@@ -75,9 +77,9 @@ class Log:
             log_mutex.release()
 
         #local state
-        self._write(self.logger_name+"Stopped logging, logs left: "+str(instances))
+        self._write("Stopped logging.",LOG_LEVEL.INFO)
         if do_close_file:    
-            self._write("Closing logfile.")
+            self._write("Closing logfile.",LOG_LEVEL.INFO)
 
         if do_close_file:
             #back to global state
@@ -101,12 +103,12 @@ class Log:
     def error(self,str:str,exception:Exception=None):
         self._broadcast_new(LogEntry(LOG_LEVEL.ERROR,str,exception))
 
-    def _write(self, str):
+    def _write(self, str, level:LOG_LEVEL):
         global log_mutex
         log_mutex.acquire()
         try:
             str = '['+self.logger_name+']'+str
-            if self.echo:
+            if self.echo_level.value>=level.value:
                 print(str)
             if logfile:
                 logfile.write(str+"\n")
@@ -121,7 +123,7 @@ class Log:
         if e:
             end_str = " with exception:\n"+f"{type(e).__name__} at line {e.__traceback__.tb_lineno} of {__file__}: {e}"
         logline = "\t["+entry.time+"] "+entry.level.name+": \t"+entry.str + end_str
-        self._write(logline)
+        self._write(logline,entry.level)
         for call in self._listeners:
             call(str=entry.str, exception=entry.exception)
         

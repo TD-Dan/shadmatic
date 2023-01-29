@@ -1,4 +1,4 @@
-from .log import Log
+from .log import Log, LOG_LEVEL
 from .section import Section
 from .windowbase import WindowBase
 from .input import Input

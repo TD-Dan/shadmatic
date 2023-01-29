@@ -1,12 +1,12 @@
 import unittest
 
-from shadowui import Log
+from shadowui import Log, LOG_LEVEL
 from shadowui.log import log_history
 
 class TestLogging(unittest.TestCase):
     def setUp(self):
         self.testlog = Log("TestLog")
-        self.testlog.echo = False
+        self.testlog.echo_level = LOG_LEVEL.NONE
 
     def tearDown(self):
         del self.testlog
