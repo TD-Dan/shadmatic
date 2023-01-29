@@ -1,5 +1,5 @@
 
-import signal
+import time
 import platform
 from enum import Enum
 from queue import Queue,Empty
@@ -9,11 +9,15 @@ from threading import Thread, ThreadError
 if platform.system() == "Windows":
 	import msvcrt
 	def getch():
-		return msvcrt.getwch()
+		if msvcrt.kbhit():
+			return msvcrt.getwch()
+		else:
+			return None
+
 else:
 	print("using *nix input")
 	import getch
-	def getch_nb():
+	def getch():
 		return getch.getch()
 
 
@@ -38,7 +42,7 @@ class InputListener:
 		self.input_thread.start()
 
 	def close(self):
-		print("<Press any key to exit...>")
+		#print("\n<Press any key to exit...>")
 		try:
 			self.control_queue.put('close')
 		finally:
@@ -70,6 +74,8 @@ def thread_input(input_queue,control_queue):
 		char = getch()
 		if char:
 			input_queue.put(char)
+
+		time.sleep(0.01) # restrain loop to 100 fps
 
 		#except EOFError:
 			#print("thread closing (EOFError)...")

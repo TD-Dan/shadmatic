@@ -1,6 +1,5 @@
 """Terminal gui that supports mouse, color and and other fancy stuff"""
 
-
 import time
 from queue import Queue
 
@@ -149,6 +148,23 @@ class TerminalWindow(shadowui.WindowBase):
     def init(self):
         pass
     
+    def draw_recursive(self,section, level=0, debug=False):
+        self.draw(section,level,debug)
+        for child in section.children.values():
+            self.draw_recursive(child,level+1,debug)
+
+    def draw(self,section,level=0,debug=False):
+        if debug:
+            for n in range(0,level):
+                print("\t", end='')
+
+        if isinstance(section, Label):
+            label : Label = section
+            print(xstr(label.pre_content)+xstr(label.content)+xstr(label.post_content))
+        else:
+            pass
+            if debug:
+                print("< "+section.name+" >")
 
     """Empty terminal view"""
     def clear(self):

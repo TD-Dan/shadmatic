@@ -80,7 +80,7 @@ def main():
             raise ProgramExit()
     except ProgramExit:
         log.info("Normal program exit")
-        print("Exit ok.")
+        #print("Exit ok.")
         clean_exit = True
     except KeyboardInterrupt:
         log.error("Program terminated to KeyboardInterrupt")

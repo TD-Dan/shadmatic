@@ -8,7 +8,7 @@ def load_tools(**kwargs):
 
     try:
         from tools.client import client_setup
-        client_setup()
+        client_setup(section)
     except Exception as e:
         Log.error("Can't load client tools: "+str(e))
 
