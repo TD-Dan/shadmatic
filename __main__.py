@@ -13,6 +13,7 @@
 __version__ = "v0.0.1"
 
 import sys
+import platform
 from enum import Enum
 
 from shadowui import Log, ProgramExit
@@ -38,6 +39,8 @@ def main():
     try:
         args = sys.argv
         log.info("Program started with arguments: "+str(sys.argv))
+        log.info("Running on: "+str(platform.uname()._asdict()))
+        log.info("Python environment: "+platform.python_implementation()+', '+platform.python_version())
         if len(args)>1:
             arg1 = args[1]
             while len(arg1)>0 and arg1[0] =='-':

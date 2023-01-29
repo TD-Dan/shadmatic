@@ -8,21 +8,13 @@ from threading import Thread, ThreadError
 # Implements non-blocking getch for Win, Mac and linux
 if platform.system() == "Windows":
 	import msvcrt
-	def getch_nb():
+	def getch():
 		return msvcrt.getwch()
-
 else:
-	import tty, termios, sys, select
+	print("using *nix input")
+	import getch
 	def getch_nb():
-		ch = None
-		fd = sys.stdin.fileno()
-		old_settings = termios.tcgetattr(fd)
-		try:
-			tty.setraw(sys.stdin.fileno())
-			ch = sys.stdin.read(1)
-		finally:
-			termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
-		return ch
+		return getch.getch()
 
 
 class InputListener:
@@ -75,16 +67,9 @@ def thread_input(input_queue,control_queue):
 			pass
 		#try:
 
-		
-		char = getch_nb()
+		char = getch()
 		if char:
 			input_queue.put(char)
-		#full_char = ""
-		#while char:
-		#	full_char+=char
-		#	char = getch_nb()
-		#if full_char:
-		#	input_queue.put(full_char)
 
 		#except EOFError:
 			#print("thread closing (EOFError)...")
