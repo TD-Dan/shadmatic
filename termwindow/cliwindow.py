@@ -113,12 +113,13 @@ class CommandlineWindow(WindowBase):
                     except InputCommit:
                         print('\n')
                         words = self.input_line.split()
-                        command = words[0]
-                        match command:
-                            case 'x'|'exit':
-                                raise ProgramExit()
-                            case _:
-                                print(self.input_line+" is not a command. type 'help' for all commands.")
+                        if words:
+                            command = words[0]
+                            match command:
+                                case 'x'|'exit':
+                                    raise ProgramExit()
+                                case _:
+                                    print(self.input_line+" is not a command. type 'help' for all commands.")
                         self.input_line = ""
                         self.input_line_buffer = ""
                         redraw = True
