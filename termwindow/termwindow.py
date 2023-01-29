@@ -46,6 +46,9 @@ class TerminalWindow(shadowui.WindowBase):
             if platform.system() == "Windows":
                 print("\n\nCurses library not found. For windows run 'pip install windows-curses'\n")
                 raise ModuleNotFoundError("\n\nCurses library not found. For windows run 'pip install windows-curses'\n")
+            else:
+                print("\n\nCurses library not found. Try 'pip install curses'\n")
+                raise ModuleNotFoundError("\n\nCurses library not found. Try 'pip install curses'\n")
 
         try:
             stdscr = curses.initscr()
