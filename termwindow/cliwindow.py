@@ -16,11 +16,13 @@ CSI = '\033['
 OSC = '\033]'
 BEL = '\a'
 
-CL = CSI+'2K' # clear line
+CLEARLINE = CSI+'2K' # clear line
 COLOR_WARNING = CSI+'33m' #yellow
 COLOR_ERROR = CSI+'31m' #red
 COLOR_OK = CSI+'32m' #green
 CR = '\r' #carriage return, to start of line
+ERASE = '\b'    # erase and move back one character
+def CURSOR_BACK(n): return CSI + str(n) + 'D' # move cursor back n steps
 
 xstr = lambda str: str or '' # Returns '' for None else str
 
@@ -66,7 +68,7 @@ class CommandlineWindow(WindowBase):
                             redraw = False
                         if redraw_input:
                             if self.has_control_characters:
-                                print(CR+CL+"COMMAND> " + self.input_line_buffer, end='')
+                                print(CURSOR_BACK(80)+CLEARLINE+"COMMAND> " + self.input_line_buffer, end='')
                             else:
                                 print("\rCOMMAND> " + self.input_line_buffer, end='')
                             redraw_input = False
@@ -76,15 +78,16 @@ class CommandlineWindow(WindowBase):
                                 #previous character was arrow key start, read rest here
                                 match ch.encode('utf-8'):
                                     case b'H':
-                                        print('up')
+                                        log.info('up arrow')
+                                        pass
                                     case b'P':
-                                        print('down')
+                                        log.info('down arrow')
                                     case b'K':
-                                        #print('left')
-                                        print(Cursor.BACK(1), end='')
+                                        log.info('left arrow')
+                                        #print(Cursor.BACK(1), end='')
                                     case b'M':
-                                        #print('right')
-                                        print(Cursor.FORWARD(1), end='')
+                                        log.info('right arrow')
+                                        #print(Cursor.FORWARD(1), end='')
                                 self.read_arrow_control=False
                                 raise InputConsumed()
                             match ch.encode('utf-8'):
@@ -97,6 +100,7 @@ class CommandlineWindow(WindowBase):
                                     raise ProgramBack()
                                 case b'\x08':
                                     #print("backspace")
+                                    self.input_line_buffer = self.input_line_buffer[:-1]
                                     raise InputConsumed()
                                 case b'\xc3\xa0':
                                     #print("arrow")
