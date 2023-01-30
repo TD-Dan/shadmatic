@@ -1,5 +1,7 @@
-"""Simple commandline interface that supports color and input
+"""Simple commandline interface
 One line of input&status and a rolling wall of messages
+Optionally supports color on *nix
+Supports color on windows when colorama library is available
 """
 import time
 import platform
@@ -46,15 +48,14 @@ class CommandlineWindow(WindowBase):
     input_line = ""
     read_arrow_control=False
     has_csi_support = None
-    use_csi = False
+    use_csi = True
 
 
     def __init__(self, name: str, **kwargs) -> None:
         super().__init__(name, **kwargs)
         self.log = Log("CLI")
-            
-    def run(self):
-        super().run()
+        
+        args = kwargs.get('args')
         
         if self.use_csi and platform.system() == "Windows":
             try:
@@ -72,6 +73,11 @@ class CommandlineWindow(WindowBase):
         
         if self.use_csi and not self.has_csi_support:
             self.use_csi = False
+            
+    def run(self):
+        super().run()
+        
+
 
         try:
             self.input_listener.start()

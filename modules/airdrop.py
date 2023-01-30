@@ -2,7 +2,7 @@
 
 from shadowui import Section
 
-from tools.airdrop_handlers import *
+from modules.airdrop_handlers import *
 
 airdrop_page = [
     Section('Airdrop',command='airdrop', short='a', __doc__=

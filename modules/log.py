@@ -1,5 +1,7 @@
-
-"""Basic logger"""
+"""Program event logging
+In addition to providing in-program event viewing,
+saves an event log of whole run to '_log/<date>.txt'
+"""
 import os
 import datetime
 

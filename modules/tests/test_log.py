@@ -1,7 +1,7 @@
 import unittest
 
-from shadowui import Log, LOG_LEVEL
-from shadowui.log import log_history
+from modules.log import Log, LOG_LEVEL
+from modules.log import log_history
 
 class TestLogging(unittest.TestCase):
     def setUp(self):

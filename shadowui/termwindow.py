@@ -1,11 +1,8 @@
 """Terminal gui that supports mouse, color and and other fancy stuff"""
 
 import time
-from queue import Queue
 
-#from shadowui.windowbase import WindowBase
-#from shadowui.section import Section
-import shadowui
+from shadowui import WindowBase, Label
 
 # Used to signal main loop continue
 class InputUsedContinueLoop(Exception): pass
@@ -15,7 +12,7 @@ class ProgramExit(Exception): pass
 class ProgramBack(Exception): pass
 
 
-class TerminalWindow(shadowui.WindowBase):
+class TerminalWindow(WindowBase):
     
     menu_tools = {}
     at_tools = {}
@@ -64,30 +61,7 @@ class TerminalWindow(shadowui.WindowBase):
                 curses.init_color(0, 1000,500,0) # 0-1000 range
                 curses.init_color(curses.COLOR_RED, 1000,0,0)
             curses.init_pair(1, curses.COLOR_RED, curses.COLOR_WHITE)
-            stdscr.addstr("Foobar")
-            stdscr.addstr("goobers", curses.color_pair(1))
-
-            print('\033]2;'+self.name+'\a')
-
-            self.init()
-
-            self.text(1, 1, ' '+ self.name+' ', Color.text_bold, Color.bg_dark)
             
-            self.text(8,3,Color.text_normal + 'Type ' + Color.text_bold + 'help' + Color.text_normal +' for available commands.',back_color=Color.bg_light)
-            self.text(8,4,'Use Ctrl-C anytime to abort current command.',Color.text_faded, Color.bg_light)
-
-            self.text(70,2,' ▓█░   ',Color.text_as_bg, Color.bg_accent)
-            self.text(70,3,' █  ░▒ ',Color.text_as_bg, Color.bg_accent)
-            self.text(70,4,' ▒░  █ ',Color.text_as_bg, Color.bg_accent)
-            self.text(70,5,'   ░█▓ ',Color.text_as_bg, Color.bg_accent)
-
-
-            self.clear(Color.bg_dark, Rect(1,6,80,1))
-            self.text(1,6,Color.text_accent + Color.bg_dark+'SW>')
-
-            self.add_menu_tool(ExitCommand())
-            self.add_menu_tool(BackCommand())
-            self.add_menu_tool(HelpCommand())
 
             current_tool = None
             user_input=""
@@ -141,13 +115,9 @@ class TerminalWindow(shadowui.WindowBase):
                     raise
         finally:
             if curses.can_change_color():
-                curses.init_color(0, *color0_mem) # return to terminal previous color
+                curses.init_color(0, *color0_mem) # return terminal to previous color
 
 
-    """Initialize terminal view"""
-    def init(self):
-        pass
-    
     def draw_recursive(self,section, level=0, debug=False):
         self.draw(section,level,debug)
         for child in section.children.values():
@@ -173,7 +143,24 @@ class TerminalWindow(shadowui.WindowBase):
     """Print text at specified position"""
     def text(self,x,y,text,):
         pass
+    
+    def oldstuff(self):
+        
+            self.text(8,3,Color.text_normal + 'Type ' + Color.text_bold + 'help' + Color.text_normal +' for available commands.',back_color=Color.bg_light)
+            self.text(8,4,'Use Ctrl-C anytime to abort current command.',Color.text_faded, Color.bg_light)
 
+            self.text(70,2,' ▓█░   ',Color.text_as_bg, Color.bg_accent)
+            self.text(70,3,' █  ░▒ ',Color.text_as_bg, Color.bg_accent)
+            self.text(70,4,' ▒░  █ ',Color.text_as_bg, Color.bg_accent)
+            self.text(70,5,'   ░█▓ ',Color.text_as_bg, Color.bg_accent)
+
+
+            self.clear(Color.bg_dark, Rect(1,6,80,1))
+            self.text(1,6,Color.text_accent + Color.bg_dark+'SW>')
+
+            self.add_menu_tool(ExitCommand())
+            self.add_menu_tool(BackCommand())
+            self.add_menu_tool(HelpCommand())
 
 class Rect:
     x = 1
@@ -232,3 +219,4 @@ class HelpCommand:
             except AttributeError:
                 print("")
         print("\nUse help <tool> for more help.\n")
+
