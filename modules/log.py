@@ -4,10 +4,10 @@ saves an event log of whole run to '_log/<date>.txt'
 """
 import os
 import datetime
-
 from enum import Enum
-
 from multiprocessing import Lock
+
+import state
 
 class LOG_LEVEL(Enum):
     ALL = 0

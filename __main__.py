@@ -16,8 +16,8 @@ import sys
 import platform
 from enum import Enum
 
-import program_state
-program_state.init()
+import state
+state.init()
 
 from program import *
 
@@ -26,8 +26,6 @@ def main():
     Selects between different user interfaces depending on comandline arguments.
     Starts the main window loop with selected UI Window.
     """
-    clean_exit = False
-
     try:
         # always use logger module
         import modules.log
@@ -48,66 +46,62 @@ def main():
         import modules.cli
         import modules.term
 
-        log.info("modules pre-loaded in global program state: "+', '.join(module.name for module in program_state.modules))
+        log.info("modules pre-loaded in global program state: "+', '.join(module.name for module in state.modules))
 
         # Select launch module
-        launch = modules.help #default
 
         if len(args)>1:
-            arg1 = strip_decorators(args[1])
+            arg1 = clean_argument(args[1])
         else:
-            la
+            arg1 = 'help'
 
+        for module in state.modules:
             match arg1:
-                case 'h'|'help':                launch_mode = LaunchMode.HELP
-                case 't'|'test':                launch_mode = LaunchMode.TEST
-                case 'x'|'exec':                launch_mode = LaunchMode.EXEC
-                case 'cli'|'comline':           launch_mode = LaunchMode.CLI
-                case 'tui'|'terminal':          launch_mode = LaunchMode.TUI
-                case _:
-                    log.error(arg1+" is not a valid argument.\n try -help")
-                    raise ProgramExit()
+                case module.name | module.short:
+                    module.load_module()
+                    module.run(args=args)
+            raise state.ProgramExit()
         
-        match launch_mode:
-            case LaunchMode.HELP:
-                print("hlep")
-                raise ProgramExit()
-            case LaunchMode.TEST:
-                from tests import auto_tester
-                auto_tester.run()
-                raise ProgramExit()
-            case LaunchMode.EXEC:
-                print("Not implemented")
-                raise ProgramExit()
-            case LaunchMode.CLI:
-                from termwindow import CommandlineWindow
-                mainwin : CommandlineWindow = CommandlineWindow('Shadow-wallet',args=args)
-            case LaunchMode.TUI:
-                from termwindow import TerminalWindow
-                mainwin : TerminalWindow = TerminalWindow('Shadow-wallet',args=args)
+        print(arg1+" is not a valid command. use -help to get started")
+        # match launch_mode:
+        #     case LaunchMode.HELP:
+        #         print("hlep")
+        #         raise ProgramExit()
+        #     case LaunchMode.TEST:
+        #         from tests import auto_tester
+        #         auto_tester.run()
+        #         raise ProgramExit()
+        #     case LaunchMode.EXEC:
+        #         print("Not implemented")
+        #         raise ProgramExit()
+        #     case LaunchMode.CLI:
+        #         from termwindow import CommandlineWindow
+        #         mainwin : CommandlineWindow = CommandlineWindow('Shadow-wallet',args=args)
+        #     case LaunchMode.TUI:
+        #         from termwindow import TerminalWindow
+        #         mainwin : TerminalWindow = TerminalWindow('Shadow-wallet',args=args)
     
-        if mainwin:
-            mainwin += program_dom
-            mainwin.actionmap = ACTION
-            mainwin.run()
-            raise ProgramExit()
-    except ProgramExit:
+        # if mainwin:
+        #     mainwin += program_dom
+        #     mainwin.actionmap = ACTION
+        #     mainwin.run()
+        #     raise ProgramExit()
+    except state.ProgramExit:
         log.info("Normal program exit")
         #print("Exit ok.")
-        clean_exit = True
     except KeyboardInterrupt:
         log.error("Program terminated to KeyboardInterrupt")
         print("User interrupted.")
-        clean_exit = True
-    
-    if not clean_exit:
+    except:
         log.error("Abnormal program exit")
         print("Abnormal program exit!")
-
-    #cleanup
-    del log
+        raise
+    finally:
+        #cleanup
+        del log
     
-def strip_decorators(str:str) -> str:
+def clean_argument(str:str) -> str:
+    """Remove preceding '-' marks from arguments"""
     while len(str)>0 and str[0] =='-':
         str = str[1:]
     return str

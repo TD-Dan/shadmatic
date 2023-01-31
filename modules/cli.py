@@ -1,6 +1,6 @@
 """Basic commandline user interface
 """
-import program_state
+import state
 
 class CliModule():
     """Basic commandline user interface
@@ -14,4 +14,4 @@ class CliModule():
         pass
 
 #register to main program as a module
-program_state.modules.append(CliModule())
+state.modules.append(CliModule())

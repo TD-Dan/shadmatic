@@ -6,14 +6,6 @@ from enum import Enum
 
 from handlers import *
 
-# main loop control exceptions
-class ProgramExit(Exception):
-    """Raised when program exit is requested"""
-class ProgramConfirm(Exception):
-    """Raised when current program state can advance or needs to be committed"""
-class ProgramCancel(Exception):
-    """Raised when current program state can needs to be reversed"""
-
 #Program document object model
 program_dom = [
     Section('header', children=[
