@@ -8,7 +8,7 @@ import platform
 
 from shadowui import WindowBase, Label, Log, ProgramExit
 
-from termwindow.inputlistener import InputListener
+from shadowui.inputlistener import InputListener
 
 # User pressed enter
 class InputCommit(Exception): pass
@@ -76,9 +76,6 @@ class CommandlineWindow(WindowBase):
             
     def run(self):
         super().run()
-        
-
-
         try:
             self.input_listener.start()
             

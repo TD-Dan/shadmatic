@@ -8,6 +8,8 @@ class WindowBase(Section):
         super().__init__(name, **kwargs)
 
     def run(self):
-        """Run the program main loop"""
+        """Run the program main loop
+        Needs to be implemented by child classes
+        """
         # send load signals from leaf up, children should always be loaded first
         self.emit_signal_recursive_leaf_first("on_load")

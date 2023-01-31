@@ -1,6 +1,7 @@
 """Program event logging
 In addition to providing in-program event viewing,
 saves an event log of whole run to '_log/<date>.txt'
+Launching multiple logs from threads/multiprocessing is safe.
 """
 import os
 import datetime
@@ -137,3 +138,25 @@ class Log:
             log_history.append(entry)
         finally:
             log_mutex.release()
+
+class LogModule():
+    """Program event logging
+    Providing in-program event viewing and
+    saves an event log of whole run to '_log/<date>.txt'
+    """
+    name = "log"
+    short = "l"
+    def load_module(self):
+        pass
+
+    def unload_module(self):
+        pass
+
+    def run(self, **kwargs):
+        args = kwargs.get('args')
+        print ("log run invoked with :"+str(args))
+        raise state.ProgramExit()
+
+
+#register to main program as a module
+state.modules.append(LogModule())

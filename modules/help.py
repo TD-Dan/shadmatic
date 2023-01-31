@@ -9,6 +9,11 @@ import state
 
 from shadowui import Section
 
+
+help_page = [
+    Section('Help')
+]
+
 class HelpModule():
     """Program help
     Shows help in commandline and inside user interface on:
@@ -31,6 +36,7 @@ class HelpModule():
     name = "help"
     short = "h"
     def load_module(self):
+        state.root.content += help_page
         pass
 
     def unload_module(self):
@@ -40,15 +46,6 @@ class HelpModule():
         print(self.run_help)
         raise state.ProgramExit()
 
-class HelpTool(Section):
-    """Get help on program and tool usage"""
-    short = 'h'
-    long = 'help'
-
-
-help_dom = [
-    Section('Help',command='help', short='h')
-]
 
 #register to main program as a module
 state.modules.append(HelpModule())

@@ -19,7 +19,7 @@ from enum import Enum
 import state
 state.init()
 
-from program import *
+import program
 
 def main():
     """Main entrypoint
@@ -39,7 +39,7 @@ def main():
 
         import modules.help
         import modules.config
-        #import modules.auto_unittest
+        import modules.auto_tester
         #import modules.client
         #import modules.wallet
         #import modules.airdrop
@@ -55,14 +55,16 @@ def main():
         else:
             arg1 = 'help'
 
+        state.root = program_dom
         for module in state.modules:
             match arg1:
                 case module.name | module.short:
                     module.load_module()
                     module.run(args=args)
-            raise state.ProgramExit()
+                    raise state.ProgramExit()
         
         print(arg1+" is not a valid command. use -help to get started")
+        raise state.ProgramExit()
         # match launch_mode:
         #     case LaunchMode.HELP:
         #         print("hlep")
