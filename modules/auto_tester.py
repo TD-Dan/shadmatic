@@ -24,6 +24,7 @@ class AutoTesterModule():
         unittest.TextTestRunner(verbosity=1).run(testsuite)
         log.info("Tests done.")
         del log
+        return state.ProgramExit()
 
         
 #register to main program as a module

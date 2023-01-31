@@ -14,10 +14,10 @@ __version__ = "v0.0.1"
 
 import sys
 import platform
+import time
 from enum import Enum
 
 import state
-state.init()
 
 import program
 
@@ -26,7 +26,10 @@ def main():
     Selects between different user interfaces depending on comandline arguments.
     Starts the main window loop with selected UI Window.
     """
+
     try:
+        # Run commandline arguments interpretion and pre-load stage to determine program launch parameters
+
         # always use logger module
         import modules.log
         log = modules.log.Log("main")
@@ -35,71 +38,83 @@ def main():
         log.info("Running on: "+str(platform.uname()._asdict()))
         log.info("Python environment: "+platform.python_implementation()+', '+platform.python_version())
 
-        # preload modules (could use autodiscovery, hardcoded for now)
+        # pre-load modules (could use autodiscovery, hardcoded for now)
 
         import modules.help
         import modules.config
         import modules.auto_tester
-        #import modules.client
+        import modules.client
         #import modules.wallet
         #import modules.airdrop
         import modules.cli
         import modules.term
 
-        log.info("modules pre-loaded in global program state: "+', '.join(module.name for module in state.modules))
+        log.info("Modules pre-loaded into global program state: "+', '.join(module.name.upper() for module in state.modules))
 
         # Select launch module
-
         if len(args)>1:
             arg1 = clean_argument(args[1])
         else:
             arg1 = 'help'
 
-        state.root = program_dom
+        # Initialize state
+        from shadowui.section import Section
+        state.root = Section('root')
+        state.root += program.program_dom
+
+        # Run selected module
         for module in state.modules:
             match arg1:
                 case module.name | module.short:
-                    module.load_module()
-                    module.run(args=args)
-                    raise state.ProgramExit()
+                    try:
+                        module.run(args=args)
+                    except state.ProgramExit:
+                        raise
+                    raise RuntimeError("Module loader did not return valid state.ProgramState control Exception.")
         
         print(arg1+" is not a valid command. use -help to get started")
+        log.info(arg1+" is not a valid command.")
         raise state.ProgramExit()
-        # match launch_mode:
-        #     case LaunchMode.HELP:
-        #         print("hlep")
-        #         raise ProgramExit()
-        #     case LaunchMode.TEST:
-        #         from tests import auto_tester
-        #         auto_tester.run()
-        #         raise ProgramExit()
-        #     case LaunchMode.EXEC:
-        #         print("Not implemented")
-        #         raise ProgramExit()
-        #     case LaunchMode.CLI:
-        #         from termwindow import CommandlineWindow
-        #         mainwin : CommandlineWindow = CommandlineWindow('Shadow-wallet',args=args)
-        #     case LaunchMode.TUI:
-        #         from termwindow import TerminalWindow
-        #         mainwin : TerminalWindow = TerminalWindow('Shadow-wallet',args=args)
-    
-        # if mainwin:
-        #     mainwin += program_dom
-        #     mainwin.actionmap = ACTION
-        #     mainwin.run()
-        #     raise ProgramExit()
+
     except state.ProgramExit:
         log.info("Normal program exit")
         #print("Exit ok.")
+        exit()
     except KeyboardInterrupt:
         log.error("Program terminated to KeyboardInterrupt")
         print("User interrupted.")
+        exit()
+
+    except state.ProgramEnterInteractive:
+
+        # Selected run module requested interactive mode
+        # Entering full program mode
+
+        log.info("Enter Interactive mode")
+        log.info("Loading all modules")
+        
+        for module in state.modules:
+            module.load_module()
+        
+        # Main loop
+        while True:
+            # call all on_frame handlers
+            try:
+                time.sleep(0.02) # restrain loop to 50 fps
+            except state.ProgramExit:
+                log.info("Normal program exit")
+                exit()
+            except KeyboardInterrupt:
+                log.error("Program terminated to KeyboardInterrupt")
+                print("User interrupted.")
+                exit()
     except:
         log.error("Abnormal program exit")
         print("Abnormal program exit!")
         raise
     finally:
         #cleanup
+        #state.root.print_recursive()
         del log
     
 def clean_argument(str:str) -> str:

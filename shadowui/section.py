@@ -74,5 +74,15 @@ class Section:
         for key in splitted:
             current = current.children[key]
         return current
-
     
+    def print_recursive(self, section=None, level=0):
+        if not section:
+            section = self
+        for n in range(0,level):
+            print("\t", end='')
+        print(str(section))
+        for child in section.children.values():
+            self.print_recursive(child,level+1)
+
+    def __str__(self) -> str:
+        return "< "+self.name+" >"

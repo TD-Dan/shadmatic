@@ -33,17 +33,40 @@ class HelpModule():
 
     \tVisit shadwallet.com for more info.
     """
+    help_usage = \
+    """help <topic>"""
     name = "help"
     short = "h"
     def load_module(self):
-        state.root.content += help_page
+        content = state.root['content']
+        content += help_page
         pass
 
     def unload_module(self):
         pass
 
     def run(self, **kwargs):
-        print(self.run_help)
+        args = kwargs.get('args')
+        if len(args)>2:
+            #print("display help for "+args[2])
+            for module in state.modules:
+                match args[2]:
+                    case module.name | module.short:
+                        if module.__doc__:
+                            print("\nModule: \t"+module.name.capitalize())
+                            print("Short command: \t"+module.short+"\n")
+                            if hasattr(module, '__doc__'):
+                                print(module.__doc__)
+                            if hasattr(module, 'help_usage'):
+                                print("Usage: \t"+module.help_usage)
+                        else:
+                            print("No help available for module "+module.name)
+                        raise state.ProgramExit()
+                
+            print("No help found for '"+args[2]+"'")
+            raise state.ProgramExit()
+        else:
+            print(self.run_help)
         raise state.ProgramExit()
 
 

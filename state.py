@@ -2,21 +2,25 @@
 Not thread safe!
 """
 
-# main loop control exceptions
-class ProgramExit(Exception):
-    """Raised when program exit is requested"""
-class ProgramConfirm(Exception):
-    """Raised when current program state can advance or needs to be committed"""
-class ProgramCancel(Exception):
-    """Raised when current program state needs to be reversed"""
+# main program control exceptions
 
-# Program dom root
-root:object
+class ProgramState(Exception):
+    """Base class for all Program state changes"""
+    
+class ProgramExit(ProgramState):
+    """Raised when program exit is requested"""
+class ProgramConfirm(ProgramState):
+    """Raised when current program state can advance or needs to be committed"""
+class ProgramCancel(ProgramState):
+    """Raised when current program state needs to be reversed"""
+class ProgramEnterInteractive(ProgramState):
+    """Raised when module requests interactive mode
+    Results in all modules getting loaded"""
 
 # needs to be called absolute first in __main_.py before any modules are run
-def init():
+#def init():
     # All loaded modules
-    global modules
-    modules = list[object]()
-    global root
-    root= None
+#global modules
+modules = list[object]()
+#global root
+root= None

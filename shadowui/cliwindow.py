@@ -6,7 +6,11 @@ Supports color on windows when colorama library is available
 import time
 import platform
 
-from shadowui import WindowBase, Label, Log, ProgramExit
+import state
+
+from modules.log import Log
+
+from shadowui import WindowBase
 
 from shadowui.inputlistener import InputListener
 
@@ -14,8 +18,6 @@ from shadowui.inputlistener import InputListener
 class InputCommit(Exception): pass
 # Signals input chracters have been control characer (enter, esc, etc...)
 class InputConsumed(Exception): pass
-# signal moving back to previous menu level
-class ProgramBack(Exception): pass
 
 #convenience variables
 CSI = '\033['
@@ -53,7 +55,7 @@ class CommandlineWindow(WindowBase):
 
     def __init__(self, name: str, **kwargs) -> None:
         super().__init__(name, **kwargs)
-        self.log = Log("CLI")
+        #self.log = Log("CLIWindow")
         
         args = kwargs.get('args')
         
@@ -63,7 +65,7 @@ class CommandlineWindow(WindowBase):
                 init(autoreset=True)
                 self.has_csi_support = True
             except ModuleNotFoundError:
-                self.log.warning("Colorama not found; advanced text output not available for windows.\nUse 'pip install colorama' to enable.")
+                #self.log.warning("Colorama not found; advanced text output not available for windows.\nUse 'pip install colorama' to enable.")
                 print("INFO: Colorama not found; advanced text output not available for windows.\nUse 'pip install colorama' to enable.\nPress enter to continue...")
                 self.has_csi_support = False
                 input()
@@ -76,6 +78,8 @@ class CommandlineWindow(WindowBase):
             
     def run(self):
         super().run()
+        self.log = Log("CLIWindow")
+
         try:
             self.input_listener.start()
             
@@ -112,7 +116,7 @@ class CommandlineWindow(WindowBase):
                                     raise InputCommit()
                                 case b'\x1b':
                                     #print("esc")
-                                    raise ProgramBack()
+                                    raise state.ProgramCancel()
                                 case b'\x08':
                                     #print("backspace")
                                     self.input_line_buffer = self.input_line_buffer[:-1]
@@ -137,14 +141,14 @@ class CommandlineWindow(WindowBase):
                             command = words[0]
                             match command:
                                 case 'x'|'exit':
-                                    raise ProgramExit()
+                                    raise state.ProgramExit()
                                 case _:
                                     self.draw_textline(command+" is not a command. type 'help' for all commands.")
                     except InputConsumed:
                         self.draw_command_line()
                         pass
-                except ProgramBack:
-                    raise ProgramExit()
+                except state.ProgramCancel:
+                    raise state.ProgramExit()
                 except KeyboardInterrupt:
                     raise
         finally:
@@ -208,4 +212,3 @@ class CommandlineWindow(WindowBase):
                         return True
                 return False    
             time.sleep(0.02) # restrain loop to 50 fps
-

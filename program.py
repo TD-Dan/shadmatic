@@ -24,5 +24,8 @@ program_dom = [
         ]),
     Section('exit', command='exit', short='x', hidden=True, children=[
         Input('yes_no')
-        ])
+        ]),
+    Section('first_run', children=[
+        Label('logging-info', content="This program is cabable of collecting logfiles from program usage. These are used for: ... and stored in ...,Following things are logged but not limited to ..., Do you want to disable logging to filesystem?")
+    ])
 ]

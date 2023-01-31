@@ -8,8 +8,6 @@ import datetime
 from enum import Enum
 from multiprocessing import Lock
 
-import state
-
 class LOG_LEVEL(Enum):
     ALL = 0
     INFO = 10
@@ -139,6 +137,17 @@ class Log:
         finally:
             log_mutex.release()
 
+
+import state
+from shadowui import Section, Label
+
+log_firstrun = [
+    Section('setup_logging', children=[
+        Label('logging-info', content="""This program is cabable of collecting logfiles from program usage.
+                                      These are used for: ... and stored in ...,Following things are logged but not limited to ..., 
+                                      Do you want to disable logging to filesystem? ...whole module?""")
+    ])
+]
 class LogModule():
     """Program event logging
     Providing in-program event viewing and
@@ -147,7 +156,8 @@ class LogModule():
     name = "log"
     short = "l"
     def load_module(self):
-        pass
+        first_run = state.root['first_run']
+        first_run += log_firstrun
 
     def unload_module(self):
         pass
