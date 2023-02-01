@@ -140,6 +140,7 @@ class Log:
 
 import state
 from shadowui import Section, Label
+from modules import ModuleBase
 
 log_firstrun = [
     Section('setup_logging', children=[
@@ -148,24 +149,19 @@ log_firstrun = [
                                       Do you want to disable logging to filesystem? ...whole module?""")
     ])
 ]
-class LogModule():
+class LogModule(ModuleBase):
     """Program event logging
     Providing in-program event viewing and
     saves an event log of whole run to '_log/<date>.txt'
     """
     name = "log"
     short = "l"
-    def load_module(self):
+    def load(self):
         first_run = state.root['first_run']
         first_run += log_firstrun
 
-    def unload_module(self):
+    def unload(self):
         pass
-
-    def run(self, **kwargs):
-        args = kwargs.get('args')
-        print ("log run invoked with :"+str(args))
-        raise state.ProgramExit()
 
 
 #register to main program as a module

@@ -2,8 +2,21 @@
 Not thread safe!
 """
 
-# main program control exceptions
+program_help_doc = """\
+\nShadwallet - The superboosted Shimmer wallet
 
+\t-help for usage. (eg. 'python . -help')
+
+\tVisit shadwallet.com for more info.
+"""
+
+program_name = "Shadwallet"
+program_slogan = "The superboosted Shimmer wallet"
+program_version_str = "v0.0.1"
+program_website = "shadwallet.com"
+
+
+# main program control exceptions
 class ProgramState(Exception):
     """Base class for all Program state changes"""
     
@@ -17,9 +30,7 @@ class ProgramEnterInteractive(ProgramState):
     """Raised when module requests interactive mode
     Results in all modules getting loaded"""
 
-# needs to be called absolute first in __main_.py before any modules are run
-#def init():
-    # All loaded modules
+
 #global modules
 modules = list[object]()
 #global root

@@ -1,23 +1,12 @@
-"""\nShadow-wallet v0.0.1 - the superboosted shimmer wallet!
-
-\t-h \thelp \t\tGet help
-\t-x \texec \t\tExecute a single tool command
-\t-cli \tcomline \tLaunch in simple command line input mode (CLI)
-\t-tui \tterminal \tLaunch a graphical terminal interface (TUI)\n\t\t\t\t(default if no parameters given)\n
-\t-t \ttest \t\tRun self diagnosis and tests
-
-\t-help more \tMore help
-
-\tVisit shadwallet.com for more info.
-"""
-__version__ = "v0.0.1"
-
 import sys
 import platform
 import time
 from enum import Enum
+from datetime import datetime, timedelta
 
+from modules import ModuleBase
 import state
+__doc__ = state.program_help_doc
 
 import program
 
@@ -34,6 +23,7 @@ def main():
         import modules.log
         log = modules.log.Log("main")
         args = sys.argv
+        log.info("Program name and version: "+state.program_name+" "+state.program_version_str)
         log.info("Program started with arguments: "+str(sys.argv))
         log.info("Running on: "+str(platform.uname()._asdict()))
         log.info("Python environment: "+platform.python_implementation()+', '+platform.python_version())
@@ -46,6 +36,7 @@ def main():
         import modules.client
         #import modules.wallet
         #import modules.airdrop
+        import modules.exec
         import modules.cli
         import modules.term
 
@@ -70,7 +61,7 @@ def main():
                         module.run(args=args)
                     except state.ProgramExit:
                         raise
-                    raise RuntimeError("Module loader did not return valid state.ProgramState control Exception.")
+                    raise RuntimeError("'"+module.name+"' module run method did not raise valid program control Exception. Method must raise state.ProgramState derived response. f.ex 'raise ProgramExit()'")
         
         print(arg1+" is not a valid command. use -help to get started")
         log.info(arg1+" is not a valid command.")
@@ -92,22 +83,42 @@ def main():
 
         log.info("Enter Interactive mode")
         log.info("Loading all modules")
-        
-        for module in state.modules:
-            module.load_module()
-        
-        # Main loop
-        while True:
-            # call all on_frame handlers
-            try:
-                time.sleep(0.02) # restrain loop to 50 fps
-            except state.ProgramExit:
-                log.info("Normal program exit")
-                exit()
-            except KeyboardInterrupt:
-                log.error("Program terminated to KeyboardInterrupt")
-                print("User interrupted.")
-                exit()
+        try:            
+            for module in state.modules:
+                if (not isinstance(module, ModuleBase)):
+                    raise NotImplementedError("'"+module.name+"' module needs to be inherited from ModuleBase. f. ex. 'class MyModule(ModuleBase):'")
+                module.load()
+            
+            last_frame = time.perf_counter_ns()
+            # Main loop
+            while True:
+                # call all on_frame handlers
+                try:
+                    #loop timing
+                    frame_actual = time.perf_counter_ns()
+                    delta_actual = frame_actual - last_frame
+                    if delta_actual < 16600000:
+                        time.sleep((16600000-delta_actual)/1000000000.0) # restrain loop to 60 fps
+                    else:
+                        #log framedrops
+                        log.warning("Main frame took longer than 1/60 seconds: "+str(delta_actual/1000000000.0)+" s")
+                    frame_start = time.perf_counter_ns()
+                    delta_time = frame_start - last_frame
+                    last_frame = frame_start
+
+                    #work cycle
+                    state.root.emit_signal_recursive_leaf_first('on_frame',delta_ms=delta_time/1000000)
+
+                except state.ProgramExit:
+                    log.info("Normal program exit")
+                    exit()
+                except KeyboardInterrupt:
+                    log.error("Program terminated to KeyboardInterrupt")
+                    print("User interrupted.")
+                    exit()
+        finally:
+            for module in state.modules:
+                module.unload()
     except:
         log.error("Abnormal program exit")
         print("Abnormal program exit!")

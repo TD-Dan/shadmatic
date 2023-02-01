@@ -1,17 +1,18 @@
 """Advanced terminal user interface
 Uses curses as terminal rendering backend
 """
+from modules import ModuleBase
 import state
 
-class TermModule():
+class TermModule(ModuleBase):
     """Advanced terminal user interface
     """
     name = "terminal"
     short = "term"
-    def load_module(self):
+    def load(self):
         pass
 
-    def unload_module(self):
+    def unload(self):
         pass
 
 #register to main program as a module

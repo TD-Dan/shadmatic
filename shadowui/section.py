@@ -28,6 +28,9 @@ class Section:
     @property 
     def on_children_changed(self):
         return self._on_children_changed
+    @property 
+    def on_frame(self):
+        return self._on_frame
 
     def __init__(self, name:str, **kwargs) -> None:
         self.name=name
@@ -35,10 +38,12 @@ class Section:
 
         self._on_load = Signal()
         self._on_children_changed = Signal()
+        self._on_frame = Signal()
 
         children = kwargs.get('children')
         on_load:callable = kwargs.get('on_load')
         on_children_changed:callable = kwargs.get('on_children_changed')
+        on_frame:callable = kwargs.get('on_frame')
 
         if children:
             self+=children
@@ -46,11 +51,16 @@ class Section:
             self.on_load.connect(on_load)
         if on_children_changed:
             self.on_children_changed.connect(on_children_changed)
+        if on_frame:
+            self.on_frame.connect(on_frame)
 
     def emit_signal_recursive_leaf_first(self,signal:str,**kwargs):
         for child in self.children.values():
             child.emit_signal_recursive_leaf_first(signal, **kwargs)
-        getattr(self,signal).emit(section=self, **kwargs)
+        try:
+            getattr(self,signal).emit(section=self, **kwargs)
+        except AttributeError:
+            raise AttributeError("No Signal "+signal+" existing in "+self.name)
 
     def __iadd__(self, other):
         try:

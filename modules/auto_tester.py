@@ -3,17 +3,19 @@ import unittest
 
 import state
 
+from modules import ModuleBase
 from modules.log import Log
 
 from shadowui import Section
 
-class AutoTesterModule():
+class AutoTesterModule(ModuleBase):
+    """Program integrity testing suite"""
     name = "autotester"
     short = "test"
-    def load_module(self):
+    def load(self):
         pass
 
-    def unload_module(self):
+    def unload(self):
         pass
 
     def run(self, **kwargs):
@@ -24,7 +26,7 @@ class AutoTesterModule():
         unittest.TextTestRunner(verbosity=1).run(testsuite)
         log.info("Tests done.")
         del log
-        return state.ProgramExit()
+        raise state.ProgramExit()
 
         
 #register to main program as a module

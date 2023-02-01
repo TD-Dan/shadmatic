@@ -1,10 +1,6 @@
-"""Program help
-Shows help in commandline and inside user interface on:
-\t- using the program
-\t- modules
-\t- available tools inside modules
-"""
 
+
+from modules import ModuleBase
 import state
 
 from shadowui import Section
@@ -14,35 +10,25 @@ help_page = [
     Section('Help')
 ]
 
-class HelpModule():
+class HelpModule(ModuleBase):
     """Program help
     Shows help in commandline and inside user interface on:
     \t- using the program
     \t- modules
     \t- available tools inside modules
     """
-    run_help = \
-    """\nShadow-wallet v0.0.1 - the superboosted shimmer wallet!
-    \t-h \thelp \t\tGet help
-    \t-x \texec \t\tExecute a single tool command
-    \t-cli \tcomline \tLaunch in simple command line input mode (CLI)
-    \t-tui \tterminal \tLaunch a graphical terminal interface (TUI)\n\t\t\t\t(default if no parameters given)\n
-    \t-t \ttest \t\tRun self diagnosis and tests
 
-    \t-help more \tMore help
-
-    \tVisit shadwallet.com for more info.
-    """
     help_usage = \
-    """help <topic>"""
+    """help [<topic>]
+    where:
+    \ttopic\tModule name or command"""
     name = "help"
     short = "h"
-    def load_module(self):
+    def load(self):
         content = state.root['content']
         content += help_page
-        pass
 
-    def unload_module(self):
+    def unload(self):
         pass
 
     def run(self, **kwargs):
@@ -54,19 +40,41 @@ class HelpModule():
                     case module.name | module.short:
                         if module.__doc__:
                             print("\nModule: \t"+module.name.capitalize())
-                            print("Short command: \t"+module.short+"\n")
+                            print("Short name: \t"+module.short+"\n")
                             if hasattr(module, '__doc__'):
                                 print(module.__doc__)
-                            if hasattr(module, 'help_usage'):
-                                print("Usage: \t"+module.help_usage)
+                                
+                            if type(module).run != ModuleBase.run: # test if subclass has implemnented run method
+                                print("Can be invoked from commandline", end='')
+                                if hasattr(module, 'help_usage'):
+                                    print(":\nUsage: \t"+module.help_usage+"\n")
+                                    print("\t ( [...] = optional parameter, \t< ... > = replace with value )")
+                                else:
+                                    print("\n")
+                            if type(module).exec != ModuleBase.exec and module.commands:
+                                print("Implements following commands into the program:")
+                                # list module exec commands
                         else:
                             print("No help available for module "+module.name)
                         raise state.ProgramExit()
                 
             print("No help found for '"+args[2]+"'")
             raise state.ProgramExit()
+        elif len(args)>1:
+            print("\n"+str(state.program_name.center(79)+"\n"+(" - "+state.program_slogan).center(79)))
+            print(state.program_version_str.center(79))
+            print("\n"+"    Available program launch modes:".ljust(75)+"|")
+            print("".ljust(75)+"|")
+            for module in state.modules:
+                if type(module).run != ModuleBase.run:
+                    shorthelp = module.name.capitalize()
+                    if module.__doc__:
+                        shorthelp = module.__doc__.splitlines()[0]
+                    print("    "+module.short.ljust(8)+module.name.ljust(17)+shorthelp[:45].ljust(46)+"|")
+            print("\n"+("Visit "+state.program_website+" for more info").center(79)+"\n")
         else:
-            print(self.run_help)
+            print(state.program_help_doc)
+        
         raise state.ProgramExit()
 
 
