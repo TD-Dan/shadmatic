@@ -60,8 +60,15 @@ class Log:
         if did_open_file:    
             self._write("Opened logfile.",LOG_LEVEL.INFO)
         self._write("Started logging.",LOG_LEVEL.INFO)
+        self._is_open = True
     
     def __del__(self):
+        self.close()
+    
+    def close(self):
+        if not self._is_open:
+            return
+
         do_close_file = False
         instances = None
 
@@ -90,6 +97,8 @@ class Log:
                 logfile.close()
             finally:    
                 log_mutex.release()
+
+        self._is_open = False
 
         
     def add_listener(self,call:callable):

@@ -32,10 +32,9 @@ class AutoTesterModule(ModuleBase):
 
     def unload(self):
         super().unload()
-        self.log.info("!!!! HERE")
-        del self.log
+        self.log.close()
 
-    def run_from_commandline(self, **kwargs):
+    def run_from_commandline(self, *args, **kwargs):
         self.load()
         output_logger = TestOutputStream(self.log)
         self.log.info("Finding tests...")
