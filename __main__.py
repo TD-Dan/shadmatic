@@ -35,10 +35,13 @@ def main():
         import modules.auto_tester
         import modules.client
         #import modules.wallet
-        #import modules.airdrop
+        
         import modules.exec
         import modules.cli
         import modules.term
+
+        import modules.twitter
+        #import modules.airdrop
 
         log.info("Modules pre-loaded into global program state: "+', '.join(module.name.upper() for module in state.modules))
 
@@ -58,7 +61,7 @@ def main():
             match arg1:
                 case module.name | module.short:
                     try:
-                        module.run(args=args)
+                        module.run_from_commandline(args=args)
                     except state.ProgramExit:
                         raise
                     raise RuntimeError("'"+module.name+"' module run method did not raise valid program control Exception. Method must raise state.ProgramState derived response. f.ex 'raise ProgramExit()'")

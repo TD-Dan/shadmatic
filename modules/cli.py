@@ -19,12 +19,14 @@ class CLIWindowModule(ModuleBase):
     \t\tyes (default)
     \t\tno"""
     def load(self):
+        super().load()
         state.root += CommandlineWindow('commandline', on_frame=test_on_frame)
 
     def unload(self):
+        super().unload()
         pass
 
-    def run(self, **kwargs):
+    def run_from_commandline(self, **kwargs):
         args = kwargs.get('args')
         print ("Commandline run invoked with :"+str(args))
         raise state.ProgramEnterInteractive()

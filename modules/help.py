@@ -25,13 +25,15 @@ class HelpModule(ModuleBase):
     name = "help"
     short = "h"
     def load(self):
+        super().load()
         content = state.root['content']
         content += help_page
 
     def unload(self):
+        super().unload()
         pass
 
-    def run(self, **kwargs):
+    def run_from_commandline(self, **kwargs):
         args = kwargs.get('args')
         if len(args)>2:
             #print("display help for "+args[2])
@@ -44,7 +46,7 @@ class HelpModule(ModuleBase):
                             if hasattr(module, '__doc__'):
                                 print(module.__doc__)
                                 
-                            if type(module).run != ModuleBase.run: # test if subclass has implemnented run method
+                            if type(module).run != ModuleBase.run_from_commandline: # test if subclass has implemnented run method
                                 print("Can be invoked from commandline", end='')
                                 if hasattr(module, 'help_usage'):
                                     print(":\nUsage: \t"+module.help_usage+"\n")
@@ -66,7 +68,7 @@ class HelpModule(ModuleBase):
             print("\n"+"    Available program launch modes:".ljust(75)+"|")
             print("".ljust(75)+"|")
             for module in state.modules:
-                if type(module).run != ModuleBase.run:
+                if type(module).run != ModuleBase.run_from_commandline:
                     shorthelp = module.name.capitalize()
                     if module.__doc__:
                         shorthelp = module.__doc__.splitlines()[0]

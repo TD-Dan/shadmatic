@@ -18,14 +18,25 @@ class ExecModule(ModuleBase):
     \tparameter\tParameter(s) to pass for command
     """
     def load(self):
+        super().load()
         pass
 
     def unload(self):
+        super().unload()
         pass
     
-    def run(self, **kwargs):
+    def run_from_commandline(self, **kwargs):
         args = kwargs.get('args')
         print ("Command execution invoked with :"+str(args))
+
+        if len(args)<2:
+            raise 
+        mod_name = args[1]
+        com_name = args[2]
+        # load module
+
+        # exec in module
+
         raise state.ProgramExit()
 
 #register to main program as a module

@@ -19,11 +19,13 @@ class ClientModule(ModuleBase):
     name = "client"
     short = "c"
     def load(self):
+        super().load()
         # Add status widget
         status_area = state.root['header.status']
         status_area += client_status
 
     def unload(self):
+        super().unload()
         pass
 
 #register to main program as a module

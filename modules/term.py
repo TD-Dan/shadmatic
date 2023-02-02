@@ -10,9 +10,11 @@ class TermModule(ModuleBase):
     name = "terminal"
     short = "term"
     def load(self):
+        super().load()
         pass
 
     def unload(self):
+        super().unload()
         pass
 
 #register to main program as a module
