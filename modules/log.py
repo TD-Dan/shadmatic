@@ -36,7 +36,7 @@ class Log:
         
         #local state
         self._listeners: list[callable] = []
-        self.echo_level:LOG_LEVEL = LOG_LEVEL.ALL
+        self.echo_level:LOG_LEVEL = LOG_LEVEL.WARNING
         self.logger_name=logger_name
 
         #global state
@@ -104,15 +104,15 @@ class Log:
     def error(self,str:str,exception:Exception=None):
         self._broadcast_new(LogEntry(LOG_LEVEL.ERROR,str,exception))
 
-    def _write(self, str, level:LOG_LEVEL):
+    def _write(self, line, level:LOG_LEVEL):
         global log_mutex
         log_mutex.acquire()
         try:
-            str = '['+self.logger_name+']'+str
-            if self.echo_level.value>=level.value:
-                print(str)
+            line = '['+self.logger_name+']'+line
+            if self.echo_level.value<=level.value:
+                print(line)
             if logfile:
-                logfile.write(str+"\n")
+                logfile.write(line+"\n")
                 logfile.flush()
         except ValueError:
             raise RuntimeError("\nLog '"+self.logger_name+"' trying to access closed logfile. Did you remember to 'del log'?")
