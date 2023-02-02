@@ -11,7 +11,7 @@ from multiprocessing import Lock
 class LOG_LEVEL(Enum):
     ALL = 0
     INFO = 10
-    WARNING = 20
+    WARN = 20
     ERROR = 30
     NONE = 100
 
@@ -36,7 +36,7 @@ class Log:
         
         #local state
         self._listeners: list[callable] = []
-        self.echo_level:LOG_LEVEL = LOG_LEVEL.WARNING
+        self.echo_level:LOG_LEVEL = LOG_LEVEL.WARN
         self.logger_name=logger_name
 
         #global state
@@ -108,7 +108,7 @@ class Log:
         self._broadcast_new(LogEntry(LOG_LEVEL.INFO,str,exception))
 
     def warning(self,str:str,exception:Exception=None):
-        self._broadcast_new(LogEntry(LOG_LEVEL.WARNING,str,exception))
+        self._broadcast_new(LogEntry(LOG_LEVEL.WARN,str,exception))
 
     def error(self,str:str,exception:Exception=None):
         self._broadcast_new(LogEntry(LOG_LEVEL.ERROR,str,exception))
@@ -117,7 +117,7 @@ class Log:
         global log_mutex
         log_mutex.acquire()
         try:
-            line = '['+self.logger_name+']'+line
+            line = '['+self.logger_name.ljust(8)+']'+line
             if self.echo_level.value<=level.value:
                 print(line)
             if logfile:
@@ -134,7 +134,7 @@ class Log:
         e = entry.exception 
         if e:
             end_str = " with exception:\n"+f"{type(e).__name__} at line {e.__traceback__.tb_lineno} of {__file__}: {e}"
-        logline = "\t["+entry.time+"] "+entry.level.name+": \t"+entry.str + end_str
+        logline = "["+entry.time+"] "+entry.level.name+": \t"+entry.str + end_str
         self._write(logline,entry.level)
         for call in self._listeners:
             call(str=entry.str, exception=entry.exception)
@@ -145,33 +145,3 @@ class Log:
             log_history.append(entry)
         finally:
             log_mutex.release()
-
-
-import state
-from shadowui import Section, Label
-from modules import ModuleBase
-
-log_firstrun = [
-    Section('setup_logging', children=[
-        Label('logging-info', content="""This program is cabable of collecting logfiles from program usage.
-                                      These are used for: ... and stored in ...,Following things are logged but not limited to ..., 
-                                      Do you want to disable logging to filesystem? ...whole module?""")
-    ])
-]
-class LogModule(ModuleBase):
-    """Program event logging
-    Providing in-program event viewing and
-    saves an event log of whole run to '_log/<date>.txt'
-    """
-    name = "log"
-    short = "l"
-    def load(self):
-        first_run = state.root['first_run']
-        first_run += log_firstrun
-
-    def unload(self):
-        pass
-
-
-#register to main program as a module
-state.modules.append(LogModule())

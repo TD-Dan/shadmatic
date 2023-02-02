@@ -27,7 +27,7 @@ class AutoTesterModule(ModuleBase):
     short = "test"
     def load(self):
         super().load()
-        self.log = Log("Autotester")
+        self.log = Log("autotest")
         pass
 
     def unload(self):

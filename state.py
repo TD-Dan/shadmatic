@@ -29,6 +29,8 @@ class ProgramCancel(ProgramState):
 class ProgramEnterInteractive(ProgramState):
     """Raised when module requests interactive mode
     Results in all modules getting loaded"""
+class InvalidInput(ProgramState):
+    """Raised when user input is not valid"""
 
 
 #global modules

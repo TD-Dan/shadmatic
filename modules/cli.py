@@ -26,8 +26,7 @@ class CLIWindowModule(ModuleBase):
         super().unload()
         pass
 
-    def run_from_commandline(self, **kwargs):
-        args = kwargs.get('args')
+    def run_from_commandline(self, *args, **kwargs):
         print ("Commandline run invoked with :"+str(args))
         raise state.ProgramEnterInteractive()
 

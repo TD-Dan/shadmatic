@@ -48,11 +48,11 @@ class Section:
         if children:
             self+=children
         if on_load:
-            self.on_load.connect(on_load)
+            self._on_load.connect(on_load)
         if on_children_changed:
-            self.on_children_changed.connect(on_children_changed)
+            self._on_children_changed.connect(on_children_changed)
         if on_frame:
-            self.on_frame.connect(on_frame)
+            self._on_frame.connect(on_frame)
 
     def emit_signal_recursive_leaf_first(self,signal:str,**kwargs):
         for child in self.children.values():
