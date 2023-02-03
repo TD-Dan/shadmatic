@@ -21,7 +21,8 @@ class ModuleBase():
     loaded = False
 
     def load(self):
-        """Run when program enters interactive mode (if program has enabled this module)"""
+        """Run when program enters interactive mode (if program has enabled this module).
+        Needs to be called by inheriting classes."""
         if self.loaded:
             name = "ModuleBase"
             if self.name:
@@ -37,7 +38,8 @@ class ModuleBase():
         modlog.info("Loading module '"+self.name+"'")
 
     def unload(self):
-        """Called when program unloads this module or leaves interactive mode"""
+        """Called when program unloads this module or leaves interactive mode.
+        Needs to be called by inheriting classes."""
         if not self.loaded:
             name = "ModuleBase"
             if self.name:
@@ -55,12 +57,13 @@ class ModuleBase():
     def run_from_commandline(self, *args, **kwargs):
         """Called when this module gets invoked from the commandline as programs 1st argument.
         HOX! The load method has not been called at this point! load gets only called if entering ProgramInteractive mode.
-        kwargs contain 'args' with all commandline arguments, and can be accessed with args = kwargs.get('args')."""
+        Args and kwargs contain all commandline arguments"""
         raise NotImplementedError("run method not implemented in '"+self.name+"' module.")
 
     def exec(self, command, **kwargs):
         """Execute a command within the module, passing kwargs to it
-        Default behavior is to search requested command from self.commands"""
+        Default behavior is to search requested command from self.commands
+        Does not need to be implemented by inheriting classes."""
         if self.commands:
             for program_command in self.commands:
                 if program_command.name == command:

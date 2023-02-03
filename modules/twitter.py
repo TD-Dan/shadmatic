@@ -16,19 +16,31 @@ class TweetModule(ModuleBase):
 
     commands = [
         ProgramCommand('get_tweet',
-                        required_kwargs = ['id'], optional_kwargs = ['out']),
+                        required_kwargs = {'id':"Tweet ID (from twitter.com/<username>/status/<TWEET_ID>)"}, optional_kwargs = {'out':'Output file name. Supported filetypes: .json'}),
         ProgramCommand('get_comments',
-                        required_kwargs = ['id'], optional_kwargs = ['out'])
+                        required_kwargs = {'id':"Tweet ID (from twitter.com/<username>/status/<TWEET_ID>)"}, optional_kwargs = {'out':'Output file name. Supported filetypes: .json .txt'})
     ]
 
     def load(self):
         super().load()
         self.twitlog = Log('twitter')
         try:
-            import twitter
+            import tweepy
         except ModuleNotFoundError:
-            self.twitlog.error("lib 'python_twitter' not found. Install with 'pip intall python_twitter' ")
-            raise ModuleNotFoundError("lib 'python_twitter' not found. Install with 'pip intall python_twitter' ")
+            raise ModuleNotFoundError("lib 'tweepy' not found. Install with 'pip install tweepy' ")
+        oauth1_user_handler = tweepy.OAuth1UserHandler(
+        "Pdsqcs5dCE1ux7VqbyibmAPv7", "ieWK0c8aRnonhbMIVbhtekJPMdZfZDGbzQZklQcZxrQc71dx4v",
+        callback="oob"
+        )
+        print(oauth1_user_handler.get_authorization_url())
+        
+        verifier = input("Input PIN: ")
+        access_token, access_token_secret = oauth1_user_handler.get_access_token(
+            verifier
+        )
+
+        print(access_token)
+        print(access_token_secret)
     
     def unload(self):
         super().unload()
@@ -36,14 +48,14 @@ class TweetModule(ModuleBase):
     
     def get_tweet(self, **kwargs):
         id = kwargs.get('id')
-        out = kwargs.get('out')
+        out = kwargs.get('out',"tweet.json")
         self.twitlog.info("Getting tweet "+id)
         self.twitlog.info("Outputting to "+out)
         pass
     
     def get_comments(self,**kwargs):
         id = kwargs.get('id')
-        out = kwargs.get('out')
+        out = kwargs.get('out',"comments.json")
         self.twitlog.info("Getting comments for "+id)
         self.twitlog.info("Outputting to "+out)
         pass

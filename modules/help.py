@@ -52,8 +52,16 @@ class HelpModule(ModuleBase):
                                     print("\t ( [...] = optional parameter, \t< ... > = replace with value )")
                                 else:
                                     print("\n")
-                            if type(module).exec != ModuleBase.exec and module.commands:
+                            if module.commands:
                                 print("Implements following commands into the program:")
+                                for comd in module.commands:
+                                    print(comd.name)
+                                    print("\t required arguments: ")
+                                    for key,value in comd.required_kwargs.items():
+                                        print("\t"+key+"\t"+value)
+                                    print("\t optional arguments: ")
+                                    for key,value in comd.optional_kwargs.items():
+                                        print("\t"+key+"\t"+value)
                                 # list module exec commands
                         else:
                             print("No help available for module "+module.name)

@@ -54,6 +54,11 @@ class ExecModule(ModuleBase):
                     break
             if not found_command:
                 raise state.InvalidInput("Can't execute command '"+mod_name+" "+com_name+"': no such command available in the module.")
+            # Test all required arguments are given
+            for cmd in found_command.required_kwargs:
+                if not kwargs.get(cmd):
+                    raise state.InvalidInput("Can't execute command '"+mod_name+" "+com_name+"': missing required argument '"+cmd+"'")
+            
             command_method = getattr(found_module, found_command.name)
 
             #load module

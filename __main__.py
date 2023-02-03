@@ -1,6 +1,7 @@
 import sys
 import platform
 import time
+import traceback
 from enum import Enum
 from datetime import datetime, timedelta
 
@@ -67,6 +68,9 @@ def main():
                         try:
                             runlog.info("Starting module '"+module.name+"'")
                             module.run_from_commandline(*args,**kwargs)
+                        except NotImplementedError:
+                            print("Module '"+module.name+"' does not have commandline run capability. Try -help or -exec commands.")
+                            raise state.ProgramExit()
                         except state.ProgramExit:
                             raise
                         raise RuntimeError("'"+module.name+"' module run method did not raise valid program control Exception. Method must raise state.ProgramState derived response. f.ex 'raise ProgramExit()'")
@@ -130,10 +134,11 @@ def main():
         mainlog.info("Program run was cancelled")
     except state.ProgramExit:
         mainlog.info("Program run exitted normally")
-    except:
-        mainlog.error("Abnormal program exit")
+    except Exception as e:
         print("Abnormal program exit!")
-        raise
+        mainlog.error("Abnormal program exit")
+        trace = traceback.format_exc()
+        mainlog.error(trace)
     finally:
         del mainlog
     exit()
