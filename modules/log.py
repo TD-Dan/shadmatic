@@ -52,7 +52,7 @@ class Log:
                 _logfile_name = '_logs/'+log_date+".txt"
                 if not os.path.exists("_logs"):
                     os.makedirs("_logs")
-                logfile = open(_logfile_name, "w")
+                logfile = open(_logfile_name, "w", encoding="utf-8")
                 did_open_file = True
         finally:
             log_mutex.release()

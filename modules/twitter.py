@@ -3,7 +3,7 @@
 import time
 import json
 
-from modules import ModuleBase
+from modules import ModuleBase, fileio
 from modules.command import ProgramCommand
 import state
 
@@ -115,10 +115,108 @@ class TweetModule(ModuleBase):
         
 
         self.twitlog.info("Outputting to "+out)
-        jsn_str = json.dumps(replies, indent=3)
-        outfile = open(out,'w')
+        jsn_str = json.dumps(replies, indent=3,ensure_ascii=False)
+        outfile = open(out,'w', encoding="utf-8")
         outfile.write(jsn_str)
         outfile.close()
+    
+    def get_addresses(self,**kwargs):
+        in_str = kwargs.get('in',"comments.json")
+        out_str = kwargs.get('out',"addresses.txt")
+        
+        infile = open(in_str,'r', encoding="utf-8")
+        json_str = infile.read()
+        infile.close()
+        json_list = json.loads(json_str)
+
+        self.twitlog.info('loaded '+str(len(json_list))+" comments from '"+in_str+"'")
+
+        self.twitlog.info("Finding addresses...")
+
+        all_authors = {} # as {'author'=[address, address..]}
+        all_addresses = {} # as {'address'=[author, author..]}
+
+        no_address_found = [] # in format [{entry}{entry}...]
+        invalid_addresses = [] # in format [{entry}{entry}...]
+
+        #construct a list of valid author and address entries
+        for entry in json_list:
+            author = entry['author_id']
+            text:str = entry['text']
+            words = text.split()
+            address = None
+            for word in words:
+                if word.startswith("smr1"):
+                    address = word
+            if not address:
+                no_address_found.append(entry)
+                self.twitlog.warning("No address found in "+str(entry))
+                continue
+            if len(address) != 63:
+                invalid_addresses.append(entry)
+                self.twitlog.warning("Invalid address found in "+str(entry))
+                continue        
+            if not author in all_authors:
+                all_authors[author] = [address]
+            else:
+                all_authors[author].append(address)
+
+            if not address in all_addresses:
+                all_addresses[address] = [author]
+            else:
+                all_addresses[address].append(author)
+
+        print("found "+str(len(all_authors))+" unique authors with valid addresses")
+        print("found "+str(len(all_addresses))+" unique addresses")
+
+        #print(all_authors)
+        #print(all_addresses)
+        
+        self.twitlog.info("Filtering addresses...")
+        abuse_authors = []
+        abuse_addresses = []
+        clean_addresses = [] # in format [address,address,...]
+
+
+        # filter out authors submitting multiple addresses and blacklist such authors
+        for author in all_authors:
+            if len(all_authors[author]) > 1:
+                format_str = "author '"+author+"' submitted multiple addresses: "
+                for addr in all_authors[author]:
+                    format_str += addr+" "
+                    abuse_addresses.append(addr)
+                self.twitlog.warning(format_str)
+                abuse_authors.append(author)
+       
+        # filter out multiple authors submitting same address and blacklist the authors
+        for address in all_addresses:
+            if len(all_addresses[address]) > 1:
+                format_str = "address '"+address+"' submitted by multiple authors: "
+                for auth in all_addresses[address]:
+                    format_str += auth+" "
+                    abuse_authors.append(auth)
+                self.twitlog.warning(format_str)
+                abuse_addresses.append(address)
+            else:
+                if all_addresses[address] in abuse_authors:
+                    self.twitlog.warning("address author in abuse list, removing otherwice valid address.")
+                else:
+                    clean_addresses.append(address)
+                
+        self.twitlog.warning("Found "+str(len(abuse_authors))+" abusive users. Writing to abuse_users.txt.")
+        fileio.write_list_to_file(abuse_authors, 'abuse_users.txt', confirm_overwrite=True, fail_silently=True)
+
+        self.twitlog.warning("Found "+str(len(abuse_addresses))+" abused addresses. Writing to abuse_addresses.txt")
+        fileio.write_list_to_file(abuse_addresses, 'abuse_addresses.txt', confirm_overwrite=True, fail_silently=True)
+
+        try:
+            fileio.write_list_to_file(clean_addresses, out_str, confirm_overwrite=True)
+        except state.ProgramCancel:
+            self.twitlog("File write aborted by user.")
+
+        #idea: offer to block offending authors from twitter automatically
+        #idea2: filter out bot entries by comparing old tweets. Flag all accounts posting more than n% addresses all the time
+
 
 #register to main program as a module
 state.modules.append(TweetModule())
