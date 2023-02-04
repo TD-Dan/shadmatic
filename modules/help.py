@@ -39,32 +39,49 @@ class HelpModule(ModuleBase):
             for module in state.modules:
                 match args[2]:
                     case module.name | module.short:
-                        if module.__doc__:
-                            print("\nModule: \t"+module.name.capitalize())
-                            print("Short name: \t"+module.short+"\n")
-                            if hasattr(module, '__doc__'):
-                                print(module.__doc__)
-                                
-                            if type(module).run_from_commandline != ModuleBase.run_from_commandline: # test if subclass has implemnented run method
-                                print("Can be invoked from commandline", end='')
-                                if hasattr(module, 'help_usage'):
-                                    print(":\nUsage: \t"+module.help_usage+"\n")
-                                    print("\t ( [...] = optional parameter, \t< ... > = replace with value )")
-                                else:
-                                    print("\n")
+                        if len(args)<4:
+                            if module.__doc__:
+                                print("\nModule: \t"+module.name.capitalize())
+                                print("Short name: \t"+module.short+"\n")
+                                if hasattr(module, '__doc__'):
+                                    print(module.__doc__)
+                                    
+                                if type(module).run_from_commandline != ModuleBase.run_from_commandline: # test if subclass has implemnented run method
+                                    print("Can be invoked from commandline", end='')
+                                    if hasattr(module, 'help_usage'):
+                                        print(":\nUsage: \t"+module.help_usage+"\n")
+                                        print("\t ( [...] = optional parameter, \t< ... > = replace with value )")
+                                    else:
+                                        print("\n")
+                                if module.commands:
+                                    print("Implements following commands into the program:")
+                                    for comd in module.commands:
+                                        print(comd.name)
+                                        print("\t"+comd.__doc__)
+                            else:
+                                print("No help available for module "+module.name)
+                        else:
                             if module.commands:
-                                print("Implements following commands into the program:")
+                                for comd in module.commands:
+                                    if comd.name == args[3]:
+                                        print("'"+module.name+"' command '"+comd.name+"':")
+                                        print(comd.__doc__)
+                                        if comd.required_kwargs:
+                                            print("\t required arguments: ")
+                                            for key,value in comd.required_kwargs.items():
+                                                print("\t"+key+"\t"+value)
+                                        print("\t optional arguments: ")
+                                        if comd.optional_kwargs:
+                                            for key,value in comd.optional_kwargs.items():
+                                                print("\t"+key+"\t"+value)
+                                        raise state.ProgramExit()
+                                print("no such command in module")
+                                print("following commands are in the module:")
                                 for comd in module.commands:
                                     print(comd.name)
-                                    print("\t required arguments: ")
-                                    for key,value in comd.required_kwargs.items():
-                                        print("\t"+key+"\t"+value)
-                                    print("\t optional arguments: ")
-                                    for key,value in comd.optional_kwargs.items():
-                                        print("\t"+key+"\t"+value)
-                                # list module exec commands
-                        else:
-                            print("No help available for module "+module.name)
+                            else:
+                                print("Module has no commands implemented.")
+                            
                         raise state.ProgramExit()
                 
             print("No help found for '"+args[2]+"'")

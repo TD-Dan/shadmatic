@@ -18,14 +18,17 @@ class TweetModule(ModuleBase):
     short = "tw"
     api = None
     commands = [
-        ProgramCommand('get_tweet',
+        ProgramCommand('get_tweet', help="Get a single tweet.",
                         required_kwargs = {'id':"Tweet ID (from twitter.com/<username>/status/<TWEET_ID>)"}, 
-                        optional_kwargs = {'bearer':'Twitter bearer token', 
-                                           'out':'Output file name. Supported filetypes: .json'}),
-        ProgramCommand('get_comments',
+                        optional_kwargs = {'bearer':'Twitter bearer token. Default none, input will be requested from user.', 
+                                           'out':"Output file name. Supported filetypes: .json . Default 'tweet.json'"}),
+        ProgramCommand('get_comments', help="Get all comments of a tweet.",
                         required_kwargs = {'id':"Tweet ID (from twitter.com/<username>/status/<TWEET_ID>)"},
-                        optional_kwargs = {'bearer':'Twitter bearer token', 
-                                           'out':'Output file name. Supported filetypes: .json .txt'})
+                        optional_kwargs = {'bearer':'Twitter bearer token. Default none, input will be requested from user.', 
+                                           'out':"Output file name. Supported filetypes: .json . Default 'comments.json'"}),
+        ProgramCommand('get_addresses', help="Collects and cleans up shimmer addresses from comments file.",
+                        optional_kwargs = {'in':"Input file name. Supported filetypes: .json . Default 'comments.json'",
+                                           'out':"Output file name. Supported filetypes: .json .txt . Default 'addresses.txt'"})
     ]
 
     def load(self):
