@@ -36,14 +36,14 @@ def main():
 
             import modules.logmodule
             import modules.help
-            import modules.config
+            #import modules.config
             import modules.auto_tester
-            import modules.client
+            #import modules.client
             #import modules.wallet
             
             import modules.exec
-            import modules.cli
-            import modules.term
+            #import modules.cli
+            #import modules.term
 
             import modules.twitter
             #import modules.airdrop
