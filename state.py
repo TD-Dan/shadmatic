@@ -3,17 +3,17 @@ Not thread safe!
 """
 
 program_help_doc = """\
-\nShadmatic - The superboosted Shimmer wallet
+\nShadwallet - The superboosted Shimmer wallet
 
 \t-help for usage. (eg. 'python . -help')
 
-\tVisit shadmatic.com for more info.
+\tVisit shadwallet.com for more info.
 """
 
-program_name = "Shadmatic"
+program_name = "Shadwallet"
 program_slogan = "The superboosted Shimmer wallet"
-program_version_str = "v0.0.2"
-program_website = "shadmatic.com"
+program_version_str = "v0.0.1"
+program_website = "shadwallet.com"
 
 
 # main program control exceptions
