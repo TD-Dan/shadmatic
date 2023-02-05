@@ -6,7 +6,7 @@ import state
 
 from shadowui.cliwindow import CommandlineWindow
 
-class CLIWindowModule(ModuleBase):
+class CLIModule(ModuleBase):
     """Simple interactive commandline interpreter
     Simplest way of invoking full program capabilities in an interactive session."""
     name = "commandline"
@@ -28,10 +28,11 @@ class CLIWindowModule(ModuleBase):
 
     def run_from_commandline(self, *args, **kwargs):
         print ("Commandline run invoked with :"+str(args))
+        color = kwargs.get('color')
         raise state.ProgramEnterInteractive()
 
 def test_on_frame(section, delta_ms):
     print(section.name+" got on_frame, delta milliseconds: "+str(delta_ms))
 
 #register to main program as a module
-state.modules.append(CLIWindowModule())
+state.modules.append(CLIModule())

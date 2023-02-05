@@ -28,18 +28,30 @@
      inkscape:document-units="mm"
      showgrid="false"
      width="200mm"
-     inkscape:zoom="0.097214331"
-     inkscape:cx="3049.9618"
-     inkscape:cy="3595.149"
+     inkscape:zoom="0.048607165"
+     inkscape:cx="524.61401"
+     inkscape:cy="3939.7484"
      inkscape:window-width="1788"
      inkscape:window-height="1096"
-     inkscape:window-x="1231"
-     inkscape:window-y="815"
+     inkscape:window-x="1722"
+     inkscape:window-y="673"
      inkscape:window-maximized="0"
      inkscape:current-layer="layer1"
      inkscape:snap-page="true" />
   <defs
      id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient2629">
+      <stop
+         style="stop-color:#2e3351;stop-opacity:1;"
+         offset="0"
+         id="stop2625" />
+      <stop
+         style="stop-color:#e4e4c4;stop-opacity:1"
+         offset="1"
+         id="stop2627" />
+    </linearGradient>
     <linearGradient
        id="linearGradient52123"
        inkscape:swatch="solid">
@@ -122,7 +134,7 @@
        id="NEUTRAL"
        inkscape:swatch="solid">
       <stop
-         style="stop-color:#2c3753;stop-opacity:1;"
+         style="stop-color:#2e3351;stop-opacity:1;"
          offset="0"
          id="stop13885" />
     </linearGradient>
@@ -164,7 +176,7 @@
        id="FORE"
        inkscape:swatch="solid">
       <stop
-         style="stop-color:#ecc192;stop-opacity:1;"
+         style="stop-color:#ebb87e;stop-opacity:1;"
          offset="0"
          id="stop1567" />
     </linearGradient>
@@ -1816,11 +1828,912 @@
        y1="451.63565"
        x2="366.2937"
        y2="451.63565" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#NEUTRAL"
+       id="linearGradient1954"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.5,0,0,1.14286,-560.00004,-8.8420349e-7)"
+       x1="0"
+       y1="105"
+       x2="160"
+       y2="105" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#FORE"
+       id="linearGradient1956"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.14286,-520.00002,-8.8420349e-7)"
+       x1="80"
+       y1="52.5"
+       x2="100"
+       y2="52.5" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#FORE"
+       id="linearGradient1958"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.14286,-520.00002,-8.8420349e-7)"
+       x1="40"
+       y1="52.5"
+       x2="60"
+       y2="52.5" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#FORE"
+       id="linearGradient1960"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.14286,-520.00002,-8.8420349e-7)"
+       x1="60"
+       y1="52.5"
+       x2="80"
+       y2="52.5" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#FORE"
+       id="linearGradient1962"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.14286,-520.00002,-8.8420349e-7)"
+       x1="80"
+       y1="87.5"
+       x2="100"
+       y2="87.5" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#FORE"
+       id="linearGradient1964"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.14286,-520.00002,80.000195)"
+       x1="100"
+       y1="87.5"
+       x2="120"
+       y2="87.5" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#FORE"
+       id="linearGradient1966"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.14286,-520.00002,-8.8420349e-7)"
+       x1="100"
+       y1="122.5"
+       x2="120"
+       y2="122.5" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#FORE"
+       id="linearGradient1968"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.14286,-520.00002,-80.0002)"
+       x1="100"
+       y1="157.5"
+       x2="120"
+       y2="157.5" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#FORE"
+       id="linearGradient1970"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.14286,-520.00002,-8.8420349e-7)"
+       x1="80"
+       y1="157.5"
+       x2="100"
+       y2="157.5" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#FORE"
+       id="linearGradient1972"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.14286,-520.00002,-8.8420349e-7)"
+       x1="59.999996"
+       y1="157.5"
+       x2="79.999992"
+       y2="157.5" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#FORE"
+       id="linearGradient1974"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.14286,-520.00002,-8.8420349e-7)"
+       x1="60"
+       y1="122.5"
+       x2="80"
+       y2="122.5" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#FORE"
+       id="linearGradient1976"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.14286,-520.00002,-8.8420349e-7)"
+       x1="40"
+       y1="87.5"
+       x2="60"
+       y2="87.5" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#FORE"
+       id="linearGradient1978"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.14286,-520.00002,-8.8420349e-7)"
+       x1="40"
+       y1="122.5"
+       x2="60"
+       y2="122.5" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#OK"
+       id="linearGradient1980"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.14286,-480.00003,80.000175)"
+       x1="60"
+       y1="52.5"
+       x2="80"
+       y2="52.5" />
+    <rect
+       x="-592.8056"
+       y="145.47377"
+       width="1046.3489"
+       height="383.6601"
+       id="rect12891-3-6" />
+    <rect
+       x="-592.8056"
+       y="145.47377"
+       width="1046.3489"
+       height="383.6601"
+       id="rect12891-3-1-7" />
+    <rect
+       x="-592.8056"
+       y="145.47377"
+       width="1046.3489"
+       height="383.6601"
+       id="rect12891-3-8-7" />
+    <rect
+       x="-592.8056"
+       y="145.47377"
+       width="1046.3489"
+       height="383.6601"
+       id="rect12891-3-7-7" />
+    <rect
+       x="-592.8056"
+       y="145.47377"
+       width="1046.3489"
+       height="383.6601"
+       id="rect12891-3-3-4" />
+    <rect
+       x="-592.8056"
+       y="145.47377"
+       width="1046.3489"
+       height="383.6601"
+       id="rect12891-3-1-9-4" />
+    <rect
+       x="-592.8056"
+       y="145.47377"
+       width="1046.3489"
+       height="383.6601"
+       id="rect12891-3-8-8-7" />
+    <rect
+       x="-592.8056"
+       y="145.47377"
+       width="1046.3489"
+       height="383.6601"
+       id="rect12891-3-7-5-7" />
+    <rect
+       x="-592.8056"
+       y="145.47377"
+       width="1046.3489"
+       height="383.6601"
+       id="rect12891-3-3-3-97" />
+    <rect
+       x="-592.8056"
+       y="145.47377"
+       width="1046.3489"
+       height="383.6601"
+       id="rect12891-3-1-9-0-1" />
+    <rect
+       x="-592.8056"
+       y="145.47377"
+       width="1046.3489"
+       height="383.6601"
+       id="rect12891-3-8-8-1-3" />
+    <rect
+       x="-592.8056"
+       y="145.47377"
+       width="1046.3489"
+       height="383.6601"
+       id="rect12891-3-7-5-5-4" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#NEUTRAL"
+       id="linearGradient2841"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(7.1908703,-7.4596079e-8,-1.7919524e-7,16.133317,-2765.7746,-1930.0492)"
+       x1="60"
+       y1="52.5"
+       x2="80"
+       y2="52.5" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#FORE"
+       id="linearGradient2843"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(7.1908703,-7.4596079e-8,-1.7919524e-7,16.133317,-2621.9569,-1930.0493)"
+       x1="60"
+       y1="52.5"
+       x2="80"
+       y2="52.5" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#OK"
+       id="linearGradient2845"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(7.1908703,-7.4596079e-8,-1.7919524e-7,16.133317,-2478.1396,-1930.0492)"
+       x1="60"
+       y1="52.5"
+       x2="80"
+       y2="52.5" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#ERROR"
+       id="linearGradient2847"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(7.1908703,-7.4596079e-8,-1.7919524e-7,16.133317,-2334.3221,-1930.0492)"
+       x1="60"
+       y1="52.5"
+       x2="80"
+       y2="52.5" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#BG"
+       id="linearGradient2849"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(28.763482,-2.9838432e-7,-5.9731749e-8,5.3777725,-4060.1307,-1177.1611)"
+       x1="60"
+       y1="52.5"
+       x2="80"
+       y2="52.5" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#BG"
+       id="linearGradient2851"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(28.763482,-2.9838432e-7,-5.9731749e-8,5.3777725,-4060.1307,-1365.3832)"
+       x1="60"
+       y1="52.5"
+       x2="80"
+       y2="52.5" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#BG"
+       id="linearGradient3147"
+       gradientUnits="userSpaceOnUse"
+       x1="158.44206"
+       y1="451.63565"
+       x2="366.2937"
+       y2="451.63565" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#BG"
+       id="linearGradient258" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#TEXT"
+       id="linearGradient1433"
+       gradientUnits="userSpaceOnUse"
+       x1="-585.75073"
+       y1="216.87227"
+       x2="-529.44604"
+       y2="216.87227" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#BG"
+       id="linearGradient1449"
+       gradientUnits="userSpaceOnUse"
+       x1="158.44206"
+       y1="451.63565"
+       x2="366.2937"
+       y2="451.63565" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1579">
+      <path
+         style="fill:url(#linearGradient1583);fill-opacity:1;stroke-width:1.93015;-inkscape-stroke:none;stop-color:#000000"
+         id="path1581"
+         width="636.57965"
+         height="165.19519"
+         x="-544.85327"
+         y="554.91711"
+         inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+         inkscape:export-xdpi="101.59975"
+         inkscape:export-ydpi="101.59975"
+         sodipodi:type="rect"
+         d="M -544.85327,554.91711 H 91.726379 V 720.1123 H -544.85327 Z"
+         transform="matrix(0.46301281,0.88635159,-0.71357053,0.7005834,0,0)" />
+    </clipPath>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#NEUTRAL"
+       id="linearGradient1583"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.9786228,0,0,0.78664381,-544.85336,554.91718)"
+       x1="0"
+       y1="105"
+       x2="160"
+       y2="105" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1585">
+      <path
+         style="fill:url(#linearGradient1589);fill-opacity:1;stroke-width:1.93015;-inkscape-stroke:none;stop-color:#000000"
+         id="path1587"
+         width="636.57965"
+         height="165.19519"
+         x="-597.32098"
+         y="622.0733"
+         inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+         inkscape:export-xdpi="101.59975"
+         inkscape:export-ydpi="101.59975"
+         sodipodi:type="rect"
+         d="M -597.32098,622.0733 H 39.258667 V 787.26849 H -597.32098 Z"
+         transform="matrix(0.46301281,0.88635159,-0.71357053,0.7005834,0,0)" />
+    </clipPath>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#NEUTRAL"
+       id="linearGradient1589"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.9786228,0,0,0.78664381,-597.32107,622.07335)"
+       x1="0"
+       y1="105"
+       x2="160"
+       y2="105" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1591">
+      <path
+         style="fill:url(#linearGradient1595);fill-opacity:1;stroke-width:1.93015;-inkscape-stroke:none;stop-color:#000000"
+         id="path1593"
+         width="636.57965"
+         height="165.19519"
+         x="-652.02588"
+         y="691.28381"
+         inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+         inkscape:export-xdpi="101.59975"
+         inkscape:export-ydpi="101.59975"
+         sodipodi:type="rect"
+         d="M -652.02588,691.28381 H -15.446228 V 856.479 H -652.02588 Z"
+         transform="matrix(0.46301281,0.88635159,-0.71357053,0.7005834,0,0)" />
+    </clipPath>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#NEUTRAL"
+       id="linearGradient1595"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.9786228,0,0,0.78664381,-652.02597,691.28389)"
+       x1="0"
+       y1="105"
+       x2="160"
+       y2="105" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1597">
+      <path
+         style="fill:url(#linearGradient1601);fill-opacity:1;stroke-width:1.93015;-inkscape-stroke:none;stop-color:#000000"
+         id="path1599"
+         width="636.57965"
+         height="165.19519"
+         x="-492.90964"
+         y="489.97604"
+         inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+         inkscape:export-xdpi="101.59975"
+         inkscape:export-ydpi="101.59975"
+         sodipodi:type="rect"
+         d="M -492.90964,489.97604 H 143.67001 V 655.17123 H -492.90964 Z"
+         transform="matrix(0.46301281,0.88635159,-0.71357053,0.7005834,0,0)" />
+    </clipPath>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#NEUTRAL"
+       id="linearGradient1601"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.9786228,0,0,0.78664381,-492.90976,489.9761)"
+       x1="0"
+       y1="105"
+       x2="160"
+       y2="105" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1603">
+      <path
+         style="fill:url(#linearGradient1607);fill-opacity:1;stroke-width:1.93015;-inkscape-stroke:none;stop-color:#000000"
+         id="path1605"
+         width="636.57965"
+         height="165.19519"
+         x="-652.40533"
+         y="485.05917"
+         inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+         inkscape:export-xdpi="101.59975"
+         inkscape:export-ydpi="101.59975"
+         sodipodi:type="rect"
+         d="M -652.40533,485.05917 H -15.825684 V 650.25436 H -652.40533 Z"
+         transform="matrix(0.46301281,0.88635159,-0.71357053,0.7005834,0,0)" />
+    </clipPath>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#NEUTRAL"
+       id="linearGradient1607"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.9786228,0,0,0.78664381,-652.40546,485.05921)"
+       x1="0"
+       y1="105"
+       x2="160"
+       y2="105" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1609">
+      <path
+         style="fill:url(#linearGradient1613);fill-opacity:1;stroke-width:1.93015;-inkscape-stroke:none;stop-color:#000000"
+         id="path1611"
+         width="636.57965"
+         height="165.19519"
+         x="-705.31555"
+         y="551.99915"
+         inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+         inkscape:export-xdpi="101.59975"
+         inkscape:export-ydpi="101.59975"
+         sodipodi:type="rect"
+         d="M -705.31555,551.99915 H -68.735901 V 717.19434 H -705.31555 Z"
+         transform="matrix(0.46301281,0.88635159,-0.71357053,0.7005834,0,0)" />
+    </clipPath>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#NEUTRAL"
+       id="linearGradient1613"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.9786228,0,0,0.78664381,-705.31568,551.99918)"
+       x1="0"
+       y1="105"
+       x2="160"
+       y2="105" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1615">
+      <path
+         style="fill:url(#linearGradient1619);fill-opacity:1;stroke-width:1.93015;-inkscape-stroke:none;stop-color:#000000"
+         id="path1617"
+         width="636.57965"
+         height="165.19519"
+         x="-760.02039"
+         y="621.20966"
+         inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+         inkscape:export-xdpi="101.59975"
+         inkscape:export-ydpi="101.59975"
+         sodipodi:type="rect"
+         d="m -760.02039,621.20966 h 636.57966 v 165.19519 h -636.57966 z"
+         transform="matrix(0.46301281,0.88635159,-0.71357053,0.7005834,0,0)" />
+    </clipPath>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#NEUTRAL"
+       id="linearGradient1619"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.9786228,0,0,0.78664381,-760.02049,621.2097)"
+       x1="0"
+       y1="105"
+       x2="160"
+       y2="105" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1621">
+      <path
+         style="fill:url(#linearGradient1625);fill-opacity:1;stroke-width:1.93015;-inkscape-stroke:none;stop-color:#000000"
+         id="path1623"
+         width="636.57965"
+         height="165.19519"
+         x="-600.90424"
+         y="419.90189"
+         inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+         inkscape:export-xdpi="101.59975"
+         inkscape:export-ydpi="101.59975"
+         sodipodi:type="rect"
+         d="M -600.90424,419.90189 H 35.675415 V 585.09708 H -600.90424 Z"
+         transform="matrix(0.46301281,0.88635159,-0.71357053,0.7005834,0,0)" />
+    </clipPath>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#NEUTRAL"
+       id="linearGradient1625"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.9786228,0,0,0.78664381,-600.90437,419.90192)"
+       x1="0"
+       y1="105"
+       x2="160"
+       y2="105" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1627">
+      <path
+         style="fill:url(#linearGradient1631);fill-opacity:1;stroke-width:1.93015;-inkscape-stroke:none;stop-color:#000000"
+         id="path1629"
+         width="636.57965"
+         height="165.19519"
+         x="-760.64905"
+         y="414.82333"
+         inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+         inkscape:export-xdpi="101.59975"
+         inkscape:export-ydpi="101.59975"
+         sodipodi:type="rect"
+         d="M -760.64905,414.82333 H -124.0694 V 580.01852 H -760.64905 Z"
+         transform="matrix(0.46301281,0.88635159,-0.71357053,0.7005834,0,0)" />
+    </clipPath>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#NEUTRAL"
+       id="linearGradient1631"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.9786228,0,0,0.78664381,-760.64918,414.82337)"
+       x1="0"
+       y1="105"
+       x2="160"
+       y2="105" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1633">
+      <path
+         style="fill:url(#linearGradient1637);fill-opacity:1;stroke-width:1.93015;-inkscape-stroke:none;stop-color:#000000"
+         id="path1635"
+         width="636.57965"
+         height="165.19519"
+         x="-813.55927"
+         y="481.76328"
+         inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+         inkscape:export-xdpi="101.59975"
+         inkscape:export-ydpi="101.59975"
+         sodipodi:type="rect"
+         d="m -813.55927,481.76328 h 636.57966 v 165.19519 h -636.57966 z"
+         transform="matrix(0.46301281,0.88635159,-0.71357053,0.7005834,0,0)" />
+    </clipPath>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#NEUTRAL"
+       id="linearGradient1637"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.9786228,0,0,0.78664381,-813.5594,481.76333)"
+       x1="0"
+       y1="105"
+       x2="160"
+       y2="105" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1639">
+      <path
+         style="fill:url(#linearGradient1643);fill-opacity:1;stroke-width:1.93015;-inkscape-stroke:none;stop-color:#000000"
+         id="path1641"
+         width="636.57965"
+         height="165.19519"
+         x="-868.26416"
+         y="550.97382"
+         inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+         inkscape:export-xdpi="101.59975"
+         inkscape:export-ydpi="101.59975"
+         sodipodi:type="rect"
+         d="m -868.26416,550.97382 h 636.57965 v 165.19519 h -636.57965 z"
+         transform="matrix(0.46301281,0.88635159,-0.71357053,0.7005834,0,0)" />
+    </clipPath>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#NEUTRAL"
+       id="linearGradient1643"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.9786228,0,0,0.78664381,-868.2643,550.97385)"
+       x1="0"
+       y1="105"
+       x2="160"
+       y2="105" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1645">
+      <path
+         style="fill:url(#linearGradient1649);fill-opacity:1;stroke-width:1.93015;-inkscape-stroke:none;stop-color:#000000"
+         id="path1647"
+         width="636.57965"
+         height="165.19519"
+         x="-709.14789"
+         y="349.66602"
+         inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+         inkscape:export-xdpi="101.59975"
+         inkscape:export-ydpi="101.59975"
+         sodipodi:type="rect"
+         d="M -709.14789,349.66602 H -72.568237 V 514.86121 H -709.14789 Z"
+         transform="matrix(0.46301281,0.88635159,-0.71357053,0.7005834,0,0)" />
+    </clipPath>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#NEUTRAL"
+       id="linearGradient1649"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.9786228,0,0,0.78664381,-709.14801,349.66607)"
+       x1="0"
+       y1="105"
+       x2="160"
+       y2="105" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1651">
+      <path
+         style="fill:url(#linearGradient1655);fill-opacity:1;stroke-width:1.93015;-inkscape-stroke:none;stop-color:#000000"
+         id="path1653"
+         width="937.40167"
+         height="277.49625"
+         x="-2666.4819"
+         y="764.70081"
+         inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+         inkscape:export-xdpi="101.59975"
+         inkscape:export-ydpi="101.59975"
+         sodipodi:type="rect"
+         d="m -2666.4819,764.70081 h 937.4016 v 277.49629 h -937.4016 z"
+         transform="matrix(0.62169781,0.78325719,-0.83991723,0.54271452,0,0)" />
+    </clipPath>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#NEUTRAL"
+       id="linearGradient1655"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(5.8587601,0,0,1.3214108,-2666.482,764.70091)"
+       x1="0"
+       y1="105"
+       x2="160"
+       y2="105" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1657">
+      <path
+         style="fill:url(#linearGradient1661);fill-opacity:1;stroke-width:1.93015;-inkscape-stroke:none;stop-color:#000000"
+         id="path1659"
+         width="937.40167"
+         height="277.49625"
+         x="-2666.4819"
+         y="764.70081"
+         inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+         inkscape:export-xdpi="101.59975"
+         inkscape:export-ydpi="101.59975"
+         sodipodi:type="rect"
+         d="m -2666.4819,764.70081 h 937.4016 v 277.49629 h -937.4016 z"
+         transform="matrix(0.62169781,0.78325719,-0.83991723,0.54271452,0,0)" />
+    </clipPath>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#NEUTRAL"
+       id="linearGradient1661"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(5.8587601,0,0,1.3214108,-2666.482,764.70091)"
+       x1="0"
+       y1="105"
+       x2="160"
+       y2="105" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1663">
+      <path
+         style="fill:url(#linearGradient1667);fill-opacity:1;stroke-width:1.93015;-inkscape-stroke:none;stop-color:#000000"
+         id="path1665"
+         width="937.40167"
+         height="277.49625"
+         x="-2666.4819"
+         y="764.70081"
+         inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+         inkscape:export-xdpi="101.59975"
+         inkscape:export-ydpi="101.59975"
+         sodipodi:type="rect"
+         d="m -2666.4819,764.70081 h 937.4016 v 277.49629 h -937.4016 z"
+         transform="matrix(0.62169781,0.78325719,-0.83991723,0.54271452,0,0)" />
+    </clipPath>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#NEUTRAL"
+       id="linearGradient1667"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(5.8587601,0,0,1.3214108,-2666.482,764.70091)"
+       x1="0"
+       y1="105"
+       x2="160"
+       y2="105" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1669">
+      <path
+         style="fill:url(#linearGradient1673);fill-opacity:1;stroke-width:1.93015;-inkscape-stroke:none;stop-color:#000000"
+         id="path1671"
+         width="937.40167"
+         height="277.49625"
+         x="-2666.4819"
+         y="764.70081"
+         inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+         inkscape:export-xdpi="101.59975"
+         inkscape:export-ydpi="101.59975"
+         sodipodi:type="rect"
+         d="m -2666.4819,764.70081 h 937.4016 v 277.49629 h -937.4016 z"
+         transform="matrix(0.62169781,0.78325719,-0.83991723,0.54271452,0,0)" />
+    </clipPath>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#NEUTRAL"
+       id="linearGradient1673"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(5.8587601,0,0,1.3214108,-2666.482,764.70091)"
+       x1="0"
+       y1="105"
+       x2="160"
+       y2="105" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1675">
+      <path
+         style="fill:url(#linearGradient1679);fill-opacity:1;stroke-width:1.93015;-inkscape-stroke:none;stop-color:#000000"
+         id="path1677"
+         width="937.40167"
+         height="277.49625"
+         x="-2666.4819"
+         y="764.70081"
+         inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+         inkscape:export-xdpi="101.59975"
+         inkscape:export-ydpi="101.59975"
+         sodipodi:type="rect"
+         d="m -2666.4819,764.70081 h 937.4016 v 277.49629 h -937.4016 z"
+         transform="matrix(0.62169781,0.78325719,-0.83991723,0.54271452,0,0)" />
+    </clipPath>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#NEUTRAL"
+       id="linearGradient1679"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(5.8587601,0,0,1.3214108,-2666.482,764.70091)"
+       x1="0"
+       y1="105"
+       x2="160"
+       y2="105" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1681">
+      <path
+         style="fill:url(#linearGradient1685);fill-opacity:1;stroke-width:1.93015;-inkscape-stroke:none;stop-color:#000000"
+         id="path1683"
+         width="937.40167"
+         height="277.49625"
+         x="-2666.4819"
+         y="764.70081"
+         inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+         inkscape:export-xdpi="101.59975"
+         inkscape:export-ydpi="101.59975"
+         sodipodi:type="rect"
+         d="m -2666.4819,764.70081 h 937.4016 v 277.49629 h -937.4016 z"
+         transform="matrix(0.62169781,0.78325719,-0.83991723,0.54271452,0,0)" />
+    </clipPath>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#NEUTRAL"
+       id="linearGradient1685"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(5.8587601,0,0,1.3214108,-2666.482,764.70091)"
+       x1="0"
+       y1="105"
+       x2="160"
+       y2="105" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2629"
+       id="linearGradient2665"
+       x1="-1748.4125"
+       y1="1088.9073"
+       x2="-2357.6201"
+       y2="863.87598"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(876.37114,-108.86598)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#BG"
+       id="linearGradient3771"
+       gradientUnits="userSpaceOnUse"
+       x1="158.44206"
+       y1="451.63565"
+       x2="366.2937"
+       y2="451.63565" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#BG"
+       id="linearGradient3773"
+       gradientUnits="userSpaceOnUse"
+       x1="158.44206"
+       y1="451.63565"
+       x2="366.2937"
+       y2="451.63565" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#BG"
+       id="linearGradient3775"
+       gradientUnits="userSpaceOnUse"
+       x1="158.44206"
+       y1="451.63565"
+       x2="366.2937"
+       y2="451.63565" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#TEXT"
+       id="linearGradient3777"
+       gradientUnits="userSpaceOnUse"
+       x1="-585.75073"
+       y1="216.87227"
+       x2="-529.44604"
+       y2="216.87227" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#BG"
+       id="linearGradient3779"
+       gradientUnits="userSpaceOnUse"
+       x1="158.44206"
+       y1="451.63565"
+       x2="366.2937"
+       y2="451.63565" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#BG"
+       id="linearGradient3781"
+       gradientUnits="userSpaceOnUse"
+       x1="158.44206"
+       y1="451.63565"
+       x2="366.2937"
+       y2="451.63565" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#BG"
+       id="linearGradient3783"
+       gradientUnits="userSpaceOnUse"
+       x1="158.44206"
+       y1="451.63565"
+       x2="366.2937"
+       y2="451.63565" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#TEXT"
+       id="linearGradient3785"
+       gradientUnits="userSpaceOnUse"
+       x1="-585.75073"
+       y1="216.87227"
+       x2="-529.44604"
+       y2="216.87227" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#BG"
+       id="linearGradient3787"
+       gradientUnits="userSpaceOnUse"
+       x1="158.44206"
+       y1="451.63565"
+       x2="366.2937"
+       y2="451.63565" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#BG"
+       id="linearGradient3789"
+       gradientUnits="userSpaceOnUse"
+       x1="158.44206"
+       y1="451.63565"
+       x2="366.2937"
+       y2="451.63565" />
   </defs>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
+    <path
+       style="fill:url(#linearGradient2665);fill-opacity:1;stroke-width:1.93015;-inkscape-stroke:none;stop-color:#000000"
+       id="rect855-6-8"
+       width="905.86743"
+       height="313.48514"
+       x="-1481.249"
+       y="755.01001"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\banner_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975"
+       sodipodi:type="rect"
+       d="m -1481.249,755.01001 h 905.86741 V 1068.4951 H -1481.249 Z" />
     <rect
        style="fill:url(#linearGradient3327);fill-opacity:1.0;stroke-width:4.50484;-inkscape-stroke:none;stop-color:#000000"
        id="rect855-2"
@@ -1869,28 +2782,40 @@
        width="120"
        height="240.0006"
        x="-3.552712e-15"
-       y="7.1054274e-15" />
+       y="7.1054274e-15"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
     <rect
        style="opacity:0.5;fill:url(#linearGradient14005);fill-opacity:1;stroke-width:0.72126;-inkscape-stroke:none;stop-color:#000000"
        id="rect852-3-9"
        width="20"
        height="40.000099"
        x="60"
-       y="40.000099" />
+       y="40.000099"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
     <rect
        style="opacity:0.75;fill:url(#linearGradient13909);fill-opacity:1;stroke-width:0.721259;-inkscape-stroke:none;stop-color:#000000"
        id="rect852"
        width="20"
        height="40.000099"
        x="20"
-       y="40.000099" />
+       y="40.000099"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
     <rect
        style="fill:url(#linearGradient1571);fill-opacity:1;stroke-width:0.72126;-inkscape-stroke:none;stop-color:#000000"
        id="rect852-3"
        width="20"
        height="40.000099"
        x="40"
-       y="40.000099" />
+       y="40.000099"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
     <rect
        style="fill:url(#linearGradient905);fill-opacity:1;stroke-width:0.72126;-inkscape-stroke:none;stop-color:#000000"
        id="rect852-3-2"
@@ -1960,63 +2885,90 @@
        width="20"
        height="40.000099"
        x="60"
-       y="80.000198" />
+       y="80.000198"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
     <rect
        style="opacity:0.5;fill:url(#linearGradient14007);fill-opacity:1;stroke-width:0.72126;-inkscape-stroke:none;stop-color:#000000"
        id="rect852-3-9-7"
        width="20"
        height="40.000099"
        x="80"
-       y="160.00041" />
+       y="160.00041"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
     <rect
        style="fill:url(#linearGradient13895);fill-opacity:1;stroke-width:0.72126;-inkscape-stroke:none;stop-color:#000000"
        id="rect852-3-9-2"
        width="20"
        height="40.000099"
        x="80"
-       y="120.00031" />
+       y="120.00031"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
     <rect
        style="opacity:0.75;fill:url(#linearGradient13907);fill-opacity:1;stroke-width:0.72126;-inkscape-stroke:none;stop-color:#000000"
        id="rect852-3-9-6"
        width="20"
        height="40.000099"
        x="80"
-       y="80.000198" />
+       y="80.000198"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
     <rect
        style="fill:url(#linearGradient13901);fill-opacity:1;stroke-width:0.72126;-inkscape-stroke:none;stop-color:#000000"
        id="rect852-3-9-5"
        width="20"
        height="40.000099"
        x="60"
-       y="160.00041" />
+       y="160.00041"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
     <rect
        style="opacity:0.5;fill:url(#linearGradient14009);fill-opacity:1;stroke-width:0.72126;-inkscape-stroke:none;stop-color:#000000"
        id="rect852-3-9-15"
        width="20"
        height="40.000099"
        x="39.999996"
-       y="160.00041" />
+       y="160.00041"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
     <rect
        style="opacity:0.25;fill:url(#linearGradient14055);fill-opacity:1;stroke-width:0.721259;-inkscape-stroke:none;stop-color:#000000"
        id="rect852-3-4"
        width="20"
        height="40.000099"
        x="40"
-       y="120.00031" />
+       y="120.00031"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
     <rect
        style="fill:url(#linearGradient13889);fill-opacity:1;stroke-width:0.721259;-inkscape-stroke:none;stop-color:#000000"
        id="rect852-2"
        width="20"
        height="40.000099"
        x="20"
-       y="80.000198" />
+       y="80.000198"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
     <rect
        style="opacity:0.5;fill:url(#linearGradient14011);fill-opacity:1;stroke-width:0.721259;-inkscape-stroke:none;stop-color:#000000"
        id="rect852-0"
        width="20"
        height="40.000099"
        x="20"
-       y="120.00031" />
+       y="120.00031"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
     <rect
        style="fill:url(#linearGradient938);fill-opacity:1;stroke-width:0.72126;-inkscape-stroke:none;stop-color:#000000"
        id="rect852-3-2-5"
@@ -2038,7 +2990,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-34-2);vector-effect:none;fill:url(#linearGradient31168);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="-592.80469"
          y="258.40175"
-         id="tspan58651">ADROP</tspan></text>
+         id="tspan4331">ADROP</tspan></text>
     <rect
        style="fill:url(#linearGradient30118);fill-opacity:1.0;stroke-width:0.72126;-inkscape-stroke:none;stop-color:#000000"
        id="rect852-3-2-5-1-7-5"
@@ -2053,7 +3005,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-34-1);vector-effect:none;fill:url(#linearGradient31170);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="-592.80469"
          y="258.40175"
-         id="tspan58653">TWITR</tspan></text>
+         id="tspan4333">TWITR</tspan></text>
     <rect
        style="fill:url(#linearGradient30167);fill-opacity:1.0;stroke-width:0.72126;-inkscape-stroke:none;stop-color:#000000"
        id="rect852-3-2-5-1-7-4"
@@ -2068,7 +3020,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-34-4);vector-effect:none;fill:url(#linearGradient31172);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="-592.80469"
          y="258.40175"
-         id="tspan58655">NETWR</tspan></text>
+         id="tspan4335">NETWR</tspan></text>
     <rect
        style="fill:url(#linearGradient30216);fill-opacity:1.0;stroke-width:0.72126;-inkscape-stroke:none;stop-color:#000000"
        id="rect852-3-2-5-1-7-1"
@@ -2083,7 +3035,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-34-4-6);vector-effect:none;fill:url(#linearGradient50115);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="-592.80469"
          y="258.40175"
-         id="tspan58657">CONFG</tspan></text>
+         id="tspan4337">CONFG</tspan></text>
     <rect
        style="fill:url(#linearGradient50106);fill-opacity:1.0;stroke-width:0.72126;-inkscape-stroke:none;stop-color:#000000"
        id="rect852-3-2-5-1-7-1-7"
@@ -2174,7 +3126,150 @@
        width="20"
        height="40.000099"
        x="80"
-       y="120.00031" />
+       y="120.00031"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
+    <rect
+       style="fill:url(#linearGradient1954);fill-opacity:1;stroke-width:0.932592;-inkscape-stroke:none;stop-color:#000000"
+       id="rect855-6"
+       width="240"
+       height="240.0006"
+       x="-560"
+       y="0"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
+    <rect
+       style="opacity:0.5;fill:url(#linearGradient1956);fill-opacity:1;stroke-width:0.72126;-inkscape-stroke:none;stop-color:#000000"
+       id="rect852-3-9-0"
+       width="20"
+       height="40.000099"
+       x="-440"
+       y="40.000103"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
+    <rect
+       style="opacity:0.75;fill:url(#linearGradient1958);fill-opacity:1;stroke-width:0.721259;-inkscape-stroke:none;stop-color:#000000"
+       id="rect852-02"
+       width="20"
+       height="40.000099"
+       x="-480"
+       y="40.000103"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
+    <rect
+       style="fill:url(#linearGradient1960);fill-opacity:1;stroke-width:0.72126;-inkscape-stroke:none;stop-color:#000000"
+       id="rect852-3-6"
+       width="20"
+       height="40.000099"
+       x="-460"
+       y="40.000103"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
+    <rect
+       style="opacity:0.25;fill:url(#linearGradient1962);fill-opacity:1;stroke-width:0.72126;-inkscape-stroke:none;stop-color:#000000"
+       id="rect852-3-9-1-1"
+       width="20"
+       height="40.000099"
+       x="-440"
+       y="80.000206"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
+    <rect
+       style="opacity:0.5;fill:url(#linearGradient1964);fill-opacity:1;stroke-width:0.72126;-inkscape-stroke:none;stop-color:#000000"
+       id="rect852-3-9-7-9"
+       width="20"
+       height="40.000099"
+       x="-420"
+       y="160.00043"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
+    <rect
+       style="fill:url(#linearGradient1966);fill-opacity:1;stroke-width:0.72126;-inkscape-stroke:none;stop-color:#000000"
+       id="rect852-3-9-2-6"
+       width="20"
+       height="40.000099"
+       x="-420"
+       y="120.00031"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
+    <rect
+       style="opacity:0.75;fill:url(#linearGradient1968);fill-opacity:1;stroke-width:0.72126;-inkscape-stroke:none;stop-color:#000000"
+       id="rect852-3-9-6-8"
+       width="20"
+       height="40.000099"
+       x="-420"
+       y="80.000206"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
+    <rect
+       style="fill:url(#linearGradient1970);fill-opacity:1;stroke-width:0.72126;-inkscape-stroke:none;stop-color:#000000"
+       id="rect852-3-9-5-8"
+       width="20"
+       height="40.000099"
+       x="-440"
+       y="160.00043"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
+    <rect
+       style="opacity:0.5;fill:url(#linearGradient1972);fill-opacity:1;stroke-width:0.72126;-inkscape-stroke:none;stop-color:#000000"
+       id="rect852-3-9-15-7"
+       width="20"
+       height="40.000099"
+       x="-460.00003"
+       y="160.00043"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
+    <rect
+       style="opacity:0.25;fill:url(#linearGradient1974);fill-opacity:1;stroke-width:0.721259;-inkscape-stroke:none;stop-color:#000000"
+       id="rect852-3-4-3"
+       width="20"
+       height="40.000099"
+       x="-460"
+       y="120.00031"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
+    <rect
+       style="fill:url(#linearGradient1976);fill-opacity:1;stroke-width:0.721259;-inkscape-stroke:none;stop-color:#000000"
+       id="rect852-2-8"
+       width="20"
+       height="40.000099"
+       x="-480"
+       y="80.000206"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
+    <rect
+       style="opacity:0.5;fill:url(#linearGradient1978);fill-opacity:1;stroke-width:0.721259;-inkscape-stroke:none;stop-color:#000000"
+       id="rect852-0-9"
+       width="20"
+       height="40.000099"
+       x="-480"
+       y="120.00031"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
+    <rect
+       style="fill:url(#linearGradient1980);fill-opacity:1;stroke-width:0.72126;-inkscape-stroke:none;stop-color:#000000"
+       id="rect852-3-2-5-3-8"
+       width="20"
+       height="40.000099"
+       x="-420"
+       y="120.00031"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\logo_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
     <rect
        style="opacity:1;fill:url(#linearGradient5063);fill-opacity:1;stroke-width:1.44252;-inkscape-stroke:none;stop-color:#000000"
        id="rect852-3-2-61-55"
@@ -2196,7 +3291,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-3);vector-effect:none;fill:url(#linearGradient52129);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="-592.80469"
          y="258.40175"
-         id="tspan58659">S</tspan></text>
+         id="tspan4339">S</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.27496527,0,0,0.27654252,35.879645,232.16063)"
@@ -2204,7 +3299,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-3-1);vector-effect:none;fill:url(#linearGradient27533);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="-592.80469"
          y="258.40175"
-         id="tspan58661">D</tspan></text>
+         id="tspan4341">D</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.27496527,0,0,0.27654252,15.335432,232.16063)"
@@ -2212,7 +3307,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-3-8);vector-effect:none;fill:url(#linearGradient27529);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="-592.80469"
          y="258.40175"
-         id="tspan58663">A</tspan></text>
+         id="tspan4343">A</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.27496527,0,0,0.27654252,-4.5347883,232.16063)"
@@ -2220,7 +3315,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-3-7);vector-effect:none;fill:url(#linearGradient27525);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="-592.80469"
          y="258.40175"
-         id="tspan58665">H</tspan></text>
+         id="tspan4345">H</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.27496527,0,0,0.27654253,-23.875842,192.02102)"
@@ -2228,7 +3323,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-3-3);vector-effect:none;fill:url(#linearGradient52127);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="-592.80469"
          y="258.40175"
-         id="tspan58667">S</tspan></text>
+         id="tspan4347">S</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.27496527,0,0,0.27654252,35.879645,192.02102)"
@@ -2236,7 +3331,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-3-1-9);vector-effect:none;fill:url(#linearGradient27519);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="-592.80469"
          y="258.40175"
-         id="tspan58669">D</tspan></text>
+         id="tspan4349">D</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.27496527,0,0,0.27654252,15.335432,192.02102)"
@@ -2244,7 +3339,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-3-8-8);vector-effect:none;fill:url(#linearGradient27531);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="-592.80469"
          y="258.40175"
-         id="tspan58671">A</tspan></text>
+         id="tspan4351">A</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.27496527,0,0,0.27654252,-4.5347883,192.02102)"
@@ -2252,7 +3347,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-3-7-5);vector-effect:none;fill:url(#linearGradient27523);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="-592.80469"
          y="258.40175"
-         id="tspan58673">H</tspan></text>
+         id="tspan4353">H</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.27496527,0,0,0.27654253,-23.875842,151.9738)"
@@ -2260,7 +3355,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-3-3-3);vector-effect:none;fill:url(#linearGradient52125);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="-592.80469"
          y="258.40175"
-         id="tspan58675">S</tspan></text>
+         id="tspan4355">S</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.27496527,0,0,0.27654253,162.84596,239.77152)"
@@ -2268,7 +3363,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-3-3-3-9);vector-effect:none;fill:url(#linearGradient31174);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="-592.80469"
          y="258.40175"
-         id="tspan58677">$</tspan></text>
+         id="tspan4357">$</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.27496527,0,0,0.27654252,35.879645,151.9738)"
@@ -2276,7 +3371,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-3-1-9-0);vector-effect:none;fill:url(#linearGradient27517);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="-592.80469"
          y="258.40175"
-         id="tspan58679">D</tspan></text>
+         id="tspan4359">D</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.27496527,0,0,0.27654252,15.335432,151.9738)"
@@ -2284,7 +3379,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-3-8-8-1);vector-effect:none;fill:url(#linearGradient27515);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="-592.80469"
          y="258.40175"
-         id="tspan58681">A</tspan></text>
+         id="tspan4361">A</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.27496527,0,0,0.27654252,-4.5347882,151.9738)"
@@ -2292,7 +3387,229 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-3-7-5-5);vector-effect:none;fill:url(#linearGradient27513);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="-592.80469"
          y="258.40175"
-         id="tspan58683">H</tspan></text>
+         id="tspan4363">H</tspan></text>
+    <path
+       style="fill:url(#linearGradient2841);fill-opacity:1;stroke-width:7.26688;-inkscape-stroke:none;stop-color:#000000"
+       id="rect852-3-2-61-7"
+       width="143.8174"
+       height="564.66608"
+       x="-2334.3225"
+       y="-1365.3832"
+       transform="matrix(0.45783137,-0.88903905,0.70855015,0.70566046,876.37114,-108.86598)"
+       sodipodi:type="rect"
+       d="m -2334.3225,-1365.3832 h 143.8174 v 564.6661 h -143.8174 z"
+       clip-path="url(#clipPath1681)"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\banner_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
+    <path
+       style="fill:url(#linearGradient2843);fill-opacity:1;stroke-width:7.26688;-inkscape-stroke:none;stop-color:#000000"
+       id="rect852-3-2-61-6-1"
+       width="143.8174"
+       height="564.66608"
+       x="-2190.5051"
+       y="-1365.3832"
+       transform="matrix(0.45783137,-0.88903905,0.70855015,0.70566046,876.37114,-108.86598)"
+       sodipodi:type="rect"
+       d="m -2190.5051,-1365.3832 h 143.8174 v 564.6661 h -143.8174 z"
+       clip-path="url(#clipPath1675)"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\banner_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
+    <path
+       style="fill:url(#linearGradient2845);fill-opacity:1;stroke-width:7.26688;-inkscape-stroke:none;stop-color:#000000"
+       id="rect852-3-2-61-1-3"
+       width="143.8174"
+       height="564.66608"
+       x="-2046.6876"
+       y="-1365.3832"
+       transform="matrix(0.45783137,-0.88903905,0.70855015,0.70566046,876.37114,-108.86598)"
+       sodipodi:type="rect"
+       d="m -2046.6876,-1365.3832 h 143.8174 v 564.6661 h -143.8174 z"
+       clip-path="url(#clipPath1669)"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\banner_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
+    <path
+       style="fill:url(#linearGradient2847);fill-opacity:1;stroke-width:7.26688;-inkscape-stroke:none;stop-color:#000000"
+       id="rect852-3-2-61-5-5"
+       width="143.8174"
+       height="564.66608"
+       x="-1902.8701"
+       y="-1365.3832"
+       transform="matrix(0.45783137,-0.88903905,0.70855015,0.70566046,876.37114,-108.86598)"
+       sodipodi:type="rect"
+       d="m -1902.8701,-1365.3832 h 143.8174 v 564.6661 h -143.8174 z"
+       clip-path="url(#clipPath1663)"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\banner_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
+    <path
+       style="fill:url(#linearGradient2849);fill-opacity:1;stroke-width:8.39106;-inkscape-stroke:none;stop-color:#000000"
+       id="rect852-3-2-61-55-1"
+       width="575.26959"
+       height="188.22203"
+       x="-2334.3225"
+       y="-988.93884"
+       transform="matrix(0.45783137,-0.88903905,0.70855015,0.70566046,876.37114,-108.86598)"
+       sodipodi:type="rect"
+       d="m -2334.3225,-988.93884 h 575.2696 v 188.22203 h -575.2696 z"
+       clip-path="url(#clipPath1657)"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\banner_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
+    <path
+       style="opacity:0.75;fill:url(#linearGradient2851);fill-opacity:1;stroke-width:8.39106;-inkscape-stroke:none;stop-color:#000000"
+       id="rect852-3-2-61-55-6-7"
+       width="575.26959"
+       height="188.22203"
+       x="-2334.3225"
+       y="-1177.1611"
+       transform="matrix(0.45783137,-0.88903905,0.70855015,0.70566046,876.37114,-108.86598)"
+       sodipodi:type="rect"
+       d="m -2334.3225,-1177.1611 h 575.2696 v 188.222 h -575.2696 z"
+       clip-path="url(#clipPath1651)"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\banner_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.90524231,-1.7578432,0.92202333,0.91826305,-1362.031,200.32699)"
+       id="text12889-1-69"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-3-6);vector-effect:none;fill:url(#linearGradient1433);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"
+       clip-path="url(#clipPath1645)"><tspan
+         x="-592.80469"
+         y="258.40175"
+         id="tspan4365">S</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.90524231,-1.7578432,0.92202333,0.91826305,-288.93236,-290.5537)"
+       id="text12889-1-3-2"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-3-1-7);vector-effect:none;fill:url(#linearGradient3771);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"
+       clip-path="url(#clipPath1639)"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\banner_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975"><tspan
+         x="-592.80469"
+         y="258.40175"
+         id="tspan4367">D</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.90524231,-1.7578432,0.92202333,0.91826305,-356.56816,-159.21532)"
+       id="text12889-1-0-29"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-3-8-7);vector-effect:none;fill:url(#linearGradient3773);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"
+       clip-path="url(#clipPath1633)"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\banner_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975"><tspan
+         x="-592.80469"
+         y="258.40175"
+         id="tspan4369">A</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.90524231,-1.7578432,0.92202333,0.91826305,-421.98506,-32.18571)"
+       id="text12889-1-6-7"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-3-7-7);vector-effect:none;fill:url(#linearGradient3775);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"
+       clip-path="url(#clipPath1627)"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\banner_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975"><tspan
+         x="-592.80469"
+         y="258.40175"
+         id="tspan4371">H</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.90524231,-1.7578432,0.92202333,0.91826306,-619.48966,-41.8231)"
+       id="text12889-1-1-7"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-3-3-4);vector-effect:none;fill:url(#linearGradient3777);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"
+       clip-path="url(#clipPath1621)"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\banner_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975"><tspan
+         x="-592.80469"
+         y="258.40175"
+         id="tspan4373">S</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.90524231,-1.7578432,0.92202333,0.91826305,-422.76236,-423.83782)"
+       id="text12889-1-3-7-1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-3-1-9-4);vector-effect:none;fill:url(#linearGradient3779);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"
+       clip-path="url(#clipPath1615)"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\banner_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975"><tspan
+         x="-592.80469"
+         y="258.40175"
+         id="tspan4375">D</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.90524231,-1.7578432,0.92202333,0.91826305,-490.39806,-292.49943)"
+       id="text12889-1-0-2-2"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-3-8-8-7);vector-effect:none;fill:url(#linearGradient3781);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"
+       clip-path="url(#clipPath1609)"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\banner_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975"><tspan
+         x="-592.80469"
+         y="258.40175"
+         id="tspan4377">A</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.90524231,-1.7578432,0.92202333,0.91826305,-555.81496,-165.46981)"
+       id="text12889-1-6-5-9"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-3-7-5-7);vector-effect:none;fill:url(#linearGradient3783);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"
+       clip-path="url(#clipPath1603)"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\banner_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975"><tspan
+         x="-592.80469"
+         y="258.40175"
+         id="tspan4379">H</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.90524231,-1.7578432,0.92202333,0.91826306,-753.01156,-174.80041)"
+       id="text12889-1-1-8-10"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-3-3-3-97);vector-effect:none;fill:url(#linearGradient3785);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"
+       clip-path="url(#clipPath1597)"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\banner_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975"><tspan
+         x="-592.80469"
+         y="258.40175"
+         id="tspan4381">S</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.90524231,-1.7578432,0.92202333,0.91826305,-1432.6553,-447.94917)"
+       id="text12889-1-3-7-7-3"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-3-1-9-0-1);vector-effect:none;fill:url(#linearGradient1449);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"
+       clip-path="url(#clipPath1591)"><tspan
+         x="-592.80469"
+         y="258.40175"
+         id="tspan4383">D</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.90524231,-1.7578432,0.92202333,0.91826305,-623.91996,-425.47674)"
+       id="text12889-1-0-2-0-3"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-3-8-8-1-3);vector-effect:none;fill:url(#linearGradient3787);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"
+       clip-path="url(#clipPath1585)"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\banner_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975"><tspan
+         x="-592.80469"
+         y="258.40175"
+         id="tspan4385">A</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.90524231,-1.7578432,0.92202333,0.91826305,-688.78976,-298.03682)"
+       id="text12889-1-6-5-4-1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-3-7-5-5-4);vector-effect:none;fill:url(#linearGradient3789);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"
+       clip-path="url(#clipPath1579)"
+       inkscape:export-filename="D:\Daniel\Projektit\shadmatic\graphics\banner_plain.png"
+       inkscape:export-xdpi="101.59975"
+       inkscape:export-ydpi="101.59975"><tspan
+         x="-592.80469"
+         y="258.40175"
+         id="tspan4387">H</tspan></text>
     <rect
        style="fill:url(#linearGradient31161);fill-opacity:1.0;stroke-width:1.12083;-inkscape-stroke:none;stop-color:#000000"
        id="rect855-23"
@@ -2321,7 +3638,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-34);vector-effect:none;fill:url(#linearGradient31166);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="-592.80469"
          y="258.40175"
-         id="tspan58685">WALLT</tspan></text>
+         id="tspan4389">WALLT</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35.8889px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;opacity:1;vector-effect:none;fill:url(#linearGradient56657);fill-opacity:1;stroke:none;stroke-width:0.395832;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
@@ -2622,7 +3939,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-34-2-5);vector-effect:none;fill:url(#linearGradient58268);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="-592.80469"
          y="258.40175"
-         id="tspan58687">ADROP</tspan></text>
+         id="tspan4391">ADROP</tspan></text>
     <rect
        style="fill:url(#linearGradient58070);fill-opacity:1;stroke-width:0.72126;-inkscape-stroke:none;stop-color:#000000"
        id="rect852-3-2-5-1-7-5-8"
@@ -2637,7 +3954,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-34-1-9);vector-effect:none;fill:url(#linearGradient58266);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="-592.80469"
          y="258.40175"
-         id="tspan58689">TWITR</tspan></text>
+         id="tspan4393">TWITR</tspan></text>
     <rect
        style="fill:url(#linearGradient58074);fill-opacity:1;stroke-width:0.72126;-inkscape-stroke:none;stop-color:#000000"
        id="rect852-3-2-5-1-7-4-2"
@@ -2652,7 +3969,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-34-4-9);vector-effect:none;fill:url(#linearGradient58264);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="-592.80469"
          y="258.40175"
-         id="tspan58691">NETWR</tspan></text>
+         id="tspan4395">NETWR</tspan></text>
     <rect
        style="fill:url(#linearGradient58078);fill-opacity:1;stroke-width:0.72126;-inkscape-stroke:none;stop-color:#000000"
        id="rect852-3-2-5-1-7-1-5"
@@ -2667,7 +3984,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-34-4-6-0);vector-effect:none;fill:url(#linearGradient58262);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="-592.80469"
          y="258.40175"
-         id="tspan58693">CONFG</tspan></text>
+         id="tspan4397">CONFG</tspan></text>
     <rect
        style="fill:url(#linearGradient58082);fill-opacity:1;stroke-width:0.72126;-inkscape-stroke:none;stop-color:#000000"
        id="rect852-3-2-5-1-7-1-7-3"
@@ -2731,7 +4048,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-3-3-3-9-3);vector-effect:none;fill:url(#linearGradient58260);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="-592.80469"
          y="258.40175"
-         id="tspan58695">$</tspan></text>
+         id="tspan4399">$</tspan></text>
     <rect
        style="fill:url(#linearGradient58100);fill-opacity:1.0;stroke-width:1.12083;-inkscape-stroke:none;stop-color:#000000"
        id="rect855-23-6"
@@ -2760,7 +4077,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:130.149px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;shape-inside:url(#rect12891-34-6);vector-effect:none;fill:url(#linearGradient58258);fill-opacity:1;stroke:none;stroke-width:1.43546;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="-592.80469"
          y="258.40175"
-         id="tspan58697">WALLT</tspan></text>
+         id="tspan4401">WALLT</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35.8889px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;white-space:pre;vector-effect:none;fill:url(#linearGradient58256);fill-opacity:1;stroke:none;stroke-width:0.395832;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"
