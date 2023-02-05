@@ -132,6 +132,9 @@ def main():
                         print("User interrupted.")
                         raise state.ProgramExit()
             finally:
+                #send on_unload signals
+                state.root.emit_signal_recursive_leaf_first('on_unload')
+
                 for module in state.modules:
                     module.unload()
                     

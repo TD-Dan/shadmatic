@@ -37,3 +37,25 @@ class InvalidInput(ProgramState):
 modules = list[object]()
 #global root
 root= None
+
+class Color():
+    def __init__(self, index:int, r:int, g:int, b:int) -> None:
+        self.index:int = index
+        self.r:int = r
+        self.g:int = g
+        self.b:int = b
+
+color_theme = {
+    'Error':Color(1, 203,91,163),
+    'Error2':Color(9, 80,55,87),
+    'Ok1':Color(2, 24,171,135),
+    'Ok2':Color(10, 37,83,86),
+    'Active1':Color(3, 233,176,112),
+    'Active2':Color(11, 37,83,86),
+    'Select':Color(4, 32,78,131),
+    'BG':Color(5, 32,35,57),
+    'BG2':Color(12, 32,42,72),
+    'BG3':Color(13, 43,53,84),
+    'Text':Color(7, 206,206,206),
+    'Text2':Color(15, 125,129,144),
+}

@@ -4,7 +4,7 @@ from shadowui import Section,Input,Label
 
 def load_tools(**kwargs):
     section = kwargs.get('section')
-    print("loading tools to "+ section.name +" ...")
+    #print("loading tools to "+ section.name +" ...")
 
 def test_input(**kwargs):
     section = kwargs.get('section')

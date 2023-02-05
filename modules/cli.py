@@ -21,15 +21,24 @@ class CLIModule(ModuleBase):
     
     def load(self):
         super().load()
-        state.root += CommandlineWindow('cliwindow')
+        state.root += CommandlineWindow('cliwindow',use_color=self.use_color)
 
     def unload(self):
         super().unload()
         pass
 
     def run_from_commandline(self, *args, **kwargs):
-        print ("Commandline run invoked with :"+str(args))
-        color = kwargs.get('color')
+        self.use_color = kwargs.get('color')
+        if self.use_color:
+            match self.use_color.lower():
+                case 'y'|'yes'|'true':
+                    self.use_color = True
+                case 'n'|'no'|'not'|'false'|'none':
+                    self.use_color = False
+                case _:
+                    raise state.InvalidInput("yes/no expcected, got "+self.use_color)
+        else:
+            self.use_color = False
         raise state.ProgramEnterInteractive()
 
 #register to main program as a module

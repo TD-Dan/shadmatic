@@ -58,7 +58,7 @@ class CommandlineWindow(WindowBase):
         
         self.log = Log("CLIWindow")
 
-        args = kwargs.get('args')
+        self.use_color = kwargs.get('use_color')
         
         if self.use_csi and platform.system() == "Windows":
             try:
@@ -78,6 +78,7 @@ class CommandlineWindow(WindowBase):
             self.use_csi = False
 
         self.on_load.connect(self.load_handler)
+        self.on_unload.connect(self.unload_handler)
         self.on_frame.connect(self.frame_handler)
 
     def load_handler(self,**kwargs):
@@ -88,12 +89,12 @@ class CommandlineWindow(WindowBase):
 
         self.draw_command_line()
 
-    # def unload_handler(self, **kwargs):
-    #     self.draw_textline('-'.center(79),redraw_commandline=False)
-    #     self.draw_textline('"Tis but a scratch" - The Black Knight'.center(79),redraw_commandline=False)
-    #     self.draw_textline('-'.center(79),redraw_commandline=False)
-    #     self.input_listener.close()
-    #     del self.log
+    def unload_handler(self, **kwargs):
+         self.draw_textline('-'.center(79),redraw_commandline=False)
+         self.draw_textline('"Tis but a scratch" - The Black Knight'.center(79),redraw_commandline=False)
+         self.draw_textline('-'.center(79),redraw_commandline=False)
+         self.input_listener.close()
+         del self.log
      
     def frame_handler(self,**kwargs):
         #print("cliwindow framehandler "+str(kwargs))
