@@ -18,6 +18,7 @@ class CLIModule(ModuleBase):
     \tcolor=\tEnable colored output, valid values:
     \t\tyes (default)
     \t\tno"""
+    
     def load(self):
         super().load()
         state.root += CommandlineWindow('commandline', on_frame=test_on_frame)

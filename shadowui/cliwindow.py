@@ -55,7 +55,6 @@ class CommandlineWindow(WindowBase):
 
     def __init__(self, name: str, **kwargs) -> None:
         super().__init__(name, **kwargs)
-        #self.log = Log("CLIWindow")
         
         args = kwargs.get('args')
         
@@ -75,7 +74,9 @@ class CommandlineWindow(WindowBase):
         
         if self.use_csi and not self.has_csi_support:
             self.use_csi = False
-            
+
+        self.on_frame.connect(self.frame_handler)
+
     def run(self):
         super().run()
         self.log = Log("CLIWindow")
