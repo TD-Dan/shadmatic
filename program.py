@@ -9,9 +9,7 @@ from handlers import *
 #Program document object model
 program_dom = [
     Section('header', children=[
-        Section('status', children=[
-            Label('wallet_status', on_load=load_wallet_label, pre_content="wallet: [ ", post_content=" ]")
-            ]),
+        Section('status_widget'),
         Section('logo')
         ]),
     Input('prompt', on_value_changed=test_input),

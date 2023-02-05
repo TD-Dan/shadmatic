@@ -56,6 +56,8 @@ class CommandlineWindow(WindowBase):
     def __init__(self, name: str, **kwargs) -> None:
         super().__init__(name, **kwargs)
         
+        self.log = Log("CLIWindow")
+
         args = kwargs.get('args')
         
         if self.use_csi and platform.system() == "Windows":
@@ -64,7 +66,7 @@ class CommandlineWindow(WindowBase):
                 init(autoreset=True)
                 self.has_csi_support = True
             except ModuleNotFoundError:
-                #self.log.warning("Colorama not found; advanced text output not available for windows.\nUse 'pip install colorama' to enable.")
+                self.log.warning("Colorama not found; advanced text output not available for windows.\nUse 'pip install colorama' to enable.")
                 print("INFO: Colorama not found; advanced text output not available for windows.\nUse 'pip install colorama' to enable.\nPress enter to continue...")
                 self.has_csi_support = False
                 input()
@@ -75,89 +77,88 @@ class CommandlineWindow(WindowBase):
         if self.use_csi and not self.has_csi_support:
             self.use_csi = False
 
+        self.on_load.connect(self.load_handler)
         self.on_frame.connect(self.frame_handler)
 
-    def run(self):
-        super().run()
-        self.log = Log("CLIWindow")
+    def load_handler(self,**kwargs):
+        #print("cliwindow loadhandler "+str(kwargs))
+        self.input_listener.start()
+        if self.use_csi:
+            print(SET_TITLE('Shadow-wallet'),end='')
 
+        self.draw_command_line()
+
+    # def unload_handler(self, **kwargs):
+    #     self.draw_textline('-'.center(79),redraw_commandline=False)
+    #     self.draw_textline('"Tis but a scratch" - The Black Knight'.center(79),redraw_commandline=False)
+    #     self.draw_textline('-'.center(79),redraw_commandline=False)
+    #     self.input_listener.close()
+    #     del self.log
+     
+    def frame_handler(self,**kwargs):
+        #print("cliwindow framehandler "+str(kwargs))
         try:
-            self.input_listener.start()
-            
-            if self.use_csi:
-                print(SET_TITLE('Shadow-wallet'),end='')
+            try:
+                ch : str = self.input_listener.getInput()
 
-            self.draw_command_line()
+                if ch:
+                    self.log.info("CommandlineWindow main loop got input: "+str(ch)+" "+str(ch.encode('utf-8'))+" printable:"+str(ch.isprintable()))
+                    if self.read_arrow_control:
+                        #previous character was arrow key start, read rest here
+                        match ch.encode('utf-8'):
+                            case b'H':
+                                self.log.info('up arrow')
+                                pass
+                            case b'P':
+                                self.log.info('down arrow')
+                            case b'K':
+                                self.log.info('left arrow')
+                            case b'M':
+                                self.log.info('right arrow')
+                        self.read_arrow_control=False
+                        raise InputConsumed()
+                    match ch.encode('utf-8'):
+                        case b'\r':
+                            #print("enter")
+                            self.input_line = self.input_line_buffer
+                            raise InputCommit()
+                        case b'\x1b':
+                            #print("esc")
+                            raise state.ProgramCancel()
+                        case b'\x08':
+                            #print("backspace")
+                            self.input_line_buffer = self.input_line_buffer[:-1]
+                            raise InputConsumed()
+                        case b'\xc3\xa0':
+                            #print("arrow")
+                            self.read_arrow_control = True
+                            raise InputConsumed()
+                        case b'\x03':
+                            #print("ctrl-c")
+                            raise KeyboardInterrupt()
+                    if ch.isprintable:
+                        self.input_line_buffer += ch
+                        raise InputConsumed()
 
-            while True:
-                try:
-                    try:
-                        ch : str = self.input_listener.getInput()
+            except InputCommit:
+                words = self.input_line.split()
+                self.input_line = ""
+                self.input_line_buffer = ""
+                if words:
+                    command = words[0]
+                    match command:
+                        case 'x'|'exit':
+                            raise state.ProgramExit()
+                        case _:
+                            self.draw_textline(command+" is not a command. type 'help' for all commands.")
+            except InputConsumed:
+                self.draw_command_line()
+                pass
+        except state.ProgramCancel:
+            raise state.ProgramExit()
+        except KeyboardInterrupt:
+            raise
 
-                        if ch:
-                            self.log.info("CommandlineWindow main loop got input: "+str(ch)+" "+str(ch.encode('utf-8'))+" printable:"+str(ch.isprintable()))
-                            if self.read_arrow_control:
-                                #previous character was arrow key start, read rest here
-                                match ch.encode('utf-8'):
-                                    case b'H':
-                                        self.log.info('up arrow')
-                                        pass
-                                    case b'P':
-                                        self.log.info('down arrow')
-                                    case b'K':
-                                        self.log.info('left arrow')
-                                    case b'M':
-                                        self.log.info('right arrow')
-                                self.read_arrow_control=False
-                                raise InputConsumed()
-                            match ch.encode('utf-8'):
-                                case b'\r':
-                                    #print("enter")
-                                    self.input_line = self.input_line_buffer
-                                    raise InputCommit()
-                                case b'\x1b':
-                                    #print("esc")
-                                    raise state.ProgramCancel()
-                                case b'\x08':
-                                    #print("backspace")
-                                    self.input_line_buffer = self.input_line_buffer[:-1]
-                                    raise InputConsumed()
-                                case b'\xc3\xa0':
-                                    #print("arrow")
-                                    self.read_arrow_control = True
-                                    raise InputConsumed()
-                                case b'\x03':
-                                    #print("ctrl-c")
-                                    raise KeyboardInterrupt()
-                            if ch.isprintable:
-                                self.input_line_buffer += ch
-                                raise InputConsumed()
-                            
-                        time.sleep(0.02) # restrain loop to 50 fps
-                    except InputCommit:
-                        words = self.input_line.split()
-                        self.input_line = ""
-                        self.input_line_buffer = ""
-                        if words:
-                            command = words[0]
-                            match command:
-                                case 'x'|'exit':
-                                    raise state.ProgramExit()
-                                case _:
-                                    self.draw_textline(command+" is not a command. type 'help' for all commands.")
-                    except InputConsumed:
-                        self.draw_command_line()
-                        pass
-                except state.ProgramCancel:
-                    raise state.ProgramExit()
-                except KeyboardInterrupt:
-                    raise
-        finally:
-            self.draw_textline('-'.center(79),redraw_commandline=False)
-            self.draw_textline('"Tis but a scratch" - The Black Knight'.center(79),redraw_commandline=False)
-            self.draw_textline('-'.center(79),redraw_commandline=False)
-            self.input_listener.close()
-            del self.log
 
     def draw_textline(self,str:str,redraw_commandline=True):
         """Output one line to the screen"""

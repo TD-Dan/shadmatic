@@ -21,7 +21,7 @@ class CLIModule(ModuleBase):
     
     def load(self):
         super().load()
-        state.root += CommandlineWindow('commandline', on_frame=test_on_frame)
+        state.root += CommandlineWindow('cliwindow')
 
     def unload(self):
         super().unload()
@@ -31,9 +31,6 @@ class CLIModule(ModuleBase):
         print ("Commandline run invoked with :"+str(args))
         color = kwargs.get('color')
         raise state.ProgramEnterInteractive()
-
-def test_on_frame(section, delta_ms):
-    print(section.name+" got on_frame, delta milliseconds: "+str(delta_ms))
 
 #register to main program as a module
 state.modules.append(CLIModule())

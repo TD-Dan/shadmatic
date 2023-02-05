@@ -94,12 +94,17 @@ def main():
             mainlog.info("Entered Interactive program mode")
             mainlog.info("Loading all modules")
             try:            
+                #load all modules
                 for module in state.modules:
                     if (not isinstance(module, ModuleBase)):
                         raise NotImplementedError("'"+module.name+"' module needs to be inherited from ModuleBase. f. ex. 'class MyModule(ModuleBase):'")
                     module.load()
                 
                 last_frame = time.perf_counter_ns()
+
+                #send on_load signals
+                state.root.emit_signal_recursive_leaf_first('on_load')
+                
                 # Main loop
                 while True:
                     # call all on_frame handlers
