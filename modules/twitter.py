@@ -33,7 +33,11 @@ class TweetModule(ModuleBase):
                                            'out':"Output file name. Supported filetypes: .json .txt . Default 'addresses.txt'"}),
         ProgramCommand('block_users', help="Blocks users.",
                         required_kwargs = {'users':"user id(s) / Input file name. ids can be single id or multiple ids separated with ';' (no space!).\
-                                            Supported filetypes: .txt . Default none, input will be requested from user."})
+                                            Supported filetypes: .txt . Default none, input will be requested from user."},
+                        optional_kwargs = {'consumer_key':'Twitter consumer key (aka. API key). Default none, input will be requested from user.', 
+                                           'consumer_secret':'Twitter consumer key secret (aka. API secret). Default none, input will be requested from user.',
+                                           'access_token':'Twitter access token (aka. authentication token). Default none, input will be requested from user.',
+                                           'access_token_secret':'Twitter access secret (aka. authentication secret). Default none, input will be requested from user.'}),
     ]
 
     def load(self):
@@ -266,7 +270,6 @@ class TweetModule(ModuleBase):
                 print("Blocking user '"+user+"'")
                 response = self.client_as_user.block(user)
                 print(response)
-                    #self.twitlog.warning("404 User "+user+" not found.")
             except tweepy.Unauthorized:
                 self.twitlog.error("Unauthorized credentials. Check your twitter api keys.")
                 raise state.ProgramCancel()
