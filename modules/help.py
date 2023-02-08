@@ -35,7 +35,7 @@ class HelpModule(ModuleBase):
 
     def run_from_commandline(self, *args, **kwargs):
         if len(args)>2:
-            #print("display help for "+args[2])
+            #If user arguments present try to find help for it
             for module in state.modules:
                 match args[2]:
                     case module.name | module.short:
@@ -87,16 +87,32 @@ class HelpModule(ModuleBase):
             print("No help found for '"+args[2]+"'")
             raise state.ProgramExit()
         elif len(args)>1:
+            # If no arguments display program help
             print("\n"+str(state.program_name.center(79)+"\n"+(" - "+state.program_slogan).center(79)))
             print(state.program_version_str.center(79))
-            print("\n"+"    Available program launch modes:".ljust(75)+"|")
+
+            # Display available launch modes
+            print("\n"+"    Available program launch modules:".ljust(75)+"|")
             print("".ljust(75)+"|")
+            no_launch_modules = []
             for module in state.modules:
                 if type(module).run_from_commandline != ModuleBase.run_from_commandline:
                     shorthelp = module.name.capitalize()
                     if module.__doc__:
                         shorthelp = module.__doc__.splitlines()[0]
                     print("    "+module.short.ljust(8)+module.name.ljust(17)+shorthelp[:45].ljust(46)+"|")
+                else:
+                    #stash for printing it later
+                    no_launch_modules.append(module)
+
+            #List available modules
+            print("\n"+"    Available program modules:".ljust(75)+"|")
+            for module in no_launch_modules:
+                shorthelp = module.name.capitalize()
+                if module.__doc__:
+                    shorthelp = module.__doc__.splitlines()[0]
+                print("    "+module.short.ljust(8)+module.name.ljust(17)+shorthelp[:45].ljust(46)+"|")
+            print("\n"+("use -h <module> for more help").center(79)+"\n")
             print("\n"+("Visit "+state.program_website+" for more info").center(79)+"\n")
         else:
             print(state.program_help_doc)
