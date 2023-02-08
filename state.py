@@ -45,7 +45,7 @@ class Color():
         self.g:int = g
         self.b:int = b
 
-color_theme = {
+default_color_theme = {
     'Error':Color(1, 203,91,163),
     'Error2':Color(9, 80,55,87),
     'Ok1':Color(2, 24,171,135),
@@ -58,4 +58,8 @@ color_theme = {
     'BG3':Color(13, 43,53,84),
     'Text':Color(7, 206,206,206),
     'Text2':Color(15, 125,129,144),
+}
+
+configuration = {
+    'color_theme':default_color_theme
 }
