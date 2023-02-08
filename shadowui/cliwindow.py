@@ -3,16 +3,19 @@ One line of input&status and a rolling wall of messages
 Optionally supports color on *nix
 Supports color on windows when colorama library is available
 """
-import time
+
 import platform
+import queue
+import sys
+import time
 
 import state
-
+from helper.stringtool import *
+from modules import ModuleBase
 from modules.log import Log
-
 from shadowui import WindowBase
-
 from shadowui.inputlistener import InputListener
+
 
 # User pressed enter
 class InputCommit(Exception): pass
@@ -43,15 +46,26 @@ def CURSOR_BACK(n): return CSI + str(n) + 'D' # move cursor back n steps
 
 xstr = lambda str: str or '' # Returns '' for None else str
 
+
+# Capture print() statements to display them in cli
+_capture_output_buffer:str = ''
+_capture_output_queue = queue.Queue()
+class CaptureOutput:
+    def write(self, message):
+        global _capture_output_buffer
+        _capture_output_buffer += message
+
+    def flush(self):
+        global _capture_output_buffer
+        global _capture_output_queue
+        _capture_output_queue.put(_capture_output_buffer)
+        _capture_output_buffer = ''
+
+
 class CommandlineWindow(WindowBase):
 
-    input_listener = InputListener()
-    input_line_buffer = ""
-    input_line = ""
-    read_arrow_control=False
     has_csi_support = None
     use_csi = True
-
 
     def __init__(self, name: str, **kwargs) -> None:
         super().__init__(name, **kwargs)
@@ -62,7 +76,7 @@ class CommandlineWindow(WindowBase):
         
         if self.use_csi and platform.system() == "Windows":
             try:
-                from colorama import init,Cursor
+                from colorama import Cursor, init
                 init(autoreset=True)
                 self.has_csi_support = True
             except ModuleNotFoundError:
@@ -76,6 +90,12 @@ class CommandlineWindow(WindowBase):
         
         if self.use_csi and not self.has_csi_support:
             self.use_csi = False
+        
+        self.input_listener = InputListener()
+        self.input_line_buffer = ""
+        self.input_line = ""
+        self.read_arrow_control=False
+        self.selected_module = None
 
         self.on_load.connect(self.load_handler)
         self.on_unload.connect(self.unload_handler)
@@ -83,21 +103,36 @@ class CommandlineWindow(WindowBase):
 
     def load_handler(self,**kwargs):
         #print("cliwindow loadhandler "+str(kwargs))
+        
+        #capture print()
+        #sys.stdout = CaptureOutput()
+
         self.input_listener.start()
         if self.use_csi:
-            print(SET_TITLE('Shadow-wallet'),end='')
+            print(SET_TITLE(state.program_name),end='')
 
-        self.draw_command_line()
+        self.draw_textline(f'Welcome to {state.program_name}!')
+        self.draw_textline('type help to get started!')
 
     def unload_handler(self, **kwargs):
-         self.draw_textline('-'.center(79),redraw_commandline=False)
-         self.draw_textline('"Tis but a scratch" - The Black Knight'.center(79),redraw_commandline=False)
-         self.draw_textline('-'.center(79),redraw_commandline=False)
-         self.input_listener.close()
-         del self.log
-     
+        self.draw_textline('-'.center(79),redraw_commandline=False)
+        self.draw_textline('"Tis but a scratch" - The Black Knight'.center(79),redraw_commandline=False)
+        self.draw_textline('-'.center(79),redraw_commandline=False)
+        self.input_listener.close()
+        # restore stdout
+        #sys.stdout = sys.__stdout__
+        del self.log
+    
     def frame_handler(self,**kwargs):
         #print("cliwindow framehandler "+str(kwargs))
+        
+        global _capture_output_queue
+        try:
+                printable = _capture_output_queue.get_nowait()
+                self.draw_textline(printable)
+        except queue.Empty:
+            pass
+        
         try:
             try:
                 ch : str = self.input_listener.getInput()
@@ -109,7 +144,6 @@ class CommandlineWindow(WindowBase):
                         match ch.encode('utf-8'):
                             case b'H':
                                 self.log.info('up arrow')
-                                pass
                             case b'P':
                                 self.log.info('down arrow')
                             case b'K':
@@ -146,27 +180,73 @@ class CommandlineWindow(WindowBase):
                 self.input_line = ""
                 self.input_line_buffer = ""
                 if words:
-                    command = words[0]
-                    match command:
-                        case 'x'|'exit':
-                            raise state.ProgramExit()
-                        case _:
-                            self.draw_textline(command+" is not a command. type 'help' for all commands.")
-            except InputConsumed:
-                self.draw_command_line()
-                pass
+                    command_or_module = words[0]
+                    command = None
+                    args = None
+                    # try to execute module command
+                    if not self.selected_module and len(words)==1:
+                        #if only one word provided enter module specific mode
+                        for module in state.modules:
+                            if module.name == command_or_module or module.short == command_or_module:
+                                self.selected_module = module
+                                raise InputConsumed()
+                    
+                    #try to select module to run
+                    mod_to_run:ModuleBase = None
+                    if self.selected_module:
+                        mod_to_run = self.selected_module
+                        command = words[0]
+                        args = words[1:]
+                    else:
+                        for module in state.modules:
+                            if module.name == command_or_module or module.short == command_or_module:
+                                mod_to_run = module
+                                command = words[1]
+                                args = words[2:]
+                    # run it if found
+                    if mod_to_run:
+                        (args,kwargs) = convert_lststr_to_argskwargs(args)
+                        try:
+                            mod_to_run.exec(command, **kwargs)
+                        except NotImplementedError as e:
+                            self.draw_textline(str(e))
+                    else:
+                        command = words[0]
+                        # default cli specific commands
+                        match command:
+                            case 'x'|'exit':
+                                raise state.ProgramExit()
+                            case _:
+                                self.draw_textline(str(command)+" is not a command. type 'help' for all commands.")
+            
+            except state.ProgramCancel:
+                if self.selected_module:
+                    self.selected_module = None
+                    raise InputConsumed()
+                else:
+                    raise
+        except InputConsumed:
+            self.draw_command_line()
+            pass
         except state.ProgramCancel:
             raise state.ProgramExit()
         except KeyboardInterrupt:
             raise
-
+    
+    def print(self, text, *args, **kwargs):
+        print(text, *args,**kwargs)
+        # sys.__stdout__.write(text)
+        # if kwargs.get('end'):
+        #     sys.__stdout__.write(kwargs.get('end'))
+        # if kwargs.get('flush'):
+        #     sys.__stdout__.flush()
 
     def draw_textline(self,str:str,redraw_commandline=True):
         """Output one line to the screen"""
         remainder = None
         #self.log.info("drawing textline")
         #clean input away
-        print(TO_LINE_START, end='', flush=True)
+        self.print(TO_LINE_START, end='', flush=True)
         #format line
         if len(str)>80:
             #find last space character
@@ -177,31 +257,35 @@ class CommandlineWindow(WindowBase):
             str = str[:cut_at]
         #replace clean line with textline and advance one line down
         if LINE_END:
-            print(str.ljust(79), end=LINE_END, flush=True)
+            self.print(str.ljust(79), end=LINE_END, flush=True)
         else:
-            print(str.ljust(79), flush=True)
-        #redraw commandline
+            self.print(str.ljust(79), flush=True)
+        #if more than one line keep drawing
         if remainder:
             self.draw_textline(remainder)
         elif redraw_commandline:
+            #last iteration redraws commandline
             self.draw_command_line()
 
     def draw_command_line(self):
         """Draw input&status area"""
         #self.log.info("drawing command line")
         #clean input line
-        print(TO_LINE_START,end='', flush=True)
+        self.print(TO_LINE_START,end='', flush=True)
         #format commandline
         logo = ''
-        il = self.input_line_buffer
+        il='>'
+        if self.selected_module:
+            il += self.selected_module.name+'>'
+        il += self.input_line_buffer
         if len(il)>17:
             il = il[len(il)-17:]
         filler = '[   ----   ]'
         #print command line
-        print("░▒▓█SHAD>"+il.ljust(17)+"]"+filler+filler+filler+filler+'█▓▒░',end='', flush=True)
+        self.print("░▒▓█SHAD"+il.ljust(17)+"]"+filler+filler+filler+filler+'█▓▒░',end='', flush=True)
         #place input caret
-        print(TO_LINE_START,end='', flush=True)
-        print("░▒▓█SHAD>"+il,end='', flush=True)
+        self.print(TO_LINE_START,end='', flush=True)
+        self.print("░▒▓█SHAD>"+il,end='', flush=True)
 
 
     """Prompts an yes or no input from user."""
