@@ -5,6 +5,8 @@ import traceback
 from enum import Enum
 from datetime import datetime, timedelta
 
+from helper.stringtool import *
+
 from modules import ModuleBase
 
 from modules.log import Log
@@ -36,9 +38,9 @@ def main():
 
             import modules.logmodule
             import modules.help
-            #import modules.config
+            import modules.settings
             import modules.auto_tester
-            #import modules.client
+            import modules.client
             #import modules.wallet
             
             import modules.exec
@@ -152,22 +154,7 @@ def main():
     exit()
 
     
-def clean_argument(str:str) -> str:
-    """Remove preceding '-' marks from arguments"""
-    while len(str)>0 and str[0] =='-':
-        str = str[1:]
-    return str
 
-def convert_lststr_to_argskwargs(argv) -> list[tuple,dict]:
-    args = []
-    kwargs = {}
-    for arg in argv:
-        index = arg.find('=')
-        if index < 0:
-            args.append(arg)
-        else:
-            kwargs[arg[:index]]=arg[index+1:]
-    return [args,kwargs]
 
 if __name__ == "__main__":
     main()
