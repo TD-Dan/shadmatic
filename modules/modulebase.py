@@ -62,15 +62,16 @@ class ModuleBase():
 
     def exec(self, command, **kwargs):
         """Execute a command within the module, passing kwargs to it
-        Default behavior is to search requested command from self.commands
+        Default behavior is to search requested command from self.commands and call a method with the same name.
         Does not need to be implemented by inheriting classes."""
         if self.commands:
             for program_command in self.commands:
                 if program_command.name == command:
-                    program_command.run(**kwargs)
+                    command_method = getattr(self, command)
+                    command_method(**kwargs)
             else:
-                print("Module '"+self.name+"' has no commands implemented")
-                raise ValueError("Module '"+self.name+"' has no command '"+command+"' implemented")
+                #print("Module '"+self.name+"' has no commands implemented")
+                raise NotImplementedError("Module '"+self.name+"' has no command '"+command+"' implemented")
         else:
-            print("Module '"+self.name+"' has no commands implemented")
+            #print("Module '"+self.name+"' has no commands implemented")
             raise NotImplementedError("Module '"+self.name+"' has no commands implemented")
