@@ -14,26 +14,7 @@ def load_airdrop_commons():
         except ModuleNotFoundError:
             print('\n\nIota wallet library needs to be installed:\n https://wiki.iota.org/shimmer/wallet.rs/getting_started/python/')
             #raise ModuleNotFoundError('\n\nIota wallet library needs to be installed:\n https://wiki.iota.org/shimmer/wallet.rs/getting_started/python/')
-        try: from iota_client import IotaClient
-        except ModuleNotFoundError:
-            print('\n\nIota client library needs to be installed:\n https://wiki.iota.org/shimmer/iota.rs/getting_started/python/')
-            #raise ModuleNotFoundError('\n\nIota client library needs to be installed:\n https://wiki.iota.org/shimmer/iota.rs/getting_started/python/')
 
-
-    # ## Setup client
-
-    # print(Back.GREEN + 'Opening client...', end='')
-    
-    # try:
-    #     client = IotaClient({'nodes': ['https://api.testnet.shimmer.network']})
-    #     node_info = client.get_info()
-    #     if "type" in node_info:
-    #         raise RuntimeError(node_info["type"])
-
-    #     print("\t" + Back.GREEN + 'OK')
-    # except Exception as e:
-    #     print("\t" + Back.RED + 'FAIL')
-    #     raise
 
     # ## Setup wallet
 
@@ -81,10 +62,7 @@ def load_airdrop_commons():
     #                     f.write(line+"\n")
     #         else:
     #             print("No addresses found in file!")
-    #     case "node-info":
-    #         # Get the node info
-    #         node_info = client.get_info()
-    #         pprint.pprint(f'{node_info}')
+
             
     #     case "wallet-create":
     #         # mnemonic (seed) should be set only for new storage
