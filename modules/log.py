@@ -124,7 +124,8 @@ class Log:
                 logfile.write(line+"\n")
                 logfile.flush()
         except ValueError:
-            raise RuntimeError("\nLog '"+self.logger_name+"' trying to access closed logfile. Did you remember to 'del log'?")
+            #raise RuntimeError("\nLog '"+self.logger_name+"' trying to access closed logfile. Did you remember to 'del log'?")
+            pass
         finally:
             log_mutex.release()
         
