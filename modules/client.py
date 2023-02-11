@@ -8,7 +8,7 @@ from shadowui import Label
 
 def load_client_label(**kwargs):
     section : Label = kwargs.get('section') #section kwarg contains calling section
-    section.content = "status unknown"
+    section.content = "unknown"
 
 class IotaClientError(Exception):
     pass
@@ -41,7 +41,7 @@ class ClientModule(ModuleBase):
         ProgramCommand('status', help="Query network status")
     ]
 
-    widget = Label('iota_client_status', on_load=load_client_label, pre_content="iotaclnt[", post_content="]")
+    widget = Label('iota_client_status', on_load=load_client_label, pre_content="iotanetw:")
 
     def load(self):
         super().load()
@@ -82,7 +82,14 @@ class ClientModule(ModuleBase):
             self.node_info = self.client.get_info()
             self.log.info(f"Status: {self.node_info}")
             print(self.node_info)
-            self.set_widget_status('Ok?')
+            try:
+                healty = self.node_info['nodeInfo']['status']['isHealthy']
+                if healty:
+                    self.set_widget_status('ok')
+                else:
+                    self.set_widget_status('down')
+            except KeyError:
+                    self.set_widget_status('error')
         else:
             self.log.warning('Client not loaded')
             self.set_widget_status('Client not loaded')
