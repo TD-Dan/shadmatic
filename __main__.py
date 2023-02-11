@@ -5,6 +5,8 @@ import traceback
 from enum import Enum
 from datetime import datetime, timedelta
 
+from helper.stringtool import *
+
 from modules import ModuleBase
 
 from modules.log import Log
@@ -36,13 +38,13 @@ def main():
 
             import modules.logmodule
             import modules.help
-            #import modules.config
+            import modules.settings
             import modules.auto_tester
-            #import modules.client
+            import modules.client
             #import modules.wallet
             
             import modules.exec
-            #import modules.cli
+            import modules.cli
             #import modules.term
 
             import modules.twitter
@@ -94,12 +96,17 @@ def main():
             mainlog.info("Entered Interactive program mode")
             mainlog.info("Loading all modules")
             try:            
+                #load all modules
                 for module in state.modules:
                     if (not isinstance(module, ModuleBase)):
                         raise NotImplementedError("'"+module.name+"' module needs to be inherited from ModuleBase. f. ex. 'class MyModule(ModuleBase):'")
                     module.load()
                 
                 last_frame = time.perf_counter_ns()
+
+                #send on_load signals
+                state.root.emit_signal_recursive_leaf_first('on_load')
+                
                 # Main loop
                 while True:
                     # call all on_frame handlers
@@ -127,6 +134,9 @@ def main():
                         print("User interrupted.")
                         raise state.ProgramExit()
             finally:
+                #send on_unload signals
+                state.root.emit_signal_recursive_leaf_first('on_unload')
+
                 for module in state.modules:
                     module.unload()
                     
@@ -144,22 +154,7 @@ def main():
     exit()
 
     
-def clean_argument(str:str) -> str:
-    """Remove preceding '-' marks from arguments"""
-    while len(str)>0 and str[0] =='-':
-        str = str[1:]
-    return str
 
-def convert_lststr_to_argskwargs(argv) -> list[tuple,dict]:
-    args = []
-    kwargs = {}
-    for arg in argv:
-        index = arg.find('=')
-        if index < 0:
-            args.append(arg)
-        else:
-            kwargs[arg[:index]]=arg[index+1:]
-    return [args,kwargs]
 
 if __name__ == "__main__":
     main()

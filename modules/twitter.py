@@ -16,7 +16,9 @@ class TweetModule(ModuleBase):
     """
     name = "twitter"
     short = "tw"
-    api = None
+    client_as_app = None
+    client_as_user = None
+
     commands = [
         ProgramCommand('get_tweet', help="Get a single tweet.",
                         required_kwargs = {'id':"Tweet ID (from twitter.com/<username>/status/<TWEET_ID>)"}, 
@@ -28,7 +30,14 @@ class TweetModule(ModuleBase):
                                            'out':"Output file name. Supported filetypes: .json . Default 'comments.json'"}),
         ProgramCommand('get_addresses', help="Collects and cleans up shimmer addresses from comments file.",
                         optional_kwargs = {'in':"Input file name. Supported filetypes: .json . Default 'comments.json'",
-                                           'out':"Output file name. Supported filetypes: .json .txt . Default 'addresses.txt'"})
+                                           'out':"Output file name. Supported filetypes: .json .txt . Default 'addresses.txt'"}),
+        ProgramCommand('block_users', help="Blocks users.",
+                        required_kwargs = {'users':"user id(s) / Input file name. ids can be single id or multiple ids separated with ';' (no space!).\
+                                            Supported filetypes: .txt . Default none, input will be requested from user."},
+                        optional_kwargs = {'consumer_key':'Twitter consumer key (aka. API key). Default none, input will be requested from user.', 
+                                           'consumer_secret':'Twitter consumer key secret (aka. API secret). Default none, input will be requested from user.',
+                                           'access_token':'Twitter access token (aka. authentication token). Default none, input will be requested from user.',
+                                           'access_token_secret':'Twitter access secret (aka. authentication secret). Default none, input will be requested from user.'}),
     ]
 
     def load(self):
@@ -39,21 +48,44 @@ class TweetModule(ModuleBase):
         except ModuleNotFoundError:
             raise ModuleNotFoundError("lib 'tweepy' not found. Install with 'pip install tweepy' ")
         
-    def open_twitter_api(self,bearer=None):
-        if self.api:
+    def open_twitter_api_as_app(self,bearer_token=None):
+        if self.client_as_app:
             return
         else:
             try:
                 import tweepy
             except ModuleNotFoundError:
                 raise ModuleNotFoundError("lib 'tweepy' not found. Install with 'pip install tweepy' ")
-            if bearer:
-                bearer_token = bearer
-            else:
+
+            if not bearer_token:
                 print("Input twitter bearer token:")
                 bearer_token = input()
 
-            self.api = tweepy.Client(bearer_token,return_type=dict)
+            self.client_as_app = tweepy.Client(bearer_token,return_type=dict)
+
+    def open_twitter_api_as_user(self, consumer_key=None, consumer_secret=None, access_token=None, access_token_secret=None):
+        if self.client_as_user:
+            return
+        else:
+            try:
+                import tweepy
+            except ModuleNotFoundError:
+                raise ModuleNotFoundError("lib 'tweepy' not found. Install with 'pip install tweepy' ")
+            if not consumer_key:
+                print("Input twitter consumer key:")
+                consumer_key = input()
+                print("Input twitter consumer secret:")
+                consumer_secret = input()
+                print("Input twitter access key:")
+                access_token = input()
+                print("Input twitter access secret:")
+                access_token_secret = input()
+                if not consumer_key or not consumer_secret or not access_token or not access_token_secret:
+                    raise state.InvalidInput("Invalid credentials.")
+                
+            self.client_as_user = tweepy.Client(consumer_key=consumer_key, consumer_secret=consumer_secret,
+                                                access_token=access_token, access_token_secret=access_token_secret,
+                                                return_type=dict)
 
     def unload(self):
         super().unload()
@@ -61,19 +93,19 @@ class TweetModule(ModuleBase):
     
     def get_tweet(self, **kwargs):
         bearer_token = kwargs.get('bearer')
-        self.open_twitter_api(bearer=bearer_token)
+        self.open_twitter_api_as_app(bearer_token=bearer_token)
 
         id = kwargs.get('id')
         out = kwargs.get('out',"tweet.json")
         self.twitlog.info("Getting tweet "+id)
-        tweet = self.api.get_tweet(id)
+        tweet = self.client_as_app.get_tweet(id)
         print(tweet)
         self.twitlog.info("Outputting to "+out)
         pass
     
     def get_comments(self,**kwargs):
         bearer_token = kwargs.get('bearer')
-        self.open_twitter_api(bearer=bearer_token)
+        self.open_twitter_api_as_app(bearer_token=bearer_token)
 
         import tweepy
 
@@ -87,10 +119,10 @@ class TweetModule(ModuleBase):
         for qn in range(0, max_queries):
             try:
                 if next_token:
-                    response = self.api.search_recent_tweets('in_reply_to_tweet_id:'+id, max_results=results_per_query, expansions='author_id', pagination_token=next_token)
+                    response = self.client_as_app.search_recent_tweets('in_reply_to_tweet_id:'+id, max_results=results_per_query, expansions='author_id', pagination_token=next_token)
                     replies+=response['data']
                 else:
-                    response = self.api.search_recent_tweets('in_reply_to_tweet_id:'+id, expansions='author_id', max_results=results_per_query)
+                    response = self.client_as_app.search_recent_tweets('in_reply_to_tweet_id:'+id, expansions='author_id', max_results=results_per_query)
                     replies = response['data']
                 meta = response['meta']
 
@@ -217,6 +249,31 @@ class TweetModule(ModuleBase):
         #idea: offer to block offending authors from twitter automatically
         #idea2: filter out bot entries by comparing old tweets. Flag all accounts posting more than n% addresses all the time
 
+
+    def block_users(self,**kwargs):
+        import tweepy
+        users:str = kwargs.get('users')
+        consumer_key = kwargs.get('consumer_key')
+        consumer_secret = kwargs.get('consumer_secret')
+        access_token = kwargs.get('access_token')
+        access_token_secret = kwargs.get('access_token_secret')
+        self.open_twitter_api_as_user(consumer_key=consumer_key, consumer_secret=consumer_secret,
+                                                access_token=access_token, access_token_secret=access_token_secret,)
+
+        if users.endswith(".txt"):
+            users_list = fileio.read_list_from_file(users)
+        else:
+            users_list = users.split(';')
+        for user in users_list:
+            try:
+                self.twitlog.info("Blocking user '"+user+"'")
+                print("Blocking user '"+user+"'")
+                response = self.client_as_user.block(user)
+                print(response)
+            except tweepy.Unauthorized:
+                self.twitlog.error("Unauthorized credentials. Check your twitter api keys.")
+                raise state.ProgramCancel()
+        
 
 #register to main program as a module
 state.modules.append(TweetModule())

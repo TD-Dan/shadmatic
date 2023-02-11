@@ -7,7 +7,7 @@ def write_list_to_file(data:list,filename:str,confirm_overwrite=True, fail_silen
     Asks user if file already exists if confirm_overwrite is true.
     Raises state.ProgramCancel if writing fails, unless fail_silently is True, incase just returns without overwriting."""
 
-    log = Log("file-io")
+    log = Log("fileio-w")
     log.info("Outputting "+str(len(data))+" entries to "+filename)
 
     outfile = None
@@ -39,4 +39,31 @@ def write_list_to_file(data:list,filename:str,confirm_overwrite=True, fail_silen
     finally:
         if outfile:
             outfile.close()
+        log.close()
+
+        
+def read_list_from_file(filename:str, fail_silently=False) -> list:
+    """Reads a list from that has one entry per line.
+    Raises state.ProgramCancel if read fails, unless fail_silently is True, incase just returns with empty list"""
+
+    log = Log("fileio-r")
+    log.info("Reading entries from '"+filename+"'")
+
+    infile = None
+    outlist = []
+    try:
+        try:
+            infile = open(filename,'r', encoding="utf-8")
+            for item in infile:
+                outlist.append(item.strip())
+            return outlist
+        except FileNotFoundError:
+            if fail_silently:
+                return []
+            else:
+                raise state.ProgramCancel
+    finally:
+        if infile:
+            infile.close()
+        log.info(str(len(outlist))+" items found from '"+filename+"'")
         log.close()

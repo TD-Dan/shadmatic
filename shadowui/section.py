@@ -3,12 +3,15 @@ from enum import Enum
 
 class Signal:
     def connect(self, handler:callable):
+        """Connect a function to listen for this signal."""
         self._listeners.append(handler)
 
     def disconnect(self, handler:callable):
+        """Disconnect a previously connected function from this signal."""
         self._listeners.remove(handler)
 
     def emit(self,**kwargs):
+        """Call all listeners of this signal with the kwargs provided"""
         for call in self._listeners:
             call(**kwargs)
 
@@ -26,6 +29,9 @@ class Section:
     def on_load(self):
         return self._on_load
     @property 
+    def on_unload(self):
+        return self._on_unload
+    @property 
     def on_children_changed(self):
         return self._on_children_changed
     @property 
@@ -37,22 +43,26 @@ class Section:
         self.children:dict[str,object] = {}
 
         self._on_load = Signal()
+        self._on_unload = Signal()
         self._on_children_changed = Signal()
         self._on_frame = Signal()
 
         children = kwargs.get('children')
-        on_load:callable = kwargs.get('on_load')
-        on_children_changed:callable = kwargs.get('on_children_changed')
-        on_frame:callable = kwargs.get('on_frame')
+        set_on_load:callable = kwargs.get('on_load')
+        set_on_unload:callable = kwargs.get('on_unload')
+        set_on_children_changed:callable = kwargs.get('on_children_changed')
+        set_on_frame:callable = kwargs.get('on_frame')
 
         if children:
             self+=children
-        if on_load:
-            self._on_load.connect(on_load)
-        if on_children_changed:
-            self._on_children_changed.connect(on_children_changed)
-        if on_frame:
-            self._on_frame.connect(on_frame)
+        if set_on_load:
+            self._on_load.connect(set_on_load)
+        if set_on_unload:
+            self._on_unload.connect(set_on_unload)
+        if set_on_children_changed:
+            self._on_children_changed.connect(set_on_children_changed)
+        if set_on_frame:
+            self._on_frame.connect(set_on_frame)
 
     def emit_signal_recursive_leaf_first(self,signal:str,**kwargs):
         for child in self.children.values():

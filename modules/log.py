@@ -124,7 +124,8 @@ class Log:
                 logfile.write(line+"\n")
                 logfile.flush()
         except ValueError:
-            raise RuntimeError("\nLog '"+self.logger_name+"' trying to access closed logfile. Did you remember to 'del log'?")
+            #raise RuntimeError("\nLog '"+self.logger_name+"' trying to access closed logfile. Did you remember to 'del log'?")
+            pass
         finally:
             log_mutex.release()
         
@@ -134,7 +135,7 @@ class Log:
         e = entry.exception 
         if e:
             end_str = " with exception:\n"+f"{type(e).__name__} at line {e.__traceback__.tb_lineno} of {__file__}: {e}"
-        logline = "["+entry.time+"] "+entry.level.name+": \t"+entry.str + end_str
+        logline = "["+entry.time+"] "+entry.level.name+": \t"+str(entry.str) + end_str
         self._write(logline,entry.level)
         for call in self._listeners:
             call(str=entry.str, exception=entry.exception)

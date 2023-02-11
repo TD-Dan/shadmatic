@@ -72,7 +72,7 @@ class ExecModule(ModuleBase):
 
         except state.InvalidInput as e:
             print(e.args[0])
-            runlog.warning(e.args[0])
+            runlog.error(e.args[0])
             raise state.ProgramCancel()
         finally:
             del runlog
