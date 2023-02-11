@@ -1,4 +1,7 @@
 
+
+xstr = lambda str: str or '' # Returns '' for None else str
+
 def clean_argument(str:str) -> str:
     """Remove preceding '-' marks from arguments"""
     while len(str)>0 and str[0] =='-':
