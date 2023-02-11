@@ -6,7 +6,7 @@ Supports color on windows when colorama library is available
 
 import platform
 import queue
-import sys
+import sys, io
 import time
 
 import state
@@ -42,25 +42,6 @@ COLOR_OK = CSI+'32m' #green
 CR = '\r' #carriage return, to start of line
 ERASE = '\b'    # erase and move back one character
 def CURSOR_BACK(n): return CSI + str(n) + 'D' # move cursor back n steps
-
-
-xstr = lambda str: str or '' # Returns '' for None else str
-
-
-# Capture print() statements to display them in cli
-_capture_output_buffer:str = ''
-_capture_output_queue = queue.Queue()
-class CaptureOutput:
-    def write(self, message):
-        global _capture_output_buffer
-        _capture_output_buffer += message
-
-    def flush(self):
-        global _capture_output_buffer
-        global _capture_output_queue
-        _capture_output_queue.put(_capture_output_buffer)
-        _capture_output_buffer = ''
-
 
 class CommandlineWindow(WindowBase):
 
@@ -105,7 +86,9 @@ class CommandlineWindow(WindowBase):
         #print("cliwindow loadhandler "+str(kwargs))
         
         #capture print()
-        #sys.stdout = CaptureOutput()
+        self.out_capture = io.StringIO()
+        sys.stdout = self.out_capture
+        print("test")
 
         self.input_listener.start()
         if self.use_csi:
@@ -115,23 +98,32 @@ class CommandlineWindow(WindowBase):
         self.draw_textline('type help to get started!')
 
     def unload_handler(self, **kwargs):
+
+        self.input_listener.close()
+        # restore stdout
+        sys.stdout = sys.__stdout__
+        
         self.draw_textline('-'.center(79),redraw_commandline=False)
         self.draw_textline('"Tis but a scratch" - The Black Knight'.center(79),redraw_commandline=False)
         self.draw_textline('-'.center(79),redraw_commandline=False)
-        self.input_listener.close()
-        # restore stdout
-        #sys.stdout = sys.__stdout__
+
         del self.log
     
     def frame_handler(self,**kwargs):
         #print("cliwindow framehandler "+str(kwargs))
         
-        global _capture_output_queue
-        try:
-                printable = _capture_output_queue.get_nowait()
-                self.draw_textline(printable)
-        except queue.Empty:
-            pass
+        val = self.out_capture.getvalue()
+        if val:
+            self.draw_textline(val,redraw_commandline=False)
+            self.out_capture = io.StringIO() # just creating a new buffer is faster than emptying the old one
+        
+        # try:
+        #     printable = self.print_capture._capture_output_queue.get_nowait()
+            
+        #     self.log.info("found printable"+printable)
+        #     self.draw_textline(printable)
+        # except queue.Empty:
+        #     pass
         
         try:
             try:
@@ -237,12 +229,9 @@ class CommandlineWindow(WindowBase):
             raise
     
     def print(self, text, *args, **kwargs):
+        sys.stdout = sys.__stdout__
         print(text, *args,**kwargs)
-        # sys.__stdout__.write(text)
-        # if kwargs.get('end'):
-        #     sys.__stdout__.write(kwargs.get('end'))
-        # if kwargs.get('flush'):
-        #     sys.__stdout__.flush()
+        sys.stdout = self.out_capture
 
     def draw_textline(self,str:str,redraw_commandline=True):
         """Output one line to the screen"""
@@ -283,9 +272,11 @@ class CommandlineWindow(WindowBase):
         il += self.input_line_buffer
         if len(il)>17:
             il = il[len(il)-17:]
-        filler = '[   ----   ]'
+        widget_area=''
+        for key, widget in state.root['header.status_widget'].children.items():
+            widget_area += '['+widget.get_all_content()+']'
         #print command line
-        self.print("░▒▓█SHAD"+il.ljust(17)+"]"+filler+filler+filler+filler+'█▓▒░',end='', flush=True)
+        self.print("░▒▓█SHAD"+il.ljust(17)+"]"+widget_area+'█▓▒░',end='', flush=True)
         #place input caret
         self.print(TO_LINE_START,end='', flush=True)
         self.print("░▒▓█SHAD"+il,end='', flush=True)
