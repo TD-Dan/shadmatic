@@ -2,8 +2,6 @@
 
 A supercharged wallet for the shimmer network
 
-https://shadowban.me
-
 
 # Installation
 
@@ -26,4 +24,7 @@ python .
 ```
 
 =======
+
+https://shadowban.me
+
 https://shadmatic.com
