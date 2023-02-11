@@ -69,9 +69,10 @@ class ModuleBase():
                 if program_command.name == command:
                     command_method = getattr(self, command)
                     command_method(**kwargs)
-            else:
-                #print("Module '"+self.name+"' has no commands implemented")
-                raise NotImplementedError("Module '"+self.name+"' has no command '"+command+"' implemented")
+                    return
+            
+            #print("Module '"+self.name+"' has no commands implemented")
+            raise NotImplementedError("Module '"+self.name+"' has no command '"+command+"' implemented")
         else:
             #print("Module '"+self.name+"' has no commands implemented")
             raise NotImplementedError("Module '"+self.name+"' has no commands implemented")

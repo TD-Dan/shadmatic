@@ -208,28 +208,31 @@ class CommandlineWindow(WindowBase):
                         (args,kwargs) = convert_lststr_to_argskwargs(args)
                         try:
                             mod_to_run.exec(command, **kwargs)
-                        except NotImplementedError as e:
-                            self.draw_textline(str(e))
-                    else:
-                        command = words[0]
-                        # default cli specific commands
-                        match command:
-                            case 'x'|'exit':
-                                raise state.ProgramExit()
-                            case _:
-                                self.draw_textline(str(command)+" is not a command. type 'help' for all commands.")
+                            return
+                        except NotImplementedError:
+                            pass
+                    
+                    command = words[0]
+                    # default cli specific commands
+                    match command:
+                        case 'x'|'exit':
+                            raise state.ProgramExit()
+                        case 'b'|'back'|'cd':
+                            raise state.ProgramCancel()
+                        case _:
+                            self.draw_textline(str(command)+" is not a command. type 'help' for all commands.")
             
-            except state.ProgramCancel:
-                if self.selected_module:
-                    self.selected_module = None
-                    raise InputConsumed()
-                else:
-                    raise
+        except state.ProgramCancel:
+            if self.selected_module:
+                self.selected_module = None    
+                self.draw_command_line()
+            else:
+                raise state.ProgramExit()
+            
         except InputConsumed:
             self.draw_command_line()
             pass
-        except state.ProgramCancel:
-            raise state.ProgramExit()
+            
         except KeyboardInterrupt:
             raise
     
@@ -285,7 +288,7 @@ class CommandlineWindow(WindowBase):
         self.print("░▒▓█SHAD"+il.ljust(17)+"]"+filler+filler+filler+filler+'█▓▒░',end='', flush=True)
         #place input caret
         self.print(TO_LINE_START,end='', flush=True)
-        self.print("░▒▓█SHAD>"+il,end='', flush=True)
+        self.print("░▒▓█SHAD"+il,end='', flush=True)
 
 
     """Prompts an yes or no input from user."""
