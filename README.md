@@ -1,4 +1,4 @@
-# Shadow-wallet
+# Shadmatic
 
 A supercharged wallet for the shimmer network
 
@@ -24,3 +24,6 @@ python .
 ```
 python .
 ```
+
+=======
+https://shadmatic.com
