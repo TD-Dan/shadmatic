@@ -2,17 +2,15 @@
 import time
 import platform
 from enum import Enum
-from queue import Queue,Empty
-from threading import Thread, ThreadError
+from queue import Empty
+from multiprocessing import Queue
+from multiprocessing import Process, ProcessError
 
 # Implements non-blocking getch for Win, Mac and linux
 if platform.system() == "Windows":
 	import msvcrt
 	def getch():
-		if msvcrt.kbhit():
-			return msvcrt.getwch()
-		else:
-			return None
+		return msvcrt.getwch()
 
 else:
 	print("using *nix input")
@@ -23,7 +21,7 @@ else:
 
 class InputListener:
 
-	input_thread : Thread = None
+	input_process : Process = None
 	control_queue = Queue()
 	input_queue = Queue()
 
@@ -31,22 +29,23 @@ class InputListener:
 		pass
 	
 	def __del__(self):
-		if self.input_thread:
-			if self.input_thread.is_alive():
-				raise ThreadError("InputListener close method not called! Make sure to match .start() with an .close() method!")
+		if self.input_process:
+			if self.input_process.is_alive():
+				raise ProcessError("InputListener close method not called! Make sure to match .start() with an .close() method!")
 
 	def start(self):
-		
-		self.input_thread = Thread(target=thread_input, args=(self.input_queue, self.control_queue))
-		self.input_thread.daemon = True
-		self.input_thread.start()
+		print("Starting Input process")
+
+		self.input_process = Process(target=input_worker, args=(self.input_queue, self.control_queue))
+		self.input_process.daemon = True
+		self.input_process.start()
 
 	def close(self):
 		#print("\n<Press any key to exit...>")
 		try:
 			self.control_queue.put('close')
 		finally:
-			self.input_thread.join()
+			self.input_process.join()
 			#print("InputListener closed.")
 
 	def getInput(self):
@@ -59,8 +58,10 @@ class InputListener:
 		return None
 
 
-def thread_input(input_queue,control_queue):
+def input_worker(input_queue,control_queue):
 	"""Input char getter for launching in separate thread."""
+	
+	print("Input process launched")
 	while True:
 		try:
 			control = control_queue.get(block=False)
@@ -70,16 +71,8 @@ def thread_input(input_queue,control_queue):
 		except Empty:
 			pass
 		#try:
-
 		char = getch()
 		if char:
 			input_queue.put(char)
 
 		time.sleep(0.01) # restrain loop to 100 fps
-
-		#except EOFError:
-			#print("thread closing (EOFError)...")
-		#	return
-		#except TypeError:
-		#	print("thread closing (typeError)...")
-		#	return
