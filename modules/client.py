@@ -1,9 +1,12 @@
 
+from queue import Queue
+from threading import Thread
+
 import state
 from modules import ModuleBase
 from modules.command import ProgramCommand
 from modules.log import Log
-from shadowui import Label
+from shadowui import Label, Signal, Timer
 
 
 def load_client_label(**kwargs):
@@ -37,6 +40,10 @@ class ClientModule(ModuleBase):
         "claim_expiration_seconds":604800
     }
 
+    on_status = Signal()
+    status_thread = None
+    
+    result_queue = Queue()
     commands = [
         ProgramCommand('status', help="Query network status")
     ]
@@ -50,6 +57,10 @@ class ClientModule(ModuleBase):
         self.conf = state.configuration.get('iotaclnt')
         if not self.conf:
             self.conf = self.default_configuration
+
+        # Add periodic status checks
+        self.sync_timer = Timer('iota_client_sync', on_timer=self.sync_status_on_timer, on_frame=self.status_checker_on_frame, interval_seconds=5)
+        state.root += self.sync_timer
 
         # Add status widget
         status_area = state.root['header.status_widget']
@@ -77,24 +88,52 @@ class ClientModule(ModuleBase):
 
 
     def status(self,**kwargs):
+        silent_mode = kwargs.get('silent')
+        threaded_mode = kwargs.get('threaded')
+
         if hasattr(self, 'client'):
-            # Get the node info
-            self.node_info = self.client.get_info()
-            self.log.info(f"Status: {self.node_info}")
-            print(self.node_info)
-            try:
-                healty = self.node_info['nodeInfo']['status']['isHealthy']
-                if healty:
-                    self.set_widget_status('ok')
-                else:
-                    self.set_widget_status('down')
-            except KeyError:
-                    self.set_widget_status('error')
+            if threaded_mode:
+                # Start a thread to get node info
+                self.status_thread = Thread(target=self.threaded_status, args=(self.input_queue, self.control_queue))
+                self.status_thread.start()
+            else:
+                # Get the node info
+                self.node_info = self.client.get_info()
+                self.log.info(f"Status: {self.node_info}")
+                if not silent_mode:
+                    print(self.node_info)
+                try:
+                    healty = self.node_info['nodeInfo']['status']['isHealthy']
+                    if healty:
+                        self.set_widget_status('ok')
+                    else:
+                        self.set_widget_status('down', True)
+                except KeyError:
+                        self.set_widget_status('error', True)
         else:
             self.log.warning('Client not loaded')
-            self.set_widget_status('Client not loaded')
+            self.set_widget_status('Not loaded', True)
 
-        
+       
+    def sync_status_on_timer(self, **kwargs):
+        actual_seconds= kwargs.get('actual_interval_seconds')
+        self.status(silent=True, threaded=False)
+        #print("Client module got timer sync "+str(actual_seconds))
+
+    def status_checker_on_frame(self, **kwargs):
+        if self.status_thread:
+            pass
+
+    def threaded_status(self, result_queue):
+        """Client info getter for launching in separate thread."""
+
+        # Access to self.client might not be thread safe, might need a mutex here
+        node_info = self.client.get_info()
+
+        result_queue.put(node_info)
+        return
+                        
+                         
     def set_widget_status(self, status, error=False):
         self.error = error
         self.widget.content = status
