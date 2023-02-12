@@ -2,6 +2,7 @@
 from enum import Enum
 
 class Signal:
+    """Signal for listening events in objects"""
     def connect(self, handler:callable):
         """Connect a function to listen for this signal."""
         self._listeners.append(handler)
@@ -48,21 +49,19 @@ class Section:
         self._on_frame = Signal()
 
         children = kwargs.get('children')
-        set_on_load:callable = kwargs.get('on_load')
-        set_on_unload:callable = kwargs.get('on_unload')
-        set_on_children_changed:callable = kwargs.get('on_children_changed')
-        set_on_frame:callable = kwargs.get('on_frame')
+        if children: self+=children
 
-        if children:
-            self+=children
-        if set_on_load:
-            self._on_load.connect(set_on_load)
-        if set_on_unload:
-            self._on_unload.connect(set_on_unload)
-        if set_on_children_changed:
-            self._on_children_changed.connect(set_on_children_changed)
-        if set_on_frame:
-            self._on_frame.connect(set_on_frame)
+        on_load_callback:callable = kwargs.get('on_load')
+        if on_load_callback: self._on_load.connect(on_load_callback)
+
+        on_unload_callback:callable = kwargs.get('on_unload')
+        if on_unload_callback: self._on_unload.connect(on_unload_callback)
+
+        on_children_changed_callback:callable = kwargs.get('on_children_changed')
+        if on_children_changed_callback: self._on_children_changed.connect(on_children_changed_callback)
+
+        on_frame_callback:callable = kwargs.get('on_frame')
+        if on_frame_callback: self._on_frame.connect(on_frame_callback)
 
     def emit_signal_recursive_leaf_first(self,signal:str,**kwargs):
         for child in self.children.values():
