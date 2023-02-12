@@ -5,7 +5,6 @@ Supports color on windows when colorama library is available
 """
 
 import platform
-import queue
 import sys, io
 import time
 
@@ -85,10 +84,10 @@ class CommandlineWindow(WindowBase):
     def load_handler(self,**kwargs):
         #print("cliwindow loadhandler "+str(kwargs))
         
-        #capture print()
+        # Capture stdout to get prints from everywhere
         self.out_capture = io.StringIO()
         sys.stdout = self.out_capture
-        print("test")
+
 
         self.input_listener.start()
         if self.use_csi:
@@ -98,8 +97,7 @@ class CommandlineWindow(WindowBase):
         self.draw_textline('type help to get started!')
 
     def unload_handler(self, **kwargs):
-
-        self.input_listener.close()
+		self.input_listener.close()
         # restore stdout
         sys.stdout = sys.__stdout__
         
@@ -114,16 +112,9 @@ class CommandlineWindow(WindowBase):
         
         val = self.out_capture.getvalue()
         if val:
-            self.draw_textline(val,redraw_commandline=False)
-            self.out_capture = io.StringIO() # just creating a new buffer is faster than emptying the old one
+             self.draw_textline(val,redraw_commandline=False)
+             self.out_capture = io.StringIO() # just creating a new buffer is faster than emptying the old one
         
-        # try:
-        #     printable = self.print_capture._capture_output_queue.get_nowait()
-            
-        #     self.log.info("found printable"+printable)
-        #     self.draw_textline(printable)
-        # except queue.Empty:
-        #     pass
         
         try:
             try:
