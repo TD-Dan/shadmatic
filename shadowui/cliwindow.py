@@ -97,7 +97,7 @@ class CommandlineWindow(WindowBase):
         self.draw_textline('type help to get started!')
 
     def unload_handler(self, **kwargs):
-		self.input_listener.close()
+        self.input_listener.close()
         # restore stdout
         sys.stdout = sys.__stdout__
         
