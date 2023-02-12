@@ -45,7 +45,7 @@ def main():
             
             import modules.exec
             import modules.cli
-            #import modules.term
+            import modules.term
 
             import modules.twitter
             #import modules.airdrop
