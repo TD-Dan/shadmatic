@@ -1,10 +1,8 @@
 
-import time
 import platform
-from enum import Enum
+import time
+from multiprocessing import Process, ProcessError, Queue
 from queue import Empty
-from multiprocessing import Queue
-from multiprocessing import Process, ProcessError
 
 # Implements non-blocking getch for Win, Mac and linux
 if platform.system() == "Windows":
