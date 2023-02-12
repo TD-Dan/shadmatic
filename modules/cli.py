@@ -18,10 +18,13 @@ class CLIModule(ModuleBase):
     \tcolor=\tEnable colored output, valid values:
     \t\tyes (default)
     \t\tno"""
-    
+
+    create_window = False
+
     def load(self):
         super().load()
-        state.root += CommandlineWindow('cliwindow',use_color=self.use_color)
+        if self.create_window:
+            state.root += CommandlineWindow('cliwindow',use_color=self.use_color)
 
     def unload(self):
         super().unload()
@@ -39,6 +42,7 @@ class CLIModule(ModuleBase):
                     raise state.InvalidInput("yes/no expcected, got "+self.use_color)
         else:
             self.use_color = False
+        self.create_window=True
         raise state.ProgramEnterInteractive()
 
 #register to main program as a module
